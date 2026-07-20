@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/captivateiq-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Token-based authentication with required prefix "Token"
+  sources:
+  - openapi/captivateiq-openapi-original.yml
