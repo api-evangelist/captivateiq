@@ -1,0 +1,486 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Users API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Users
+paths:
+  /ciq/v1/users/:
+    post:
+      operationId: users_create
+      summary: Create User
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    get:
+      operationId: users_list
+      summary: List Users
+      parameters:
+      - in: query
+        name: email
+        schema:
+          type: string
+          format: email
+        description: Filter by email address
+      - in: query
+        name: first_name
+        schema:
+          type: string
+        description: Filter by first name
+      - in: query
+        name: last_name
+        schema:
+          type: string
+        description: Filter by last name
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)created_at`, `(-)email`, `(-)first_name`, `(-)last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Users
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserList'
+          description: ''
+  /ciq/v1/users/{id}/:
+    delete:
+      operationId: users_destroy
+      description: If an individual is no longer with a company, it's recommended that the user be deactivated and not deleted.
+      summary: Delete User
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Users
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+    get:
+      operationId: users_retrieve
+      summary: Get User
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Users
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_update
+      summary: Update User
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    NullEnum:
+      enum:
+      - null
+    UserUpdate:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: User email. Required if organization uses email as unique identifier (most organizations).
+        login_id:
+          type: string
+          nullable: true
+          description: User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used.
+        first_name:
+          type: string
+          description: User first name.
+        last_name:
+          type: string
+          description: User last name.
+        timezone:
+          type: string
+          description: User timezone name. Accepts [tz database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+        enable_inquiry_notifications:
+          type: boolean
+          description: Required.
+        enable_statement_notifications:
+          type: boolean
+          description: Required.
+        eligible_to_submit_inquiries:
+          type: boolean
+          description: Required.
+        eligible_to_receive_inquiries:
+          type: boolean
+          description: Required.
+        is_active:
+          type: boolean
+          description: Required.
+        is_organization_admin:
+          type: boolean
+          description: Required.
+        send_initial_email:
+          type: boolean
+          default: false
+        locale:
+          nullable: true
+          description: The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.
+          oneOf:
+          - $ref: '#/components/schemas/LocaleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        role:
+          type: string
+          description: Name of the role to apply to the user.
+          maxLength: 255
+      required:
+      - eligible_to_receive_inquiries
+      - eligible_to_submit_inquiries
+      - enable_inquiry_notifications
+      - enable_statement_notifications
+      - first_name
+      - is_active
+      - is_organization_admin
+      - last_name
+      - timezone
+    User:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: user
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: User email. Required if organization uses email as unique identifier (most organizations).
+        login_id:
+          type: string
+          nullable: true
+          description: User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used.
+        first_name:
+          type: string
+          description: User first name.
+        last_name:
+          type: string
+          description: User last name.
+        role:
+          type: string
+          description: Name of the role to apply to the user.
+        timezone:
+          type: string
+          description: User [timezone name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+        enable_inquiry_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_statement_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_receive_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_submit_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`. Enable user to submit inquiries.
+        enable_payout_processing_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_connector_sync_email_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        enable_scim_email_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_audit_log_export_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        is_organization_admin:
+          type: boolean
+          default: false
+          description: Optional, defaults to `false`.
+        is_active:
+          type: boolean
+          default: true
+          description: Optional, defaults to `true`.
+        linked_employee:
+          type: string
+          format: uuid
+          readOnly: true
+          description: User's linked Employee
+        last_activity:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of User's last activity within the platform.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        locale:
+          nullable: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `None`. The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.
+          oneOf:
+          - $ref: '#/components/schemas/LocaleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - first_name
+      - last_name
+      - timezone
+    LocaleEnum:
+      enum:
+      - cs_CZ
+      - de_DE
+      - en_AU
+      - en_CA
+      - en_GB
+      - en_SG
+      - en_US
+      - es_ES
+      - es_US
+      - fr_CA
+      - fr_FR
+      - hu_HU
+      - it_IT
+      - ja_JP
+      - ms_MY
+      - pl_PL
+      - pt_PT
+      - ru_RU
+      - sk_SK
+      - zh_CN
+      - zh_SG
+      type: string
+    PaginatedUserList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    UserCreate:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: User email. Required if organization uses email as unique identifier (most organizations).
+        login_id:
+          type: string
+          nullable: true
+          description: User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used.
+        first_name:
+          type: string
+          description: User first name.
+        last_name:
+          type: string
+          description: User last name.
+        role:
+          type: string
+          description: Name of the role to apply to the user.
+        timezone:
+          type: string
+          description: User [timezone name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+        enable_inquiry_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_statement_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_receive_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_submit_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`. Enable user to submit inquiries.
+        enable_payout_processing_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_connector_sync_email_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        enable_scim_email_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_audit_log_export_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        is_organization_admin:
+          type: boolean
+          default: false
+          description: Optional, defaults to `false`.
+        is_active:
+          type: boolean
+          default: true
+          description: Optional, defaults to `true`.
+        linked_employee:
+          type: string
+          format: uuid
+          readOnly: true
+          description: User's linked Employee
+        last_activity:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of User's last activity within the platform.
+        locale:
+          nullable: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `None`. The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.
+          oneOf:
+          - $ref: '#/components/schemas/LocaleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        send_initial_email:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`. Send the user a welcome email.
+      required:
+      - first_name
+      - last_name
+      - timezone
+    BlankEnum:
+      enum:
+      - ''
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

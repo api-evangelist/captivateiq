@@ -1,0 +1,331 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Uploads API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Uploads
+paths:
+  /ciq/v1/uploads/:
+    get:
+      operationId: uploads_list
+      summary: List Uploads
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`-created_at`]. Available fields for ordering: [`(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Uploads
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUploadList'
+          description: ''
+  /ciq/v1/uploads/{id}/:
+    get:
+      operationId: uploads_retrieve
+      summary: Get Upload
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Uploads
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+          description: ''
+  /ciq/v1/uploads/{id}/process/:
+    post:
+      operationId: uploads_process_create
+      summary: Process Upload
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Uploads
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessUploadRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProcessUploadRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProcessUploadRequest'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
+    UploadOverrides:
+      type: object
+      properties:
+        encoding:
+          type: string
+          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
+        data_mappings:
+          type: object
+          additionalProperties:
+            type: string
+          default: {}
+          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
+    ProcessUploadRequest:
+      type: object
+      properties:
+        overrides:
+          $ref: '#/components/schemas/UploadOverrides'
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    PaginatedUploadList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Upload'
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    ObjectTypeEnum:
+      enum:
+      - records
+      - test_records
+      - object_model_records
+      - hierarchies
+      - hierarchies_api
+      - employee_assumptions
+      - employee_visibility
+      - sfdc_report_metadata
+      - quota_worksheets
+      - unified_employee_assumptions
+      - people
+      - unified_worksheet_records
+      - records_api
+      - dispute_attachment
+      - docusign_file
+      - organization_logo
+      - attributes
+      - picklist_options
+      - plan_document
+      - plan_document_template
+      - bulk_plan_document_index_template
+      - spm_worksheet
+      type: string
+    Upload:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: upload
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve upload details and status.
+        object_type:
+          allOf:
+          - $ref: '#/components/schemas/ObjectTypeEnum'
+          readOnly: true
+          description: Upload type.
+        file_name:
+          type: string
+          description: File name including extension, e.g. "my-file.csv".
+        encoding:
+          type: string
+          description: The file's encoding, e.g. "utf-8".
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: The file's format for all date fields
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: The file's delimiter
+        status:
+          type: string
+          readOnly: true
+          description: Upload status, whether or not it has been processed.
+        params:
+          readOnly: true
+          description: Upload parameters.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Upload details, such as a presigned url if it's pending processing, or job details if it's processed.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - date_format
+      - delimiter
+      - encoding
+      - file_name
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

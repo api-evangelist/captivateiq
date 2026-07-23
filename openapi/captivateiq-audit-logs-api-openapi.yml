@@ -1,0 +1,179 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Audit Logs API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Audit Logs
+paths:
+  /ciq/v1/audit-logs/:
+    get:
+      operationId: audit_logs_list
+      description: Get a list of all the Audit Logs
+      summary: List Audit Logs
+      parameters:
+      - in: query
+        name: email
+        schema:
+          type: string
+          format: email
+        description: Filter Audit Logs by user email
+      - in: query
+        name: end_date
+        schema:
+          type: string
+          format: date
+        description: Filter Audit Logs by end date (YYYY-MM-DD format)
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: start_date
+        schema:
+          type: string
+          format: date
+        description: Filter Audit Logs by start date (YYYY-MM-DD format)
+      tags:
+      - Audit Logs
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAuditLogsList'
+          description: ''
+components:
+  schemas:
+    PaginatedAuditLogsList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogs'
+    AuditLogs:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Primary key, a UUID.
+        object:
+          type: string
+          readOnly: true
+          default: audit_log
+        organization_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Organization ID.
+        organization_name:
+          type: string
+          readOnly: true
+          description: Organization Name.
+        user_id:
+          type: string
+          readOnly: true
+          description: Effective User ID. This field will only differ from logged_in_user_id in the case of impersonation.
+        user_name:
+          type: string
+          readOnly: true
+          description: Effective Username. This field will only differ from logged_in_user_name in the case of impersonation.
+        user_email:
+          type: string
+          format: email
+          readOnly: true
+          description: Effective User email. This field will only differ from logged_in_user_email in the case of impersonation.
+        logged_in_user_id:
+          type: string
+          readOnly: true
+          description: ID of the logged in User.
+        logged_in_user_name:
+          type: string
+          readOnly: true
+          description: 'Username of the logged in User. '
+        logged_in_user_email:
+          type: string
+          format: email
+          readOnly: true
+          description: 'User email of the logged in User. '
+        ip_address:
+          type: string
+          readOnly: true
+          description: IP Address of the logged in user.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        event_type:
+          type: string
+          readOnly: true
+          description: Event type e.g. create, delete, update.
+        version:
+          type: integer
+          readOnly: true
+          description: Version of the Audit Log API.
+        data:
+          readOnly: true
+          description: Data that has been changed in this Audit Log.
+        object_id:
+          type: string
+          readOnly: true
+          description: ID of the underlying object e.g. Worksheet ID, column ID.
+        object_name:
+          type: string
+          readOnly: true
+          description: Value of the underlying object name. e.g. Column name, Worksheet name, depending on object_type.
+        object_type:
+          type: string
+          readOnly: true
+          description: Type of object associated with this Audit Log. e.g. column, worksheet, workbook, record.
+        parent_objects:
+          type: array
+          items: {}
+          readOnly: true
+          description: This field contains information about parent objects for the audit log. This field will contain object_id, object_name and object_type fields for each parent object. For example when a column is changed the parent objects of the column change audit log will be the containing worksheet and workbook.
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

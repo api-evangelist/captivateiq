@@ -1,0 +1,733 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Employees API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Employees
+paths:
+  /ciq/v1/employee-visibilities/:
+    post:
+      operationId: employee_visibilities_create
+      summary: Create Employee Visibility
+      tags:
+      - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeVisibilityCreateUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployeeVisibilityCreateUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployeeVisibilityCreateUpdate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeVisibility'
+          description: ''
+    get:
+      operationId: employee_visibilities_list
+      description: Hierarchy visibilities include an extra field, `managing_employee` which contains the UUID of the managing employee.
+      summary: List Employee Visibilities
+      parameters:
+      - in: query
+        name: hierarchy_group_name
+        schema:
+          type: string
+        description: Filter visibilities by a hierarchy group name.
+      - in: query
+        name: hierarchy_id
+        schema:
+          type: string
+          format: uuid
+        description: Filter visibilities by hierarchy id.
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - in: query
+        name: ordering
+        schema:
+          type: string
+        description: Use `start_date` or `end_date` to order by start or end date, and `-start_date` or `-end_date` to reverse them respectively. Defaults to `start_date`.
+      - in: query
+        name: user_id
+        schema:
+          type: string
+          format: uuid
+        description: Filter visibilities by user_id.
+      - in: query
+        name: visible_employee_id
+        schema:
+          type: string
+          format: uuid
+        description: Filter visibilities by an employee_id.
+      tags:
+      - Employees
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmployeeVisibilityList'
+          description: ''
+  /ciq/v1/employee-visibilities/{id}/:
+    delete:
+      operationId: employee_visibilities_destroy
+      summary: Delete Employee Visibility
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employees
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenAPIDelete'
+          description: ''
+    get:
+      operationId: employee_visibilities_retrieve
+      description: 'Retrieves Employee Visibilities with the `object: "employee visibility"` field. To retrieve Hierarchies, see the Hierarchies documentation.'
+      summary: Get Employee Visibility
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employees
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeVisibility'
+          description: ''
+    put:
+      operationId: employee_visibilities_update
+      summary: Update Employee Visibility
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeVisibilityCreateUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployeeVisibilityCreateUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployeeVisibilityCreateUpdate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeVisibility'
+          description: ''
+  /ciq/v1/employees/:
+    post:
+      operationId: employees_create
+      summary: Create Employee
+      tags:
+      - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+    get:
+      operationId: employees_list
+      summary: List Employees
+      parameters:
+      - in: query
+        name: employee_id
+        schema:
+          type: string
+        description: Filter by employee id
+      - in: query
+        name: first_name
+        schema:
+          type: string
+        description: Filter by first name
+      - in: query
+        name: last_name
+        schema:
+          type: string
+        description: Filter by last name
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`employee_id`]. Available fields for ordering: [`(-)employee_id`, `(-)first_name`, `(-)last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Employees
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmployeeList'
+          description: ''
+  /ciq/v1/employees/{id}/:
+    delete:
+      operationId: employees_destroy
+      summary: Delete Employee
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employees
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+    get:
+      operationId: employees_retrieve
+      summary: Get Employee
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employees
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+    put:
+      operationId: employees_update
+      summary: Update Employee
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployeeUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployeeUpdate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+components:
+  schemas:
+    NullEnum:
+      enum:
+      - null
+    EmployeeVisibility:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: employee visibility
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        user:
+          type: string
+          format: uuid
+          description: Required. The uuid of the user.
+        visible_employee:
+          type: string
+          format: uuid
+          description: Required. The uuid of the visible employee.
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required. The visibility start date.
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required. The visibility end date.
+        source:
+          type: object
+          additionalProperties: {}
+          description: Nested object containing the id and name of the hierarchy group if the visibility originated from a hierarchy. Otherwise values default to null and 'Manual'.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - user
+      - visible_employee
+    EmployeeUpdate:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        employee_id:
+          type: string
+          description: Required, must be unique. Your unique identifier for the employee within your organization.
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: Required, can be `null`. The employee's email address.
+        login_id:
+          type: string
+          nullable: true
+          description: Optional. Only used when an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and the employee has a linked_user value. If linked_user has a value, then login_id will be used to update the login_id of the linked_user.
+        first_name:
+          type: string
+          nullable: true
+          description: Required, can be `null`. The employee's first name.
+        last_name:
+          type: string
+          nullable: true
+          description: Required, can be `null`. The employee's last name.
+        final_process_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required, can be `null`. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.
+        employee_license_automated_deactivation_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional, can be `null`. YYYY-MM-DD format. The employee will be automatically deactivated on this date.
+        is_active:
+          type: boolean
+          description: Required. Active employees count towards your seat count.
+        linked_user:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Employee's linked User, which they may use to access the system.
+      required:
+      - email
+      - employee_id
+      - final_process_date
+      - first_name
+      - is_active
+      - last_name
+    PaginatedEmployeeVisibilityList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeVisibility'
+    EmployeeOptionalUserSettings:
+      type: object
+      properties:
+        enable_inquiry_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_statement_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_receive_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_submit_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`. Enable user to submit inquiries.
+        enable_payout_processing_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_connector_sync_email_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        enable_scim_email_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_audit_log_export_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        is_organization_admin:
+          type: boolean
+          default: false
+          description: Optional, defaults to `false`.
+        send_initial_email:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`. Send the user a welcome email.
+        login_access:
+          type: boolean
+          default: false
+          description: Optional, defaults to `false`.
+        role:
+          type: string
+          description: Name of the role to apply to the user.
+          maxLength: 255
+    Employee:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: employee
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        employee_id:
+          type: string
+          description: Required, must be unique. Your unique identifier for the employee within your organization.
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: Required if `linked_user` not provided, otherwise optional. The employee's email address.
+        first_name:
+          type: string
+          nullable: true
+          description: Required if `linked_user` not provided, otherwise optional. The employee's first name.
+        last_name:
+          type: string
+          nullable: true
+          description: Required if `linked_user` not provided, otherwise optional. The employee's last name.
+        final_process_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.
+        is_active:
+          type: boolean
+          description: Active employees count towards your seat count.
+        linked_user:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Employee's linked User, which they may use to access the system.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - employee_id
+      - is_active
+    PaginatedEmployeeList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Employee'
+    EmployeeCreate:
+      type: object
+      properties:
+        employee_id:
+          type: string
+          description: Required, must be unique. Your unique identifier for the employee within your organization.
+        email:
+          type: string
+          format: email
+          nullable: true
+          description: Required if `linked_user` not provided, otherwise optional. The employee's email address.
+        first_name:
+          type: string
+          nullable: true
+          description: Required if `linked_user` not provided, otherwise optional. The employee's first name.
+        last_name:
+          type: string
+          nullable: true
+          description: Required if `linked_user` not provided, otherwise optional. The employee's last name.
+        final_process_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.
+        is_active:
+          type: boolean
+          default: true
+          description: Optional, defaults to `true`. Active employees count towards your seat count.
+        linked_user:
+          type: string
+          format: uuid
+          nullable: true
+          description: Optional. Pass in a UUID to link to an existing User, otherwise a new User will be automatically created for this employee.
+        user_settings:
+          allOf:
+          - $ref: '#/components/schemas/EmployeeOptionalUserSettings'
+          nullable: true
+          description: Optional. Values to be passed through if creating a new user
+        timezone:
+          type: string
+          nullable: true
+          default: America/Los_Angeles
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `America/Los_Angeles`. Used only if creating a new linked user. User timezone name. Accepts [tz database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. `America/Los_Angeles`.
+        locale:
+          nullable: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `None`. The employee's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.
+          oneOf:
+          - $ref: '#/components/schemas/LocaleEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        login_id:
+          type: string
+          nullable: true
+          description: Optional. This field is only used if an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and if linked_user does not have a value. If this is the case then login_id value will be used in creating the linked_user. If login_id is blank, the linked user will be created as a placeholder user.
+      required:
+      - employee_id
+    OpenAPIDelete:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          description: Type of the object.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the object deleted.
+        deleted:
+          type: boolean
+          readOnly: true
+          description: Has the object been deleted.
+    EmployeeVisibilityCreateUpdate:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: employee visibility
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        user:
+          type: string
+          format: uuid
+          description: Required. The uuid of the user.
+        visible_employee:
+          type: string
+          format: uuid
+          description: Required. The uuid of the visible employee.
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required. The visibility start date.
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required. The visibility end date.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - user
+      - visible_employee
+    LocaleEnum:
+      enum:
+      - cs_CZ
+      - de_DE
+      - en_AU
+      - en_CA
+      - en_GB
+      - en_SG
+      - en_US
+      - es_ES
+      - es_US
+      - fr_CA
+      - fr_FR
+      - hu_HU
+      - it_IT
+      - ja_JP
+      - ms_MY
+      - pl_PL
+      - pt_PT
+      - ru_RU
+      - sk_SK
+      - zh_CN
+      - zh_SG
+      type: string
+    BlankEnum:
+      enum:
+      - ''
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

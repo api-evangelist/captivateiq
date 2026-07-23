@@ -1,0 +1,664 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Payouts API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Payouts
+paths:
+  /ciq/v1/payouts/adjustments/export/:
+    post:
+      operationId: payouts_adjustments_export_create
+      description: Export payout adjustments
+      summary: Export Payout Adjustments
+      tags:
+      - Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /ciq/v1/payouts/employee-assumptions/export/:
+    post:
+      operationId: payouts_employee_assumptions_export_create
+      description: Export payout snapshot related employee assumptions
+      summary: Export Employee Assumptions
+      tags:
+      - Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /ciq/v1/payouts/payout-dates/:
+    get:
+      operationId: payouts_payout_dates_list
+      description: List payout snapshot related payout dates
+      summary: List Payout Dates
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`-payout_date`]. Available fields for ordering: [`(-)payout_date`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: period_group_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by period group UUIDs
+        explode: true
+      - in: query
+        name: plan_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by commission plan UUIDs
+        explode: true
+      tags:
+      - Payouts
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPayoutDateList'
+          description: ''
+  /ciq/v1/payouts/payout-summaries/export/:
+    post:
+      operationId: payouts_payout_summaries_export_create
+      description: Export payout snapshot related payout summaries
+      summary: Export Payout Summaries
+      tags:
+      - Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PayoutSnapshotExportRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /ciq/v1/payouts/period-groups/:
+    get:
+      operationId: payouts_period_groups_list
+      description: List payout snapshot related period groups
+      summary: List Period Groups
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`period_group_name`]. Available fields for ordering: [`(-)period_group_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: payout_dates[]
+        schema:
+          type: string
+          format: date
+        description: Filter by payout dates (YYYY-MM-DD format)
+        explode: true
+      - in: query
+        name: plan_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by commission plan UUIDs
+        explode: true
+      tags:
+      - Payouts
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPeriodGroupPayoutList'
+          description: ''
+  /ciq/v1/payouts/plans/:
+    get:
+      operationId: payouts_plans_list
+      description: List Commission Plans related to Snapshots
+      summary: List Commission Plans
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`plan_name`]. Available fields for ordering: [`(-)plan_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: payout_dates[]
+        schema:
+          type: string
+          format: date
+        description: Filter by payout dates (YYYY-MM-DD format)
+        explode: true
+      - in: query
+        name: period_group_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by period group UUIDs
+        explode: true
+      tags:
+      - Payouts
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPlanPayoutList'
+          description: ''
+  /ciq/v1/payouts/worksheets/:
+    get:
+      operationId: payouts_worksheets_list
+      description: List payout snapshot related calculation workbook worksheets
+      summary: List Worksheets
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`worksheet_name`]. Available fields for ordering: [`(-)worksheet_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: payout_dates[]
+        schema:
+          type: string
+          format: date
+        description: Filter by payout dates (YYYY-MM-DD format)
+        explode: true
+      - in: query
+        name: period_group_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by period group UUIDs
+        explode: true
+      - in: query
+        name: plan_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by commission plan UUIDs
+        explode: true
+      tags:
+      - Payouts
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWorksheetList'
+          description: ''
+  /ciq/v1/payouts/worksheets/export/:
+    post:
+      operationId: payouts_worksheets_export_create
+      description: Export payout snapshot related calculation workbook worksheets
+      summary: Export Worksheet
+      tags:
+      - Payouts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorksheetSnapshotExportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorksheetSnapshotExportRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorksheetSnapshotExportRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    PaginatedPeriodGroupPayoutList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeriodGroupPayout'
+    WorksheetSnapshotExportRequest:
+      type: object
+      properties:
+        payout_dates:
+          type: array
+          items:
+            type: string
+            format: date
+          description: Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.
+          maxItems: 5
+        plan_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more commission plan UUIDs
+        period_group_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more period group UUIDs
+        locked_only:
+          type: boolean
+          nullable: true
+          description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
+        worksheet_name:
+          type: string
+          description: Required. Export the given worksheet name.
+      required:
+      - payout_dates
+      - worksheet_name
+    PeriodGroupPayout:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: period_group
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        plan:
+          type: string
+          readOnly: true
+          description: Commission plan UUID related to this period group.
+        payout_dates:
+          type: array
+          items:
+            type: string
+            format: date
+          readOnly: true
+          description: List of payout dates related to this period group in YYYY-MM-DD format.
+        name:
+          type: string
+          readOnly: true
+          description: Period group name.
+        is_active:
+          type: boolean
+          readOnly: true
+          default: true
+          description: Period group's active status.
+        is_deleted:
+          type: boolean
+          readOnly: true
+          default: false
+          description: '`false` if the period group still exists, `true` if it has been deleted since the payout was processed.'
+    Worksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: worksheet
+          description: Optional. Object type name.
+        name:
+          type: string
+          readOnly: true
+          description: Worksheet name.
+    PaginatedPayoutDateList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDate'
+    PayoutSnapshotExportRequest:
+      type: object
+      properties:
+        payout_dates:
+          type: array
+          items:
+            type: string
+            format: date
+          description: Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.
+          maxItems: 5
+        plan_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more commission plan UUIDs
+        period_group_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more period group UUIDs
+        locked_only:
+          type: boolean
+          nullable: true
+          description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
+      required:
+      - payout_dates
+    PlanPayout:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: plan
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          readOnly: true
+          description: Commission plan name.
+        confetti_enabled:
+          type: boolean
+          readOnly: true
+          description: Confetti animation when employees view their payouts.
+        period_groups:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          readOnly: true
+          description: List of period group UUIDs related to this commission plan.
+        payout_dates:
+          type: array
+          items:
+            type: string
+            format: date
+          readOnly: true
+          description: List of payout dates related to this commission plan in YYYY-MM-DD format.
+        is_active:
+          type: boolean
+          readOnly: true
+          default: true
+          description: Commission plan's active status
+        is_deleted:
+          type: boolean
+          readOnly: true
+          default: false
+          description: '`false` if the commission plan still exists, `true` if it has been deleted since the payout was processed.'
+    PaginatedWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Worksheet'
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    PayoutDate:
+      type: object
+      properties:
+        payout_date:
+          type: string
+          format: date
+          readOnly: true
+          description: Payout date in YYYY-MM-DD format.
+    PaginatedPlanPayoutList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanPayout'
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

@@ -1,0 +1,301 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Jobs API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Jobs
+paths:
+  /ciq/v1/job-aggregations/:
+    get:
+      operationId: job_aggregations_list
+      description: 'List details of job aggregations for the organization. Defaults to a 30-day lookback window;
+
+        pass `start_date` to override.'
+      summary: List Job Aggregation
+      parameters:
+      - in: query
+        name: job_status
+        schema:
+          type: string
+          enum:
+          - FAILURE
+          - PENDING
+          - RETRY
+          - REVOKED
+          - STARTED
+          - SUCCESS
+        description: 'Filter by job status: PENDING, STARTED, SUCCESS, FAILURE, RETRY, or REVOKED.'
+      - in: query
+        name: job_type
+        schema:
+          type: string
+        description: Optional. Filter by specific job type, eg. payouts.jobs.process_payout.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+        description: The initial index from which to return the results.
+      - in: query
+        name: start_date
+        schema:
+          type: string
+          format: date
+        description: Optional. Filter aggregations created on or after this date (YYYY-MM-DD). Defaults to 30 days ago.
+      tags:
+      - Jobs
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobAggregation'
+          description: ''
+  /ciq/v1/job-aggregations/{job_aggregation_id}/:
+    get:
+      operationId: job_aggregations_retrieve
+      summary: Get Job Aggregation
+      parameters:
+      - in: path
+        name: job_aggregation_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Jobs
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAggregation'
+          description: ''
+  /ciq/v1/jobs/:
+    get:
+      operationId: jobs_list
+      summary: List Jobs
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`-created_at`]. Available fields for ordering: [`(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: start_date
+        schema:
+          type: string
+          format: date
+        description: Optional. Filter jobs created on or after this date (YYYY-MM-DD).
+      tags:
+      - Jobs
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedJobList'
+          description: ''
+  /ciq/v1/jobs/{id}/:
+    get:
+      operationId: jobs_retrieve
+      summary: Get Job
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Jobs
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+components:
+  schemas:
+    PaginatedJobList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    JobAggregation:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job_aggregation
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        jobs_count:
+          type: integer
+        processed_jobs_count:
+          type: integer
+        started_jobs_count:
+          type: integer
+        pending_jobs_count:
+          type: integer
+        successful_jobs_count:
+          type: integer
+        failed_jobs_count:
+          type: integer
+        retried_jobs_count:
+          type: integer
+        revoked_jobs_count:
+          type: integer
+        status:
+          type: string
+        user_email:
+          type: string
+        completed_at:
+          type: string
+          format: date-time
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+      required:
+      - created_at
+      - failed_jobs_count
+      - id
+      - jobs_count
+      - pending_jobs_count
+      - processed_jobs_count
+      - retried_jobs_count
+      - revoked_jobs_count
+      - started_jobs_count
+      - status
+      - successful_jobs_count
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

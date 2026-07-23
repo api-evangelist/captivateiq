@@ -1,0 +1,885 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Data Worksheets API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Data Worksheets
+paths:
+  /ciq/v1/data-worksheets/:
+    get:
+      operationId: data_worksheets_list
+      summary: List Data Worksheets
+      parameters:
+      - in: query
+        name: data_workbook_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by data workbook UUIDs
+        explode: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name_contains
+        schema:
+          type: string
+        description: Case-insensitive search to list data workbooks whose names contain the given string.
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: type
+        schema:
+          type: string
+        description: Filter by worksheet type. Valid choices are `raw` or `derived`.
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataWorksheetList'
+          description: ''
+  /ciq/v1/data-worksheets/{id}/:
+    get:
+      operationId: data_worksheets_retrieve
+      summary: Get Data Worksheet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataWorksheet'
+          description: ''
+  /ciq/v1/data-worksheets/{worksheet_uuid}/records/:
+    post:
+      operationId: data_worksheets_records_create
+      summary: Create Record
+      parameters:
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+          description: ''
+    get:
+      operationId: data_worksheets_records_list
+      description: 'This endpoint returns only the raw data values present in the worksheet.
+
+        If you experience performance issues, or want to also see derived values, please use the
+
+        [Bulk Export Records](https://developers.captivateiq.com/reference/data_worksheets_records_export_create-1) endpoint instead.'
+      summary: List Records
+      parameters:
+      - in: query
+        name: created_at_after
+        schema:
+          type: string
+          format: date
+        description: Filter by created_at dates after a date, inclusive of that date. YYYY-MM-DD format.
+      - in: query
+        name: created_at_before
+        schema:
+          type: string
+          format: date
+        description: Filter by created_at dates before a date. YYYY-MM-DD format.
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)created_at`, `(-)updated_at`]. Also accepts column name or UUIDs. For worksheets that are bulk upserted it is recommended to use the worksheet Unique ID name or UUID to avoid duplicates.'
+        schema:
+          type: string
+      - in: query
+        name: query
+        schema:
+          type: string
+        description: Perform a case-insensitive text search over record data for the given string.
+      - in: query
+        name: query_column
+        schema:
+          type: string
+        description: When provided along with query, search only within the specified column name instead of searching all columns.
+      - in: query
+        name: updated_at_after
+        schema:
+          type: string
+          format: date
+        description: Filter by updated_at dates after a date, inclusive of that date. YYYY-MM-DD format.
+      - in: query
+        name: updated_at_before
+        schema:
+          type: string
+          format: date
+        description: Filter by updated_at dates before a date. YYYY-MM-DD format.
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRecordList'
+          description: ''
+  /ciq/v1/data-worksheets/{worksheet_uuid}/records/batch/:
+    post:
+      operationId: data_worksheets_records_batch_create
+      summary: Batch Update Records
+      parameters:
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateRecords'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateRecords'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateRecords'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchResult'
+          description: ''
+  /ciq/v1/data-worksheets/{worksheet_uuid}/records/export/:
+    post:
+      operationId: data_worksheets_records_export_create
+      description: 'Export all records as a downloadable CSV file for the given data worksheet. This exports both data and
+
+        derived columns.'
+      summary: Bulk Export Records
+      parameters:
+      - in: query
+        name: export_format
+        schema:
+          type: string
+          enum:
+          - csv
+          - json
+          default: csv
+        description: Format for the records export.
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /ciq/v1/data-worksheets/{worksheet_uuid}/records/import/:
+    post:
+      operationId: data_worksheets_records_import_create
+      description: 'While the CSV file format is not fully standardized, CaptivateIQ''s implementation of CSV parsing will have
+
+        you surround a field''s data with quotation marks in order to allow for commas that may be present in the data.
+
+
+        For example:
+
+        ```
+
+        Column1,Column2
+
+        "Foo, bar",baz
+
+        ```'
+      summary: Bulk Import Records
+      parameters:
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataWorksheetImportCSVRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataWorksheetImportCSVRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataWorksheetImportCSVRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+          description: ''
+  /ciq/v1/data-worksheets/{worksheet_uuid}/records/import/template/:
+    get:
+      operationId: data_worksheets_records_import_template_retrieve
+      summary: Get Bulk Import Records Template
+      parameters:
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: ''
+  /ciq/v1/data-worksheets/{worksheet_uuid}/records/{unique_id}/:
+    delete:
+      operationId: data_worksheets_records_destroy
+      summary: Delete Record
+      parameters:
+      - in: path
+        name: unique_id
+        schema:
+          type: string
+        description: The unique ID column value of a record within the worksheet `worksheet_uuid`.
+        required: true
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+    get:
+      operationId: data_worksheets_records_retrieve
+      summary: Get Record
+      parameters:
+      - in: path
+        name: unique_id
+        schema:
+          type: string
+        description: The unique ID column value of a record within the worksheet `worksheet_uuid`.
+        required: true
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+          description: ''
+    put:
+      operationId: data_worksheets_records_update
+      summary: Update Record
+      parameters:
+      - in: path
+        name: unique_id
+        schema:
+          type: string
+        description: The unique ID column value of a record within the worksheet `worksheet_uuid`.
+        required: true
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Data Worksheets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+          description: ''
+components:
+  schemas:
+    BatchUpdateRecords:
+      type: object
+      properties:
+        upserts:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records to create or update. Maximum batch size is 1000.
+          maxItems: 1000
+        deletes:
+          type: array
+          items:
+            type: string
+          description: Unique IDs for the records to delete. Maximum batch size is 1000.
+          maxItems: 1000
+      required:
+      - deletes
+      - upserts
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
+    ImportModeEnum:
+      enum:
+      - upsert
+      - insert_only
+      - delete
+      - overwrite
+      type: string
+    PaginatedRecordList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+    BatchResult:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the created records.
+        updated:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the updated records.
+        deleted:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the deleted records.
+      required:
+      - created
+      - deleted
+      - updated
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    ObjectTypeEnum:
+      enum:
+      - records
+      - test_records
+      - object_model_records
+      - hierarchies
+      - hierarchies_api
+      - employee_assumptions
+      - employee_visibility
+      - sfdc_report_metadata
+      - quota_worksheets
+      - unified_employee_assumptions
+      - people
+      - unified_worksheet_records
+      - records_api
+      - dispute_attachment
+      - docusign_file
+      - organization_logo
+      - attributes
+      - picklist_options
+      - plan_document
+      - plan_document_template
+      - bulk_plan_document_index_template
+      - spm_worksheet
+      type: string
+    DataWorksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: data_worksheet
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        type:
+          type: string
+          readOnly: true
+          description: Worksheet type.
+        name:
+          type: string
+          description: Worksheet name.
+        description:
+          type: string
+          description: Worksheet description.
+        workbook:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Worksheet's associated data workbook UUID.
+        workbook_name:
+          type: string
+          readOnly: true
+          description: Worksheet's associated data workbook name.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnListItem'
+          readOnly: true
+          description: Worksheet columns.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - description
+      - name
+    Record:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: record
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        data:
+          type: object
+          additionalProperties: {}
+          description: Column data for the record.
+      required:
+      - data
+    ColumnListItem:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: column
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          description: Column name.
+        description:
+          type: string
+          description: Column description.
+        variant:
+          type: string
+          description: Column variant, e.g. raw or derived.
+        data_type:
+          type: string
+          description: Column data type, e.g. number or date.
+        format:
+          description: Column display format.
+        formula:
+          type: string
+          readOnly: true
+          description: Column formula.
+        read_only:
+          type: boolean
+          readOnly: true
+          description: Whether or not the column is read only.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - data_type
+      - description
+      - format
+      - name
+      - variant
+    DataWorksheetImportParams:
+      type: object
+      properties:
+        import_mode:
+          allOf:
+          - $ref: '#/components/schemas/ImportModeEnum'
+          description: 'Mode for our import. Valid choices are: `upsert`, `insert_only`, `overwrite` and `delete`.'
+        data_mappings:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
+        load_all_columns:
+          type: boolean
+          default: true
+          description: Whether to load columns that are not specified in the data mappings. If false, only columns specified in data mappings will be loaded, and the rest will be ignored. If true, we will attempt to load all columns, using data mappings for columns that are mapped and column names for columns that are not mapped.
+      required:
+      - data_mappings
+      - import_mode
+    PaginatedDataWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataWorksheet'
+    Upload:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: upload
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve upload details and status.
+        object_type:
+          allOf:
+          - $ref: '#/components/schemas/ObjectTypeEnum'
+          readOnly: true
+          description: Upload type.
+        file_name:
+          type: string
+          description: File name including extension, e.g. "my-file.csv".
+        encoding:
+          type: string
+          description: The file's encoding, e.g. "utf-8".
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: The file's format for all date fields
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: The file's delimiter
+        status:
+          type: string
+          readOnly: true
+          description: Upload status, whether or not it has been processed.
+        params:
+          readOnly: true
+          description: Upload parameters.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Upload details, such as a presigned url if it's pending processing, or job details if it's processed.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - date_format
+      - delimiter
+      - encoding
+      - file_name
+    DataWorksheetImportCSVRequest:
+      type: object
+      properties:
+        file_name:
+          type: string
+          description: File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.
+          pattern: \.csv$
+        encoding:
+          type: string
+          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
+        params:
+          allOf:
+          - $ref: '#/components/schemas/DataWorksheetImportParams'
+          description: Parameters for the data worksheet upload.
+      required:
+      - file_name
+      - params
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Data Workbooks API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Data Workbooks
+paths:
+  /ciq/v1/data-workbooks/:
+    get:
+      operationId: data_workbooks_list
+      summary: List Data Workbooks
+      parameters:
+      - in: query
+        name: is_active
+        schema:
+          type: boolean
+        description: '`true` to request only active data workbooks, or `false` to request only inactive. Leave blank to see all.'
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name_contains
+        schema:
+          type: string
+        description: Case-insensitive search to list data workbooks whose names contain the given string.
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Data Workbooks
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDataWorkbookList'
+          description: ''
+  /ciq/v1/data-workbooks/{id}/:
+    get:
+      operationId: data_workbooks_retrieve
+      summary: Get Data Workbook
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Data Workbooks
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataWorkbook'
+          description: ''
+components:
+  schemas:
+    DataWorkbook:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: data_workbook
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          description: Workbook name.
+        is_active:
+          type: boolean
+          description: Workbook's active status.
+        worksheets:
+          allOf:
+          - $ref: '#/components/schemas/DataWorksheetListItem'
+          readOnly: true
+          description: Worksheet list.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - is_active
+      - name
+    DataWorksheetListItem:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: data_worksheet
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        type:
+          type: string
+          readOnly: true
+          description: Worksheet type.
+        name:
+          type: string
+          description: Worksheet name.
+        description:
+          type: string
+          description: Worksheet description.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - description
+      - name
+    PaginatedDataWorkbookList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataWorkbook'
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

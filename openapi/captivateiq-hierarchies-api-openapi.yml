@@ -1,0 +1,788 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Hierarchies API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Hierarchies
+paths:
+  /ciq/v1/hierarchy-groups/:
+    get:
+      operationId: hierarchy_groups_list
+      summary: List Hierarchy Groups
+      parameters:
+      - in: query
+        name: is_default
+        schema:
+          type: boolean
+        description: Filter by hierarchy group's default status
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: name_contains
+        schema:
+          type: string
+        description: Filter by fuzzy matching the hierarchy group's name
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)name`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Hierarchies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedHierarchyGroupList'
+          description: ''
+  /ciq/v1/hierarchy-groups/{hierarchy_group_uuid}/hierarchies/:
+    post:
+      operationId: hierarchy_groups_hierarchies_create
+      summary: Create Hierarchy
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy Group UUID.
+        required: true
+      tags:
+      - Hierarchies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HierarchyCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/HierarchyCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HierarchyCreate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hierarchy'
+          description: ''
+    get:
+      operationId: hierarchy_groups_hierarchies_list
+      summary: List Hierarchies
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy Group UUID.
+        required: true
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`start_date`]. Available fields for ordering: [`(-)start_date`, `(-)end_date`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Hierarchies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedHierarchyList'
+          description: ''
+  /ciq/v1/hierarchy-groups/{hierarchy_group_uuid}/hierarchies/batch/:
+    post:
+      operationId: hierarchy_groups_hierarchies_batch_create
+      description: Batch create, update, and delete hierarchies. Only manual hierarchy groups are supported at this time.
+      summary: Batch Update Hierarchies
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy group UUID. Only manual hierarchy groups are supported at this time.
+        required: true
+      tags:
+      - Hierarchies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateHierarchies'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateHierarchies'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateHierarchies'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenAPIBatchResult'
+          description: ''
+  /ciq/v1/hierarchy-groups/{hierarchy_group_uuid}/hierarchies/import/:
+    post:
+      operationId: hierarchy_groups_hierarchies_import_create
+      description: 'While the CSV file format is not fully standardized, CaptivateIQ''s implementation of CSV parsing will have
+
+        you surround a field''s data with quotation marks in order to allow for commas that may be present in the data.
+
+
+        For example:
+
+        ```
+
+        Column1,Column2
+
+        "Foo, bar",baz
+
+        ```'
+      summary: Bulk Import Hierarchies
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy Group UUID.
+        required: true
+      tags:
+      - Hierarchies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportCSVRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImportCSVRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImportCSVRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Upload'
+          description: ''
+  /ciq/v1/hierarchy-groups/{hierarchy_group_uuid}/hierarchies/{hierarchy_uuid}/:
+    delete:
+      operationId: hierarchy_groups_hierarchies_destroy
+      summary: Delete Hierarchy
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy Group UUID.
+        required: true
+      - in: path
+        name: hierarchy_uuid
+        schema:
+          type: string
+          format: uuid
+        description: The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`.
+        required: true
+      tags:
+      - Hierarchies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenAPIDelete'
+          description: ''
+    get:
+      operationId: hierarchy_groups_hierarchies_retrieve
+      summary: Get Hierarchy
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy Group UUID.
+        required: true
+      - in: path
+        name: hierarchy_uuid
+        schema:
+          type: string
+          format: uuid
+        description: The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`.
+        required: true
+      tags:
+      - Hierarchies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hierarchy'
+          description: ''
+    put:
+      operationId: hierarchy_groups_hierarchies_update
+      summary: Update Hierarchy
+      parameters:
+      - in: path
+        name: hierarchy_group_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Hierarchy Group UUID.
+        required: true
+      - in: path
+        name: hierarchy_uuid
+        schema:
+          type: string
+          format: uuid
+        description: The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`.
+        required: true
+      tags:
+      - Hierarchies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HierarchyUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/HierarchyUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/HierarchyUpdate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hierarchy'
+          description: ''
+  /ciq/v1/hierarchy-groups/{id}/:
+    get:
+      operationId: hierarchy_groups_retrieve
+      summary: Get Hierarchy Group
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Hierarchies
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyGroup'
+          description: ''
+components:
+  schemas:
+    OpenAPIBatchResult:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the created records.
+        updated:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the updated records.
+        deleted:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the deleted records.
+      required:
+      - created
+      - deleted
+      - updated
+    HierarchyCreate:
+      type: object
+      properties:
+        managing_employee:
+          type: string
+          format: uuid
+          description: Managing Employee UUID.
+        reporting_employee:
+          type: string
+          format: uuid
+          description: Reporting Employee UUID.
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional, defaults to null. Start date formatted YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional, defaults to null. End date formatted YYYY-MM-DD.
+      required:
+      - managing_employee
+      - reporting_employee
+    HierarchyUpsert:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Optional, and cannot be null. Primary key, a UUID.
+        managing_employee:
+          type: string
+          format: uuid
+          description: Required, and cannot be null. Managing employee UUID.
+        reporting_employee:
+          type: string
+          format: uuid
+          description: Required, and cannot be null. Reporting employee UUID.
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required, and can be `null`. Start date formatted YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required, and can be `null`. End date formatted YYYY-MM-DD.
+      required:
+      - end_date
+      - managing_employee
+      - reporting_employee
+      - start_date
+    HierarchyUpdate:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: hierarchy
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Primary key, a UUID.
+        hierarchy_group:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Hierarchy Group UUID.
+        managing_employee:
+          type: string
+          format: uuid
+          description: Required, and cannot be null. Managing Employee UUID.
+        reporting_employee:
+          type: string
+          format: uuid
+          description: Required, and cannot be null. Reporting Employee UUID.
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required, and can be `null`. Start date formatted YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: Required, and can be `null`. End date formatted YYYY-MM-DD.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - end_date
+      - managing_employee
+      - reporting_employee
+      - start_date
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
+    ImportModeEnum:
+      enum:
+      - upsert
+      - insert_only
+      - delete
+      - overwrite
+      type: string
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    HierarchyGroup:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: hierarchy group
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the Hierarchy Group, and is required. Limited to 255 characters.
+          maxLength: 255
+        default:
+          type: boolean
+          default: false
+          description: Determines whether this Hierarchy Group is the default Hierarchy Group for the organization. It is not required and defaults to `False` if not provided.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - id
+      - name
+    ImportParams:
+      type: object
+      properties:
+        import_mode:
+          allOf:
+          - $ref: '#/components/schemas/ImportModeEnum'
+          description: 'Mode for our import. Valid choices are: `upsert`, `insert_only`, `overwrite` and `delete`.'
+        data_mappings:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
+      required:
+      - data_mappings
+      - import_mode
+    OpenAPIDelete:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          description: Type of the object.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the object deleted.
+        deleted:
+          type: boolean
+          readOnly: true
+          description: Has the object been deleted.
+    ObjectTypeEnum:
+      enum:
+      - records
+      - test_records
+      - object_model_records
+      - hierarchies
+      - hierarchies_api
+      - employee_assumptions
+      - employee_visibility
+      - sfdc_report_metadata
+      - quota_worksheets
+      - unified_employee_assumptions
+      - people
+      - unified_worksheet_records
+      - records_api
+      - dispute_attachment
+      - docusign_file
+      - organization_logo
+      - attributes
+      - picklist_options
+      - plan_document
+      - plan_document_template
+      - bulk_plan_document_index_template
+      - spm_worksheet
+      type: string
+    BatchUpdateHierarchies:
+      type: object
+      properties:
+        upserts:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyUpsert'
+          description: Hierarchies to create or update
+          maxItems: 1000
+        deletes:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs for the hierarchies to delete
+          maxItems: 1000
+      required:
+      - deletes
+      - upserts
+    ImportCSVRequest:
+      type: object
+      properties:
+        file_name:
+          type: string
+          description: File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.
+          pattern: \.csv$
+        encoding:
+          type: string
+          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
+        params:
+          allOf:
+          - $ref: '#/components/schemas/ImportParams'
+          description: Parameters for the upload.
+      required:
+      - file_name
+      - params
+    PaginatedHierarchyList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hierarchy'
+    Upload:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: upload
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve upload details and status.
+        object_type:
+          allOf:
+          - $ref: '#/components/schemas/ObjectTypeEnum'
+          readOnly: true
+          description: Upload type.
+        file_name:
+          type: string
+          description: File name including extension, e.g. "my-file.csv".
+        encoding:
+          type: string
+          description: The file's encoding, e.g. "utf-8".
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: The file's format for all date fields
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: The file's delimiter
+        status:
+          type: string
+          readOnly: true
+          description: Upload status, whether or not it has been processed.
+        params:
+          readOnly: true
+          description: Upload parameters.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Upload details, such as a presigned url if it's pending processing, or job details if it's processed.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - date_format
+      - delimiter
+      - encoding
+      - file_name
+    Hierarchy:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: hierarchy
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Primary key, a UUID.
+        hierarchy_group:
+          type: string
+          format: uuid
+          description: Hierarchy Group UUID.
+        managing_employee:
+          type: string
+          format: uuid
+          description: Managing Employee UUID.
+        reporting_employee:
+          type: string
+          format: uuid
+          description: Reporting Employee UUID.
+        start_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional, defaults to null. Start date formatted YYYY-MM-DD.
+        end_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional, defaults to null. End date formatted YYYY-MM-DD.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - hierarchy_group
+      - managing_employee
+      - reporting_employee
+    PaginatedHierarchyGroupList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyGroup'
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

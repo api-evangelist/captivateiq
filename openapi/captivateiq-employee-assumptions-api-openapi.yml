@@ -1,0 +1,737 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Employee Assumptions API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Employee Assumptions
+paths:
+  /ciq/v1/employee-assumptions/:
+    post:
+      operationId: employee_assumptions_create
+      summary: Create Employee Assumption
+      tags:
+      - Employee Assumptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssumptionCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssumptionCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssumptionCreate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeAssumption'
+          description: ''
+    get:
+      operationId: employee_assumptions_list
+      summary: List Employee Assumptions
+      parameters:
+      - in: query
+        name: employee_id
+        schema:
+          type: string
+        description: Filter by your unique identifier for the employee within your organization
+      - in: query
+        name: end_date_after
+        schema:
+          type: string
+          format: date
+        description: Filter by end date after a date, inclusive of that date. YYYY-MM-DD format.
+      - in: query
+        name: end_date_before
+        schema:
+          type: string
+          format: date
+        description: Filter by end date before a date, inclusive of that date. YYYY-MM-DD format.
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`employee_id`]. Available fields for ordering: [`(-)employee_id`, `(-)start_date`, `(-)end_date`, `(-)employee_first_name`, `(-)employee_last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      - in: query
+        name: period_group_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by period group UUIDs
+        explode: true
+      - in: query
+        name: plan_ids[]
+        schema:
+          type: string
+          format: uuid
+        description: Filter by plan UUIDs
+        explode: true
+      - in: query
+        name: query
+        schema:
+          type: string
+        description: Perform a case-insensitive text search over the                     record display value for the given string.
+      - in: query
+        name: start_date_after
+        schema:
+          type: string
+          format: date
+        description: Filter by start dates after a date, inclusive of that date. YYYY-MM-DD format.
+      - in: query
+        name: start_date_before
+        schema:
+          type: string
+          format: date
+        description: Filter by start dates before a date, inclusive of that date. YYYY-MM-DD format.
+      tags:
+      - Employee Assumptions
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmployeeAssumptionList'
+          description: ''
+  /ciq/v1/employee-assumptions/batch/:
+    post:
+      operationId: employee_assumptions_batch_create
+      description: 'Batch create, update, and delete employee assumptions.
+
+        All employee assumptions in the request must belong to the same period group.'
+      summary: Batch Update Employee Assumptions
+      tags:
+      - Employee Assumptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateEmployeeAssumptions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateEmployeeAssumptions'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateEmployeeAssumptions'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenAPIBatchResult'
+          description: ''
+  /ciq/v1/employee-assumptions/{id}/:
+    delete:
+      operationId: employee_assumptions_destroy
+      summary: Delete Employee Assumption
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employee Assumptions
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenAPIDelete'
+          description: ''
+    get:
+      operationId: employee_assumptions_retrieve
+      summary: Get Employee Assumption
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employee Assumptions
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeAssumption'
+          description: ''
+    put:
+      operationId: employee_assumptions_update
+      summary: Update Employee Assumption
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Employee Assumptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssumptionUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssumptionUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployeeAssumptionUpdate'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeAssumption'
+          description: ''
+components:
+  schemas:
+    PayoutCurrencyEnum:
+      enum:
+      - USD
+      - EUR
+      - JPY
+      - GBP
+      - AUD
+      - CAD
+      - CHF
+      - CNY
+      - HKD
+      - NZD
+      - SEK
+      - KRW
+      - SGD
+      - NOK
+      - MXN
+      - INR
+      - RUB
+      - ZAR
+      - TRY
+      - BRL
+      - TWD
+      - DKK
+      - PLN
+      - THB
+      - IDR
+      - HUF
+      - CZK
+      - ILS
+      - CLP
+      - PHP
+      - AED
+      - COP
+      - SAR
+      - MYR
+      - RON
+      - LKR
+      - VND
+      - QAR
+      - BGN
+      - BDT
+      - CRC
+      - PEN
+      - UAH
+      - EGP
+      - JOD
+      - KES
+      - PKR
+      - ARS
+      - BHD
+      - RWF
+      - KWD
+      - GEL
+      - PYG
+      - AMD
+      - DOP
+      - HNL
+      - BAM
+      - SDG
+      - UYU
+      - LBP
+      - XOF
+      - NGN
+      - OMR
+      - TND
+      - ISK
+      - MUR
+      - GHS
+      - MDL
+      - MKD
+      - RSD
+      - AZN
+      - BYN
+      - FJD
+      - IMP
+      - KZT
+      - LTL
+      - MAD
+      - NIO
+      - GTQ
+      - TTD
+      - JMD
+      - PAB
+      - AFN
+      - ALL
+      - AOA
+      - AWG
+      - BBD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BSD
+      - BTN
+      - BWP
+      - BZD
+      - CDF
+      - CUP
+      - CVE
+      - DJF
+      - DZD
+      - ERN
+      - ETB
+      - FKP
+      - GIP
+      - GMD
+      - GNF
+      - GYD
+      - HTG
+      - IQD
+      - IRR
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KYD
+      - LAK
+      - LRD
+      - LSL
+      - LYD
+      - MGA
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MVR
+      - MWK
+      - MZN
+      - NAD
+      - NPR
+      - PGK
+      - SBD
+      - SCR
+      - SHP
+      - SLE
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - TJS
+      - TMT
+      - TOP
+      - TZS
+      - UGX
+      - UZS
+      - VED
+      - VES
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XCG
+      - XPF
+      - YER
+      - ZMW
+      - ZWG
+      type: string
+    EmployeeAssumptionUpsert:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Required when updating an existing employee assumption. The employee assumption ID to update.
+        period_group:
+          type: string
+          format: uuid
+          description: Required. The period group ID to which this employee assumption belongs.
+        employee:
+          type: string
+          format: uuid
+          description: Required. Contains the ID of the employee for this employee assumption.
+        start_date:
+          type: string
+          format: date
+          description: The start date of the employee assumption. YYYY-MM-DD format.
+        end_date:
+          type: string
+          format: date
+          description: The end date of the employee assumption. YYYY-MM-DD format.
+        payout_currency:
+          nullable: true
+          description: The payout currency of the employee assumption.
+          oneOf:
+          - $ref: '#/components/schemas/PayoutCurrencyEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        hierarchy_group_override:
+          type: string
+          format: uuid
+          nullable: true
+          description: Required in payload, but may be null.  Contains the ID of a hierarchy group to assign this employee to other than the default hierarchy group.
+        statement_template:
+          type: string
+          format: uuid
+          nullable: true
+          description: Required in payload, but may be null. Contains the ID of this employee assumption's statement template.
+        payout_date_override:
+          type: array
+          items:
+            type: string
+            format: date
+          nullable: true
+          description: 'Required in payload, but may be empty/null.  Contains a list of payout date overrides for the employee assumption.Can be formatted as: ["YYYY-MM-DD", "YYYY-MM-DD", ...]'
+        period_group_final_process_date:
+          type: string
+          format: date
+          nullable: true
+          description: Optional. For processing payouts past an employee's plan end date.
+        data:
+          type: object
+          additionalProperties: {}
+          description: Column data for the employee assumption record.
+        assignment_type:
+          nullable: true
+          description: Optional. The type of assignment. Set to 'manual' to convert an automatic assignment to manual (requires feature flags).
+          oneOf:
+          - $ref: '#/components/schemas/AssignmentTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - data
+      - employee
+      - end_date
+      - hierarchy_group_override
+      - payout_currency
+      - payout_date_override
+      - period_group
+      - start_date
+      - statement_template
+    NullEnum:
+      enum:
+      - null
+    OpenAPIBatchResult:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the created records.
+        updated:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the updated records.
+        deleted:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the deleted records.
+      required:
+      - created
+      - deleted
+      - updated
+    PaginatedEmployeeAssumptionList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeAssumption'
+    EmployeeAssumptionUpdate:
+      type: object
+      properties:
+        period_group:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Optional.  The Period Group cannot be updated, but can be included in the request.
+        employee:
+          type: string
+          format: uuid
+          description: Required.  Contains the UUID of the Employee for this Employee Assumption.
+        start_date:
+          type: string
+          format: date
+          description: The start date of the Employee Assumption. YYYY-MM-DD format.
+        end_date:
+          type: string
+          format: date
+          description: The end date of the Employee Assumption. YYYY-MM-DD format.
+        payout_currency:
+          nullable: true
+          description: The payout currency of the Employee Assumption
+          oneOf:
+          - $ref: '#/components/schemas/PayoutCurrencyEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        hierarchy_group_override:
+          type: string
+          format: uuid
+          nullable: true
+          description: Required in payload, but may be null.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group.
+        payout_date_override:
+          type: array
+          items:
+            type: string
+            format: date
+          nullable: true
+          description: 'Required in payload, but may be empty/null.  Contains a list of payout date overrides for the Employee Assumption.Can be formatted as: ["YYYY-MM-DD", "YYYY-MM-DD", ...]'
+        period_group_final_process_date:
+          type: string
+          format: date-time
+          nullable: true
+          description: Optional. For processing payouts past an employee's plan end date.
+        data:
+          type: object
+          additionalProperties: {}
+          description: Column data for the Employee Assumption record.
+        assignment_type:
+          nullable: true
+          description: Optional. The type of assignment. Set to 'manual' to convert an automatic assignment to manual (requires feature flags).
+          oneOf:
+          - $ref: '#/components/schemas/AssignmentTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - employee
+      - end_date
+      - hierarchy_group_override
+      - payout_currency
+      - payout_date_override
+      - start_date
+    OpenAPIDelete:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          description: Type of the object.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the object deleted.
+        deleted:
+          type: boolean
+          readOnly: true
+          description: Has the object been deleted.
+    EmployeeAssumptionCreate:
+      type: object
+      properties:
+        period_group:
+          type: string
+          format: uuid
+          description: Required.  The Period Group ID to which this Employee Assumption belongs.
+        employee:
+          type: string
+          format: uuid
+          description: Required.  Contains the UUID of the Employee for this Employee Assumption.
+        start_date:
+          type: string
+          format: date
+          description: The start date of the Employee Assumption. YYYY-MM-DD format.
+        end_date:
+          type: string
+          format: date
+          description: The end date of the Employee Assumption. YYYY-MM-DD format.
+        payout_currency:
+          nullable: true
+          description: The payout currency of the Employee Assumption
+          oneOf:
+          - $ref: '#/components/schemas/PayoutCurrencyEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        hierarchy_group_override:
+          type: string
+          format: uuid
+          nullable: true
+          description: Optional.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group.
+        payout_date_override:
+          type: array
+          items:
+            type: string
+            format: date
+          nullable: true
+          description: Optional.  Contains a list of payout date overrides for the Employee Assumption.
+        period_group_final_process_date:
+          type: string
+          format: date-time
+          nullable: true
+          description: Optional. For processing payouts past an employee's plan end date.
+        data:
+          type: object
+          additionalProperties: {}
+          description: Column data for the Employee Assumption record.
+      required:
+      - employee
+      - end_date
+      - period_group
+      - start_date
+    EmployeeAssumption:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: employee_assumption
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        employee:
+          type: string
+          description: Required.  Contains the ID of the Employee for this Employee Assumption.
+        eid:
+          type: string
+          readOnly: true
+          description: The unique employee identifier (EID).
+        display_value:
+          type: string
+          readOnly: true
+          description: A human-readable summary of the Employee Assumption details.
+        period_group:
+          type: string
+          readOnly: true
+          description: Required.  The Period Group ID to which this Employee Assumption belongs.
+        start_date:
+          type: string
+          format: date
+          description: The start date of the Employee Assumption
+        end_date:
+          type: string
+          format: date
+          description: The end date of the Employee Assumption
+        payout_currency:
+          nullable: true
+          description: The payout currency of the Employee Assumption
+          oneOf:
+          - $ref: '#/components/schemas/PayoutCurrencyEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        hierarchy_group_override:
+          type: string
+          nullable: true
+          description: Optional.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        statement_template:
+          type: string
+          nullable: true
+          description: Contains the ID of this employee assumption's statement template.
+        data:
+          type: object
+          additionalProperties: {}
+          description: Column data for the Employee Assumption record.
+      required:
+      - data
+      - employee
+      - end_date
+      - start_date
+      - statement_template
+    AssignmentTypeEnum:
+      enum:
+      - automatic
+      - manual
+      type: string
+    BatchUpdateEmployeeAssumptions:
+      type: object
+      properties:
+        upserts:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeAssumptionUpsert'
+          description: Employee assumptions to create or update.
+          maxItems: 1000
+        deletes:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Employee assumptions IDs to delete.
+          maxItems: 1000
+      required:
+      - deletes
+      - upserts
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

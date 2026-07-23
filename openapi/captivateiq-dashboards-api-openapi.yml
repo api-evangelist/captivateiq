@@ -1,0 +1,240 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Dashboards API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Dashboards
+paths:
+  /ciq/v1/dashboards/published-dashboards/:
+    get:
+      operationId: dashboards_published_dashboards_list
+      summary: List Published Dashboards
+      tags:
+      - Dashboards
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDashboardList'
+          description: ''
+  /ciq/v1/dashboards/{dashboard_id}/embedded_share:
+    post:
+      operationId: dashboards_embedded_share_create
+      description: 'This dashboard will be shared with the selected individuals. Once granted access, these individuals will be able to see and download all data on this dashboard, including any data associated with peers.
+
+        It is not recommended to share sensitive data such as individual commission payouts on dashboards unless deemed necessary.
+
+        By using this API, you acknowledge the risks of sharing this dashboard, including any sensitive data it may contain.'
+      summary: Share Dashboard
+      parameters:
+      - in: path
+        name: dashboard_id
+        schema:
+          type: number
+        description: ID of the dashboard to grant access to
+        required: true
+      tags:
+      - Dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedUsersUUID'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedUsersUUID'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedUsersUUID'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmbeddedUsersSharedResourceList'
+          description: ''
+    delete:
+      operationId: dashboards_embedded_share_destroy
+      summary: Unshare Dashboard
+      parameters:
+      - in: path
+        name: dashboard_id
+        schema:
+          type: number
+        description: ID of the dashboard to remove access from
+        required: true
+      tags:
+      - Dashboards
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharedResourcesDelete'
+          description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedUsersUUID'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedUsersUUID'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedUsersUUID'
+        required: true
+    get:
+      operationId: dashboards_embedded_share_list
+      summary: List Users With Access
+      parameters:
+      - in: path
+        name: dashboard_id
+        schema:
+          type: number
+        description: Dashboard ID
+        required: true
+      tags:
+      - Dashboards
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEmbeddedUsersSharedResourceList'
+          description: ''
+components:
+  schemas:
+    EmbeddedUsersUUID:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of user UUIDs to modify dashboard access for.
+      required:
+      - ids
+    EmbeddedUsersSharedResource:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+          default: user
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+          readOnly: true
+        isAdmin:
+          type: boolean
+          readOnly: true
+      required:
+      - email
+      - id
+    PaginatedEmbeddedUsersSharedResourceList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmbeddedUsersSharedResource'
+    PaginatedDashboardList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+    SharedResourcesDelete:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+      required:
+      - ids
+    Dashboard:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: dashboard
+        description:
+          type: string
+          readOnly: true
+        archived:
+          type: boolean
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        id:
+          type: integer
+          readOnly: true
+        display:
+          type: string
+          readOnly: true
+          default: dashboard
+        favorite:
+          type: boolean
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        enable_embedding:
+          type: boolean
+          readOnly: true
+        locked_to:
+          type: string
+          readOnly: true
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

@@ -1,0 +1,304 @@
+openapi: 3.0.3
+info:
+  title: CaptivateIQ Attribute Worksheets Transformation Worksheets API
+  version: v1
+  description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
+  x-apievangelist-provenance:
+    generated: '2026-07-18'
+    method: searched
+    source: https://developers.captivateiq.com/reference (per-operation OpenAPI defs merged)
+servers:
+- url: https://api.captivateiq.com
+  description: Production
+security:
+- tokenAuth: []
+tags:
+- name: Transformation Worksheets
+paths:
+  /ciq/v1/transformation-worksheets/:
+    get:
+      operationId: transformation_worksheets_list
+      summary: List Transformation Worksheets
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: 'Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips.'
+        schema:
+          type: string
+      tags:
+      - Transformation Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransformationWorksheetList'
+          description: ''
+  /ciq/v1/transformation-worksheets/{id}/:
+    get:
+      operationId: transformation_worksheets_retrieve
+      summary: Get Transformation Worksheet
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: Primary key, a UUID.
+        required: true
+      tags:
+      - Transformation Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformationWorksheet'
+          description: ''
+  /ciq/v1/transformation-worksheets/{worksheet_uuid}/records/export/:
+    post:
+      operationId: transformation_worksheets_records_export_create
+      summary: Bulk Export Records
+      parameters:
+      - in: query
+        name: export_format
+        schema:
+          type: string
+          enum:
+          - csv
+          - json
+          default: csv
+        description: Format for the records export.
+      - in: path
+        name: worksheet_uuid
+        schema:
+          type: string
+          format: uuid
+        description: Worksheet UUID.
+        required: true
+      tags:
+      - Transformation Worksheets
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type: string
+          nullable: true
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    TransformationWorksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: transformation_worksheet
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        type:
+          type: string
+          readOnly: true
+          description: Worksheet type.
+        name:
+          type: string
+          description: Worksheet name.
+        description:
+          type: string
+          description: Worksheet description.
+        workbook:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Worksheet's associated data workbook UUID.
+        workbook_name:
+          type: string
+          readOnly: true
+          description: Worksheet's associated data workbook name.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnListItem'
+          readOnly: true
+          description: Worksheet columns.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - description
+      - name
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    PaginatedTransformationWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransformationWorksheet'
+    ColumnListItem:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: column
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          description: Column name.
+        description:
+          type: string
+          description: Column description.
+        variant:
+          type: string
+          description: Column variant, e.g. raw or derived.
+        data_type:
+          type: string
+          description: Column data type, e.g. number or date.
+        format:
+          description: Column display format.
+        formula:
+          type: string
+          readOnly: true
+          description: Column formula.
+        read_only:
+          type: boolean
+          readOnly: true
+          description: Whether or not the column is read only.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - data_type
+      - description
+      - format
+      - name
+      - variant
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
