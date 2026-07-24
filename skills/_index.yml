@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/captivateiq-openapi-original.yml
+skills:
+- file: captivateiq-onboard-employee.md
+  name: Onboard an employee into CaptivateIQ
+  api: openapi/captivateiq-openapi-original.yml
+  operations: [employees_create, employees_retrieve, employees_list, employees_update]
+- file: captivateiq-bulk-import-data-records.md
+  name: Bulk import data worksheet records
+  api: openapi/captivateiq-openapi-original.yml
+  operations: [data_worksheets_list, data_worksheets_records_import_template_retrieve, data_worksheets_records_import_create, jobs_retrieve, data_worksheets_records_list]
+- file: captivateiq-export-payout-summary.md
+  name: Export a payout summary for a period
+  api: openapi/captivateiq-openapi-original.yml
+  operations: [payouts_period_groups_list, payouts_payout_summaries_export_create, payouts_worksheets_list, payouts_worksheets_export_create, payouts_payout_dates_list]

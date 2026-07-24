@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for CaptivateIQ API
+  version: 1.0.0
+extends: openapi/captivateiq-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 4
+    x-apievangelist-notes: Harvested from developers.captivateiq.com per-operation OpenAPI definitions;
+      merged into a single spec.
+    contact:
+      name: CaptivateIQ Support
+      email: support@captivateiq.com
+      url: https://developers.captivateiq.com/
+- target: $
+  update:
+    x-apievangelist-conventions:
+      auth: 'Authorization: Token <token>'
+      pagination: limit/offset with {object,total_count,next,previous,data} envelope
+      ordering: ?ordering=field (prefix - for descending, comma-delimited for multiple)
+      list_params: array params repeated as name[]=v1&name[]=v2
+      rate_limits: Standard 5 rps / 1500 rph; Enterprise 15 rps / 6000 rph; 429 on exceed

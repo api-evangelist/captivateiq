@@ -1,0 +1,64 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://developers.captivateiq.com/docs/getting-started-with-captivateiq,
+  https://developers.captivateiq.com/docs/faqs, openapi/captivateiq-openapi-original.yml
+authentication:
+  style: api-key
+  header: Authorization
+  format: Token <your token value>
+  note: >-
+    Tokens are generated in the CaptivateIQ app under user profile settings > API Tokens.
+    The token value is shown once at creation.
+  ref: authentication/captivateiq-authentication.yml
+base_url: https://api.captivateiq.com/ciq/v1/
+media_type: application/json
+pagination:
+  style: limit-offset
+  params:
+  - limit   # results per page
+  - offset  # initial index
+  response_envelope:
+    object: "list"
+    fields:
+    - object        # object type name, e.g. "list"
+    - total_count   # total number of records
+    - next          # URI of next page or null
+    - previous      # URI of previous page or null
+    - data          # array of records
+ordering:
+  param: ordering
+  descending_prefix: "-"
+  multiple: comma-delimited
+  example: "?ordering=employee_id,-first_name"
+  note: Each list endpoint documents its default ordering and orderable fields.
+list_value_params:
+  style: repeated-bracketed
+  example: "?data_workbook_ids[]=<uuid>&data_workbook_ids[]=<uuid>"
+identifiers:
+  primary_key: UUID
+  every_object: has an `object` type-name field and a UUID `id`
+idempotency:
+  supported: false
+  note: >-
+    No Idempotency-Key header or idempotency contract is documented in the OpenAPI or docs.
+    Batch endpoints exist (records/batch, assumptions/batch, hierarchies/batch) but are not
+    idempotent by key.
+async_processing:
+  note: >-
+    Long-running / bulk operations (imports, exports) run asynchronously via the Jobs and
+    Job Aggregations resources; poll job status rather than blocking. Requests exceeding the
+    30-second infrastructure timeout return HTTP 502.
+rate_limiting:
+  ref: rate-limits/captivateiq-rate-limits.yml
+  exceeded_status: 429
+errors:
+  ref: errors/captivateiq-error-codes.yml
+  note: >-
+    Errors are returned as HTTP status codes (not RFC 9457 problem+json). A Web Application
+    Firewall may return an HTML error page for requests flagged as malicious (e.g. SQL/JS
+    payloads) before they reach the application.
+versioning:
+  ref: lifecycle/captivateiq-lifecycle.yml
+  scheme: uri-path
+  current: v1

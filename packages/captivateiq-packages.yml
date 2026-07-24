@@ -1,0 +1,11 @@
+generated: '2026-07-18'
+method: searched
+source: npm registry search, PyPI, github.com/captivateiq
+note: >-
+  No first-party CaptivateIQ client SDK was found. npm search for "captivateiq" returns
+  no official package; PyPI has no "captivateiq"/"captivateiq-api" project; the public
+  GitHub org (github.com/captivateiq) publishes only internal/utility repos
+  (frontend-challenge, terraform-aws-oidc-github, textcomplete, terraform-provider-postgresql)
+  — none is an API client library. The API is documented for direct HTTP (curl) use with
+  a Token Authorization header. No SDKs pointer is emitted (no official client library).
+packages: []

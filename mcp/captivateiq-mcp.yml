@@ -1,0 +1,257 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/captivateiq-openapi-original.yml
+note: No official hosted CaptivateIQ MCP server was found. This is a derived candidate tool list (one
+  tool per OpenAPI operation) for building an MCP server over the ciq/v1 REST API.
+server:
+  name: captivateiq
+  transport: http
+  auth: 'apiKey (Authorization: Token <token>)'
+tools:
+- name: attribute_worksheets_list
+  description: List Attribute Worksheets
+  source_operation: openapi/captivateiq-openapi-original.yml#attribute_worksheets_list
+- name: attribute_worksheets_columns_custom_picklist_options_list
+  description: List Custom Picklist Options
+  source_operation: openapi/captivateiq-openapi-original.yml#attribute_worksheets_columns_custom_picklist_options_list
+- name: attribute_worksheets_columns_custom_picklist_options_import_create
+  description: Bulk Import Custom Picklist Options
+  source_operation: openapi/captivateiq-openapi-original.yml#attribute_worksheets_columns_custom_picklist_options_import_create
+- name: attribute_worksheets_records_list
+  description: List Records
+  source_operation: openapi/captivateiq-openapi-original.yml#attribute_worksheets_records_list
+- name: attribute_worksheets_records_batch_create
+  description: Batch Update Records
+  source_operation: openapi/captivateiq-openapi-original.yml#attribute_worksheets_records_batch_create
+- name: audit_logs_list
+  description: List Audit Logs
+  source_operation: openapi/captivateiq-openapi-original.yml#audit_logs_list
+- name: dashboards_published_dashboards_list
+  description: List Published Dashboards
+  source_operation: openapi/captivateiq-openapi-original.yml#dashboards_published_dashboards_list
+- name: dashboards_embedded_share_create
+  description: Share Dashboard
+  source_operation: openapi/captivateiq-openapi-original.yml#dashboards_embedded_share_create
+- name: dashboards_embedded_share_destroy
+  description: Unshare Dashboard
+  source_operation: openapi/captivateiq-openapi-original.yml#dashboards_embedded_share_destroy
+- name: dashboards_embedded_share_list
+  description: List Users With Access
+  source_operation: openapi/captivateiq-openapi-original.yml#dashboards_embedded_share_list
+- name: data_workbooks_list
+  description: List Data Workbooks
+  source_operation: openapi/captivateiq-openapi-original.yml#data_workbooks_list
+- name: data_workbooks_retrieve
+  description: Get Data Workbook
+  source_operation: openapi/captivateiq-openapi-original.yml#data_workbooks_retrieve
+- name: data_worksheets_list
+  description: List Data Worksheets
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_list
+- name: data_worksheets_retrieve
+  description: Get Data Worksheet
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_retrieve
+- name: data_worksheets_records_create
+  description: Create Record
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_create
+- name: data_worksheets_records_list
+  description: List Records
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_list
+- name: data_worksheets_records_batch_create
+  description: Batch Update Records
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_batch_create
+- name: data_worksheets_records_export_create
+  description: Bulk Export Records
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_export_create
+- name: data_worksheets_records_import_create
+  description: Bulk Import Records
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_import_create
+- name: data_worksheets_records_import_template_retrieve
+  description: Get Bulk Import Records Template
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_import_template_retrieve
+- name: data_worksheets_records_destroy
+  description: Delete Record
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_destroy
+- name: data_worksheets_records_retrieve
+  description: Get Record
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_retrieve
+- name: data_worksheets_records_update
+  description: Update Record
+  source_operation: openapi/captivateiq-openapi-original.yml#data_worksheets_records_update
+- name: employee_assumptions_create
+  description: Create Employee Assumption
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_assumptions_create
+- name: employee_assumptions_list
+  description: List Employee Assumptions
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_assumptions_list
+- name: employee_assumptions_batch_create
+  description: Batch Update Employee Assumptions
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_assumptions_batch_create
+- name: employee_assumptions_destroy
+  description: Delete Employee Assumption
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_assumptions_destroy
+- name: employee_assumptions_retrieve
+  description: Get Employee Assumption
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_assumptions_retrieve
+- name: employee_assumptions_update
+  description: Update Employee Assumption
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_assumptions_update
+- name: employee_visibilities_create
+  description: Create Employee Visibility
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_visibilities_create
+- name: employee_visibilities_list
+  description: List Employee Visibilities
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_visibilities_list
+- name: employee_visibilities_destroy
+  description: Delete Employee Visibility
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_visibilities_destroy
+- name: employee_visibilities_retrieve
+  description: Get Employee Visibility
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_visibilities_retrieve
+- name: employee_visibilities_update
+  description: Update Employee Visibility
+  source_operation: openapi/captivateiq-openapi-original.yml#employee_visibilities_update
+- name: employees_create
+  description: Create Employee
+  source_operation: openapi/captivateiq-openapi-original.yml#employees_create
+- name: employees_list
+  description: List Employees
+  source_operation: openapi/captivateiq-openapi-original.yml#employees_list
+- name: employees_destroy
+  description: Delete Employee
+  source_operation: openapi/captivateiq-openapi-original.yml#employees_destroy
+- name: employees_retrieve
+  description: Get Employee
+  source_operation: openapi/captivateiq-openapi-original.yml#employees_retrieve
+- name: employees_update
+  description: Update Employee
+  source_operation: openapi/captivateiq-openapi-original.yml#employees_update
+- name: hierarchy_groups_list
+  description: List Hierarchy Groups
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_list
+- name: hierarchy_groups_hierarchies_create
+  description: Create Hierarchy
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_create
+- name: hierarchy_groups_hierarchies_list
+  description: List Hierarchies
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_list
+- name: hierarchy_groups_hierarchies_batch_create
+  description: Batch Update Hierarchies
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_batch_create
+- name: hierarchy_groups_hierarchies_import_create
+  description: Bulk Import Hierarchies
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_import_create
+- name: hierarchy_groups_hierarchies_destroy
+  description: Delete Hierarchy
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_destroy
+- name: hierarchy_groups_hierarchies_retrieve
+  description: Get Hierarchy
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_retrieve
+- name: hierarchy_groups_hierarchies_update
+  description: Update Hierarchy
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_hierarchies_update
+- name: hierarchy_groups_retrieve
+  description: Get Hierarchy Group
+  source_operation: openapi/captivateiq-openapi-original.yml#hierarchy_groups_retrieve
+- name: job_aggregations_list
+  description: List Job Aggregation
+  source_operation: openapi/captivateiq-openapi-original.yml#job_aggregations_list
+- name: job_aggregations_retrieve
+  description: Get Job Aggregation
+  source_operation: openapi/captivateiq-openapi-original.yml#job_aggregations_retrieve
+- name: jobs_list
+  description: List Jobs
+  source_operation: openapi/captivateiq-openapi-original.yml#jobs_list
+- name: jobs_retrieve
+  description: Get Job
+  source_operation: openapi/captivateiq-openapi-original.yml#jobs_retrieve
+- name: me_organizations_list
+  description: List Organizations
+  source_operation: openapi/captivateiq-openapi-original.yml#me_organizations_list
+- name: payouts_adjustments_export_create
+  description: Export Payout Adjustments
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_adjustments_export_create
+- name: payouts_employee_assumptions_export_create
+  description: Export Employee Assumptions
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_employee_assumptions_export_create
+- name: payouts_payout_dates_list
+  description: List Payout Dates
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_payout_dates_list
+- name: payouts_payout_summaries_export_create
+  description: Export Payout Summaries
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_payout_summaries_export_create
+- name: payouts_period_groups_list
+  description: List Period Groups
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_period_groups_list
+- name: payouts_plans_list
+  description: List Commission Plans
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_plans_list
+- name: payouts_worksheets_list
+  description: List Worksheets
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_worksheets_list
+- name: payouts_worksheets_export_create
+  description: Export Worksheet
+  source_operation: openapi/captivateiq-openapi-original.yml#payouts_worksheets_export_create
+- name: period_groups_list
+  description: List Period Groups
+  source_operation: openapi/captivateiq-openapi-original.yml#period_groups_list
+- name: period_groups_retrieve
+  description: Get Period Group
+  source_operation: openapi/captivateiq-openapi-original.yml#period_groups_retrieve
+- name: plans_list
+  description: List Commission Plans
+  source_operation: openapi/captivateiq-openapi-original.yml#plans_list
+- name: plans_retrieve
+  description: Get Commission Plan
+  source_operation: openapi/captivateiq-openapi-original.yml#plans_retrieve
+- name: plans_period_groups_employee_assumptions_export_create
+  description: Export Employee Assumptions for Period Group
+  source_operation: openapi/captivateiq-openapi-original.yml#plans_period_groups_employee_assumptions_export_create
+- name: report_models_list
+  description: List Report Models
+  source_operation: openapi/captivateiq-openapi-original.yml#report_models_list
+- name: report_models_export_worksheet_create
+  description: Export Report Model Worksheet
+  source_operation: openapi/captivateiq-openapi-original.yml#report_models_export_worksheet_create
+- name: report_models_exports_list
+  description: List Report Models Exports
+  source_operation: openapi/captivateiq-openapi-original.yml#report_models_exports_list
+- name: report_models_retrieve
+  description: Retrieve Report Model
+  source_operation: openapi/captivateiq-openapi-original.yml#report_models_retrieve
+- name: report_models_records_export_create
+  description: Export Report Model Worksheet Records
+  source_operation: openapi/captivateiq-openapi-original.yml#report_models_records_export_create
+- name: transformation_worksheets_list
+  description: List Transformation Worksheets
+  source_operation: openapi/captivateiq-openapi-original.yml#transformation_worksheets_list
+- name: transformation_worksheets_retrieve
+  description: Get Transformation Worksheet
+  source_operation: openapi/captivateiq-openapi-original.yml#transformation_worksheets_retrieve
+- name: transformation_worksheets_records_export_create
+  description: Bulk Export Records
+  source_operation: openapi/captivateiq-openapi-original.yml#transformation_worksheets_records_export_create
+- name: uploads_list
+  description: List Uploads
+  source_operation: openapi/captivateiq-openapi-original.yml#uploads_list
+- name: uploads_retrieve
+  description: Get Upload
+  source_operation: openapi/captivateiq-openapi-original.yml#uploads_retrieve
+- name: uploads_process_create
+  description: Process Upload
+  source_operation: openapi/captivateiq-openapi-original.yml#uploads_process_create
+- name: users_create
+  description: Create User
+  source_operation: openapi/captivateiq-openapi-original.yml#users_create
+- name: users_list
+  description: List Users
+  source_operation: openapi/captivateiq-openapi-original.yml#users_list
+- name: users_destroy
+  description: Delete User
+  source_operation: openapi/captivateiq-openapi-original.yml#users_destroy
+- name: users_retrieve
+  description: Get User
+  source_operation: openapi/captivateiq-openapi-original.yml#users_retrieve
+- name: users_update
+  description: Update User
+  source_operation: openapi/captivateiq-openapi-original.yml#users_update

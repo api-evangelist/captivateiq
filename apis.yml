@@ -1,8 +1,30 @@
 aid: captivateiq
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/captivateiq.png
 name: CaptivateIQ
-description: 'CaptivateIQ is a company surfaced as a portfolio company of accel, bessemer-venture-partners,
-  iconiq-capital, sapphire-ventures and added to the API Evangelist network as a stub for enrichment.
-  Sector: cloud-saas. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  CaptivateIQ is a sales performance and commission management platform that automates
+  the calculation, administration, and reporting of sales commissions and incentive
+  compensation. Its ICM (Incentive Compensation Management) and SPM (Sales Performance
+  Management) products let revenue, finance, and sales-ops teams design complex
+  commission plans, model quotas and territories, and pay reps accurately and on time.
+  CaptivateIQ exposes a public REST API (ciq/v1) for managing employees, users,
+  hierarchies, data workbooks and worksheets, employee assumptions, commission plans,
+  period groups, payouts, report models, transformation worksheets, uploads, dashboards,
+  and audit logs. The API uses token-based authentication (Authorization header with a
+  "Token" prefix), limit/offset pagination, and per-tier rate limiting, and is documented
+  on a public developer portal with guides, recipes, a changelog, and an llms.txt index.
 url: https://raw.githubusercontent.com/api-evangelist/captivateiq/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -15,11 +37,372 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Cloud Saas
-apis: []
+- Sales Commissions
+- Incentive Compensation Management
+- Sales Performance Management
+- Revenue Operations
+- Finance
+- Payouts
+- Commission Plans
+- Sales Compensation
+apis:
+- aid: captivateiq:captivateiq-attribute-worksheets-api
+  name: CaptivateIQ Attribute Worksheets API
+  description: The Attribute Worksheets API from CaptivateIQ — 5 operation(s) for attribute worksheets.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Attribute Worksheets
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-attribute-worksheets-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-audit-logs-api
+  name: CaptivateIQ Audit Logs API
+  description: The Audit Logs API from CaptivateIQ — 1 operation(s) for audit logs.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Audit Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-audit-logs-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-commission-plans-api
+  name: CaptivateIQ Commission Plans API
+  description: The Commission Plans API from CaptivateIQ — 5 operation(s) for commission plans.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Commission Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-commission-plans-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-dashboards-api
+  name: CaptivateIQ Dashboards API
+  description: The Dashboards API from CaptivateIQ — 2 operation(s) for dashboards.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-dashboards-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-data-workbooks-api
+  name: CaptivateIQ Data Workbooks API
+  description: The Data Workbooks API from CaptivateIQ — 2 operation(s) for data workbooks.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Data Workbooks
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-data-workbooks-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-data-worksheets-api
+  name: CaptivateIQ Data Worksheets API
+  description: The Data Worksheets API from CaptivateIQ — 8 operation(s) for data worksheets.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Data Worksheets
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-data-worksheets-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-employee-assumptions-api
+  name: CaptivateIQ Employee Assumptions API
+  description: The Employee Assumptions API from CaptivateIQ — 3 operation(s) for employee assumptions.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Employee Assumptions
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-employee-assumptions-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-employees-api
+  name: CaptivateIQ Employees API
+  description: The Employees API from CaptivateIQ — 4 operation(s) for employees.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Employees
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-employees-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-hierarchies-api
+  name: CaptivateIQ Hierarchies API
+  description: The Hierarchies API from CaptivateIQ — 6 operation(s) for hierarchies.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Hierarchies
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-hierarchies-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-jobs-api
+  name: CaptivateIQ Jobs API
+  description: The Jobs API from CaptivateIQ — 4 operation(s) for jobs.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-jobs-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-metadata-api
+  name: CaptivateIQ Metadata API
+  description: The Metadata API from CaptivateIQ — 1 operation(s) for metadata.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-metadata-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-payouts-api
+  name: CaptivateIQ Payouts API
+  description: The Payouts API from CaptivateIQ — 8 operation(s) for payouts.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-payouts-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-report-models-api
+  name: CaptivateIQ Report Models API
+  description: The Report Models API from CaptivateIQ — 5 operation(s) for report models.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Report Models
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-report-models-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-transformation-worksheets-api
+  name: CaptivateIQ Transformation Worksheets API
+  description: >-
+    The Transformation Worksheets API from CaptivateIQ — 3 operation(s) for transformation worksheets.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Transformation Worksheets
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-transformation-worksheets-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-uploads-api
+  name: CaptivateIQ Uploads API
+  description: The Uploads API from CaptivateIQ — 3 operation(s) for uploads.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-uploads-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
+- aid: captivateiq:captivateiq-users-api
+  name: CaptivateIQ Users API
+  description: The Users API from CaptivateIQ — 2 operation(s) for users.
+  humanURL: https://developers.captivateiq.com/
+  baseURL: https://api.captivateiq.com/ciq/v1/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/captivateiq-users-api-openapi.yml
+  - type: Authentication
+    url: authentication/captivateiq-authentication.yml
+  - type: Conventions
+    url: conventions/captivateiq-conventions.yml
+  - type: RateLimits
+    url: rate-limits/captivateiq-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/captivateiq-error-codes.yml
+  - type: DataModel
+    url: data-model/captivateiq-data-model.yml
+  - type: Conformance
+    url: conformance/captivateiq-conformance.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -27,4 +410,61 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://www.captivateiq.com/
+  url: https://www.captivateiq.com/
+- type: DeveloperPortal
+  url: https://developers.captivateiq.com/
+- type: Documentation
+  url: https://developers.captivateiq.com/docs/getting-started-with-captivateiq
+- type: APIReference
+  url: https://developers.captivateiq.com/reference
+- type: GettingStarted
+  url: https://developers.captivateiq.com/docs/getting-started-with-captivateiq
+- type: ChangeLog
+  url: https://developers.captivateiq.com/changelog
+- type: Blog
+  url: https://www.captivateiq.com/blog
+- type: Pricing
+  url: https://www.captivateiq.com/pricing
+- type: PrivacyPolicy
+  url: https://www.captivateiq.com/privacy-policy
+- type: TermsOfService
+  url: https://developers.captivateiq.com/page/terms-and-conditions
+- type: Support
+  url: mailto:support@captivateiq.com
+- type: Login
+  url: https://app.captivateiq.com/
+- type: GitHubOrganization
+  url: https://github.com/captivateiq
+- type: StatusPage
+  url: https://status.captivateiq.com/
+- type: Compliance
+  url: https://www.captivateiq.com/security-policy
+- type: Security
+  url: https://www.captivateiq.com/security-policy
+- type: LLMsTxt
+  url: llms/captivateiq-llms.txt
+- type: Packages
+  url: packages/captivateiq-packages.yml
+- type: WellKnown
+  url: well-known/captivateiq-well-known.yml
+- type: Lifecycle
+  url: lifecycle/captivateiq-lifecycle.yml
+- type: Conformance
+  url: conformance/captivateiq-conformance.yml
+- type: DomainSecurity
+  url: security/captivateiq-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/captivateiq-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/captivateiq-trust-center.yml
+- type: ChangeLog
+  url: changelog/captivateiq-changelog.yml
+- type: RateLimits
+  url: rate-limits/captivateiq-rate-limits.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

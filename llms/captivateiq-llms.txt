@@ -1,0 +1,112 @@
+# CaptivateIQ Documentation
+
+> Documentation for CaptivateIQ
+
+## Guides
+- [Getting Started with CaptivateIQ](https://developers.captivateiq.com/docs/getting-started-with-captivateiq.md)
+
+## API Reference
+- [List Attribute Worksheets](https://developers.captivateiq.com/reference/attribute_worksheets_list-1.md)
+- [List Custom Picklist Options](https://developers.captivateiq.com/reference/attribute_worksheets_columns_custom_picklist_options_list.md)
+- [Bulk Import Custom Picklist Options](https://developers.captivateiq.com/reference/attribute_worksheets_columns_custom_picklist_options_import_create.md)
+- [List Records](https://developers.captivateiq.com/reference/attribute_worksheets_records_list-1.md)
+- [Batch Update Records](https://developers.captivateiq.com/reference/attribute_worksheets_records_batch_create-1.md)
+- [List Audit Logs](https://developers.captivateiq.com/reference/audit_logs_list-1.md): Get a list of all the Audit Logs
+- [List Users With Access](https://developers.captivateiq.com/reference/dashboards_embedded_share_list-1.md)
+- [Share Dashboard](https://developers.captivateiq.com/reference/dashboards_embedded_share_create-1.md): This dashboard will be shared with the selected individuals. Once granted access, these individuals will be able to see and download all data on this dashboard, including any data associated with peers. It is not recommended to share sensitive data such as individual commission payouts on dashboards unless deemed necessary. By using this API, you acknowledge the risks of sharing this dashboard, including any sensitive data it may contain.
+- [Unshare Dashboard](https://developers.captivateiq.com/reference/dashboards_embedded_share_destroy-1.md)
+- [List Published Dashboards](https://developers.captivateiq.com/reference/dashboards_published_dashboards_list-1.md)
+- [List Data Workbooks](https://developers.captivateiq.com/reference/data_workbooks_list-1.md)
+- [Get Data Workbook](https://developers.captivateiq.com/reference/data_workbooks_retrieve-1.md)
+- [List Data Worksheets](https://developers.captivateiq.com/reference/data_worksheets_list-1.md)
+- [Get Data Worksheet](https://developers.captivateiq.com/reference/data_worksheets_retrieve-1.md)
+- [List Records](https://developers.captivateiq.com/reference/data_worksheets_records_list-1.md): This endpoint returns only the raw data values present in the worksheet. If you experience performance issues, or want to also see derived values, please use the [Bulk Export Records](https://developers.captivateiq.com/reference/data_worksheets_records_export_create-1) endpoint instead.
+- [Create Record](https://developers.captivateiq.com/reference/data_worksheets_records_create-1.md)
+- [Get Record](https://developers.captivateiq.com/reference/data_worksheets_records_retrieve-1.md)
+- [Update Record](https://developers.captivateiq.com/reference/data_worksheets_records_update-1.md)
+- [Delete Record](https://developers.captivateiq.com/reference/data_worksheets_records_destroy-1.md)
+- [Batch Update Records](https://developers.captivateiq.com/reference/data_worksheets_records_batch_create-1.md)
+- [Bulk Export Records](https://developers.captivateiq.com/reference/data_worksheets_records_export_create-1.md): Export all records as a downloadable CSV file for the given data worksheet. This exports both data and derived columns.
+- [Bulk Import Records](https://developers.captivateiq.com/reference/data_worksheets_records_import_create-1.md): While the CSV file format is not fully standardized, CaptivateIQ's implementation of CSV parsing will have you surround a field's data with quotation marks in order to allow for commas that may be present in the data.  For example: ``` Column1,Column2 "Foo, bar",baz ```
+- [Get Bulk Import Records Template](https://developers.captivateiq.com/reference/data_worksheets_records_import_template_retrieve-1.md)
+- [List Employee Assumptions](https://developers.captivateiq.com/reference/employee_assumptions_list-1.md)
+- [Create Employee Assumption](https://developers.captivateiq.com/reference/employee_assumptions_create-1.md)
+- [Get Employee Assumption](https://developers.captivateiq.com/reference/employee_assumptions_retrieve-1.md)
+- [Update Employee Assumption](https://developers.captivateiq.com/reference/employee_assumptions_update-1.md)
+- [Delete Employee Assumption](https://developers.captivateiq.com/reference/employee_assumptions_destroy-1.md)
+- [Batch Update Employee Assumptions](https://developers.captivateiq.com/reference/employee_assumptions_batch_create-1.md): Batch create, update, and delete employee assumptions. All employee assumptions in the request must belong to the same period group.
+- [List Employee Visibilities](https://developers.captivateiq.com/reference/employee_visibilities_list-1.md): Hierarchy visibilities include an extra field, `managing_employee` which contains the UUID of the managing employee.
+- [Create Employee Visibility](https://developers.captivateiq.com/reference/employee_visibilities_create-1.md)
+- [Get Employee Visibility](https://developers.captivateiq.com/reference/employee_visibilities_retrieve-1.md): Retrieves Employee Visibilities with the `object: "employee visibility"` field. To retrieve Hierarchies, see the Hierarchies documentation.
+- [Update Employee Visibility](https://developers.captivateiq.com/reference/employee_visibilities_update-1.md)
+- [Delete Employee Visibility](https://developers.captivateiq.com/reference/employee_visibilities_destroy-1.md)
+- [List Employees](https://developers.captivateiq.com/reference/employees_list-1.md)
+- [Create Employee](https://developers.captivateiq.com/reference/employees_create-1.md)
+- [Get Employee](https://developers.captivateiq.com/reference/employees_retrieve-1.md)
+- [Update Employee](https://developers.captivateiq.com/reference/employees_update-1.md)
+- [Delete Employee](https://developers.captivateiq.com/reference/employees_destroy-1.md)
+- [List Hierarchy Groups](https://developers.captivateiq.com/reference/hierarchy_groups_list-1.md)
+- [List Hierarchies](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_list-1.md)
+- [Create Hierarchy](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_create-1.md)
+- [Get Hierarchy](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_retrieve-1.md)
+- [Update Hierarchy](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_update-1.md)
+- [Delete Hierarchy](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_destroy-1.md)
+- [Batch Update Hierarchies](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_batch_create-1.md): Batch create, update, and delete hierarchies. Only manual hierarchy groups are supported at this time.
+- [Bulk Import Hierarchies](https://developers.captivateiq.com/reference/hierarchy_groups_hierarchies_import_create-1.md): While the CSV file format is not fully standardized, CaptivateIQ's implementation of CSV parsing will have you surround a field's data with quotation marks in order to allow for commas that may be present in the data.  For example: ``` Column1,Column2 "Foo, bar",baz ```
+- [Get Hierarchy Group](https://developers.captivateiq.com/reference/hierarchy_groups_retrieve-1.md)
+- [List Job Aggregation](https://developers.captivateiq.com/reference/job_aggregations_list-1.md): List details of job aggregations for the organization. Defaults to a 30-day lookback window; pass `start_date` to override.
+- [Get Job Aggregation](https://developers.captivateiq.com/reference/job_aggregations_retrieve-1.md)
+- [List Jobs](https://developers.captivateiq.com/reference/jobs_list-1.md)
+- [Get Job](https://developers.captivateiq.com/reference/jobs_retrieve-1.md)
+- [List Organizations](https://developers.captivateiq.com/reference/me_organizations_list-1.md)
+- [Export Payout Adjustments](https://developers.captivateiq.com/reference/payouts_adjustments_export_create-1.md): Export payout adjustments
+- [Export Employee Assumptions](https://developers.captivateiq.com/reference/payouts_employee_assumptions_export_create-1.md): Export payout snapshot related employee assumptions
+- [List Payout Dates](https://developers.captivateiq.com/reference/payouts_payout_dates_list-1.md): List payout snapshot related payout dates
+- [Export Payout Summaries](https://developers.captivateiq.com/reference/payouts_payout_summaries_export_create-1.md): Export payout snapshot related payout summaries
+- [List Period Groups](https://developers.captivateiq.com/reference/payouts_period_groups_list-1.md): List payout snapshot related period groups
+- [List Commission Plans](https://developers.captivateiq.com/reference/payouts_plans_list-1.md): List Commission Plans related to Snapshots
+- [List Worksheets](https://developers.captivateiq.com/reference/payouts_worksheets_list-1.md): List payout snapshot related calculation workbook worksheets
+- [Export Worksheet](https://developers.captivateiq.com/reference/payouts_worksheets_export_create-1.md): Export payout snapshot related calculation workbook worksheets
+- [List Period Groups](https://developers.captivateiq.com/reference/period_groups_list-1.md)
+- [Get Period Group](https://developers.captivateiq.com/reference/period_groups_retrieve-1.md)
+- [List Commission Plans](https://developers.captivateiq.com/reference/plans_list-1.md)
+- [Get Commission Plan](https://developers.captivateiq.com/reference/plans_retrieve-1.md)
+- [List Report Models](https://developers.captivateiq.com/reference/report_models_list-1.md)
+- [Export Report Model Worksheet](https://developers.captivateiq.com/reference/report_models_export_worksheet_create-1.md): Export report output worksheet
+- [List Report Models Exports](https://developers.captivateiq.com/reference/report_models_exports_list-1.md)
+- [Retrieve Report Model](https://developers.captivateiq.com/reference/report_models_retrieve.md)
+- [Export Report Model Worksheet Records](https://developers.captivateiq.com/reference/report_models_records_export_create.md)
+- [List Transformation Worksheets](https://developers.captivateiq.com/reference/transformation_worksheets_list-1.md)
+- [Get Transformation Worksheet](https://developers.captivateiq.com/reference/transformation_worksheets_retrieve-1.md)
+- [Bulk Export Records](https://developers.captivateiq.com/reference/transformation_worksheets_records_export_create-1.md)
+- [List Uploads](https://developers.captivateiq.com/reference/uploads_list-1.md)
+- [Get Upload](https://developers.captivateiq.com/reference/uploads_retrieve-1.md)
+- [Process Upload](https://developers.captivateiq.com/reference/uploads_process_create-1.md)
+- [List Users](https://developers.captivateiq.com/reference/users_list-1.md)
+- [Create User](https://developers.captivateiq.com/reference/users_create-1.md)
+- [Get User](https://developers.captivateiq.com/reference/users_retrieve-1.md)
+- [Update User](https://developers.captivateiq.com/reference/users_update-1.md)
+- [Delete User](https://developers.captivateiq.com/reference/users_destroy-1.md): If an individual is no longer with a company, it's recommended that the user be deactivated and not deleted.
+- [Export Employee Assumptions for Period Group](https://developers.captivateiq.com/reference/plans_period_groups_employee_assumptions_export_create.md): Export employee assumptions for a specific period group as CSV
+
+## Recipes
+- [Bulk Import Data Worksheet Records](https://developers.captivateiq.com/recipes/bulk-import-data-worksheet-records.md)
+- [Bulk Import Hierarchies](https://developers.captivateiq.com/recipes/bulk-import-hierarchies.md)
+- [Create an Active or Inactive Employee](https://developers.captivateiq.com/recipes/create-an-active-or-inactive-employee.md)
+- [Create an Employee Assumption](https://developers.captivateiq.com/recipes/create-an-employee-assumption.md)
+- [Create an Employee Visibility](https://developers.captivateiq.com/recipes/create-an-employee-visibility.md)
+- [Export a Payout Summary for a Specific Rep](https://developers.captivateiq.com/recipes/export-a-payout-summary-for-a-specific-rep.md)
+- [Export a Payout Worksheet for a Specific Rep](https://developers.captivateiq.com/recipes/export-a-payout-worksheet-for-a-specific-rep.md)
+- [Exporting a Report Model Worksheet](https://developers.captivateiq.com/recipes/exporting-a-report-model-worksheet.md)
+- [Find and Update Employee Assumptions for a Specific Rep](https://developers.captivateiq.com/recipes/find-and-update-employee-assumptions-for-a-specific-rep.md)
+- [Update a Hierarchy](https://developers.captivateiq.com/recipes/update-a-hierarchy.md)
+
+## Pages
+- [API Terms and Conditions](https://developers.captivateiq.com/terms-and-conditions.md)
+
+## Changelog
+- [Updates Mar 4, 2026](https://developers.captivateiq.com/changelog/updates-mar-4-2026.md)
+- [Updates Feb 19, 2026](https://developers.captivateiq.com/changelog/updates-feb-19-2026.md)
+- [Updates Feb 4, 2026](https://developers.captivateiq.com/changelog/updates-feb-4-2026.md)
+- [Updates Dec 2, 2025](https://developers.captivateiq.com/changelog/updates-dec-2.md)
+- [Updates for October 13, 2025](https://developers.captivateiq.com/changelog/updates-for-october-13-2025.md)

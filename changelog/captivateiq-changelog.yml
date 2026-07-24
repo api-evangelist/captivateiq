@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.captivateiq.com/changelog
+scheme: dated
+current_version: v1
+note: Recent window captured from the public developer changelog; the live changelog is the source of truth.
+entries:
+- date: '2026-03-04'
+  title: Updates Mar 4, 2026
+  breaking: false
+  highlights:
+  - Added Jamaican Dollar to the list of supported currencies.
+- date: '2026-02-19'
+  title: Updates Feb 19, 2026
+  breaking: false
+  highlights:
+  - Added job status query params to the Job Aggregations list endpoint.
+- date: '2026-02-04'
+  title: Updates Feb 4, 2026
+  breaking: false
+  highlights:
+  - Updated link in the List Records API endpoint docs and guide to the bulk endpoint.
+- date: '2025-12-02'
+  title: Updates Dec 2, 2025
+  breaking: true
+  highlights:
+  - (SPM) Removed SPM collaboration endpoints.
+  - (Employee Assumptions) Added ability to export employee assumptions.
+  - (Plan Documents) Updated AssignmentTypeEnum; added Object type.
+  - (ARM) Added datavariable field choice.
+- date: '2025-10-13'
+  title: Updates for October 13, 2025
+  breaking: false
+  highlights:
+  - Added SPM collaboration endpoints (List/Add/Update/Delete SPM Collaborator, List Shared SPM Resources).

@@ -1,0 +1,38 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://developers.captivateiq.com/docs/faqs,
+  https://developers.captivateiq.com/docs/getting-started-with-captivateiq
+format: http-status
+note: >-
+  CaptivateIQ's OpenAPI documents only success responses; error behavior is documented in
+  the developer FAQ and returned as standard HTTP status codes (not RFC 9457
+  application/problem+json). A Web Application Firewall may return an HTML error page for
+  requests flagged as malicious before they reach the API.
+errors:
+- status: 401
+  title: Unauthorized
+  cause: Missing or invalid token in the Authorization header.
+  remediation: 'Set `Authorization: Token <your token value>` with a valid token generated in the app.'
+- status: 403
+  title: Forbidden / WAF block
+  cause: >-
+    Request intercepted by the Web Application Firewall (heuristics for SQL statements or
+    JavaScript payloads), or insufficient permissions.
+  remediation: >-
+    Remove suspicious payload content; if a legitimate request is blocked (false positive),
+    contact support with debugging details.
+- status: 429
+  title: Too Many Requests
+  cause: Tier rate limit exceeded (Standard 5 rps / 1500 rph; Enterprise 15 rps / 6000 rph).
+  remediation: Back off and retry; upgrade tier for higher limits. See rate-limits/captivateiq-rate-limits.yml.
+- status: 502
+  title: Bad Gateway (timeout)
+  cause: Request exceeded the 30-second infrastructure timeout (heavy computation / large payloads).
+  remediation: >-
+    Reduce request complexity or data volume; for large imports use the asynchronous Bulk
+    Import recipe rather than a single synchronous request.
+- status: 500
+  title: Internal Server Error
+  cause: Unexpected server-side error.
+  remediation: Retry; if persistent, contact support@captivateiq.com.

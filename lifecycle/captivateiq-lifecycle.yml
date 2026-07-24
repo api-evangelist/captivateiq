@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  https://developers.captivateiq.com/changelog,
+  https://status.captivateiq.com/, openapi/captivateiq-openapi-original.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /ciq/v1/
+  docs: https://developers.captivateiq.com/
+deprecation:
+  policy_url: null
+  note: >-
+    No formal written deprecation/sunset policy (RFC 8594) was found. Endpoint removals and
+    additions are communicated through the dated changelog — e.g. SPM collaboration endpoints
+    were added Oct 13, 2025 and removed Dec 2, 2025.
+  changelog: https://developers.captivateiq.com/changelog
+  ref: changelog/captivateiq-changelog.yml
+sla:
+  url: null
+  note: SLA/uptime commitments are contractual (Enterprise); not publicly published.
+status_page: https://status.captivateiq.com/
+deprecated_operations: []

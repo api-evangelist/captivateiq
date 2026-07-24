@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/captivateiq-openapi-original.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: no oauth2 securityScheme in OpenAPI
+- id: api-key-auth
+  conforms: true
+  evidence: tokenAuth apiKey scheme (Authorization header, 'Token' prefix)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: responses do not use application/problem+json; errors returned as HTTP status codes
+- id: pagination-limit-offset
+  conforms: true
+  evidence: list endpoints expose limit/offset query params and a {object,total_count,next,previous,data}
+    envelope
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key header/param documented in OpenAPI or docs
+- id: soc2
+  conforms: true
+  evidence: annual SOC 2 (Security, Availability, Confidentiality) audits per security policy
+- id: soc1
+  conforms: true
+  evidence: annual SOC 1 audits per security policy
+- id: sox
+  conforms: true
+  evidence: SOX compliance product/posture published
+- id: gdpr
+  conforms: true
+  evidence: GDPR referenced on trust center

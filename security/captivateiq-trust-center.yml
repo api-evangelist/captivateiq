@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+probe: true
+source: https://www.captivateiq.com/trust
+url: https://www.captivateiq.com/trust
+url_alt: https://trust.captivateiq.com/
+certifications:
+- SOC 1
+- SOC 2
+- SOX
+- GDPR
+evidence:
+- source: https://www.captivateiq.com/trust
+  keywords:
+  - soc 2
+  - trust center
+  - gdpr
+- source: https://www.captivateiq.com/security-policy
+  detail: >-
+    Security policy documents annual SOC 1 and SOC 2 (Security, Availability,
+    Confidentiality) audits and SOX compliance; a bug bounty program is maintained.
