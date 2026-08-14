@@ -25,6 +25,10 @@ description: >-
   and audit logs. The API uses token-based authentication (Authorization header with a
   "Token" prefix), limit/offset pagination, and per-tier rate limiting, and is documented
   on a public developer portal with guides, recipes, a changelog, and an llms.txt index.
+  CaptivateIQ also serves a live remote MCP endpoint on its developer-docs host and an RFC 8414
+  OAuth authorization-server metadata document on its app host, and publicly announced a
+  customer-facing CaptivateIQ MCP Server (limited beta, May 2026) for connecting live
+  compensation and planning data to AI tools.
 url: https://raw.githubusercontent.com/api-evangelist/captivateiq/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -33,11 +37,14 @@ x-backed-by:
 - bessemer-venture-partners
 - iconiq-capital
 - sapphire-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: >-
+  Entered the network as a VC-portfolio lead, but CaptivateIQ publishes a full public developer
+  portal: 16 API entries / 82 operations harvested to OpenAPI, plus a live remote MCP endpoint and
+  a served OAuth authorization-server metadata document. No longer a stub.
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Cloud Saas
@@ -467,8 +474,16 @@ common:
   url: rate-limits/captivateiq-rate-limits.yml
 - type: AgentSkill
   url: skills/_index.yml
+- type: Authentication
+  url: authentication/captivateiq-authentication.yml
+- type: OAuthScopes
+  url: scopes/captivateiq-scopes.yml
+- type: Plans
+  url: plans/captivateiq-plans-pricing.yml
+- type: ToolCrosswalk
+  url: mcp/captivateiq-tool-crosswalk.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 4
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
