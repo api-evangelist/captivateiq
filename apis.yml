@@ -42,7 +42,7 @@ x-tier-reason: >-
   Entered the network as a VC-portfolio lead, but CaptivateIQ publishes a full public developer
   portal: 16 API entries / 82 operations harvested to OpenAPI, plus a live remote MCP endpoint and
   a served OAuth authorization-server metadata document. No longer a stub.
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-08-13'
 tags:
