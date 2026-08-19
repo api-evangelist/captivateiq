@@ -1,0 +1,723 @@
+{
+  "item": [
+    {
+      "id": "d72da4d4-2a29-4320-ad15-81735658c53f",
+      "name": "Commission Plans",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09448e6d-57d3-4327-b4ad-60bcab41ac60",
+          "name": "List Period Groups",
+          "request": {
+            "name": "List Period Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "period-groups",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "`true` to request only active period groups, or `false` to request only inactive. Leave blank to see all."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`, `(-)is_active`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_date_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by payout date UUID"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by plan UUIDs. Each UUID should be put in its own `plan_ids[]` parameter."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "39ddf8f9-c5a9-4745-8610-4f50b68e9df8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "period-groups",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payout_date_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "plan_ids[]",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"is_active\": true,\n      \"name\": \"string\",\n      \"object\": \"period_group\",\n      \"id\": \"string\",\n      \"plan\": \"string\",\n      \"plan_name\": \"string\",\n      \"workbook\": \"string\",\n      \"created_at\": \"2021-12-18T20:50:02.648Z\",\n      \"updated_at\": \"1988-09-04T20:59:55.881Z\"\n    },\n    {\n      \"is_active\": true,\n      \"name\": \"string\",\n      \"object\": \"period_group\",\n      \"id\": \"string\",\n      \"plan\": \"string\",\n      \"plan_name\": \"string\",\n      \"workbook\": \"string\",\n      \"created_at\": \"1985-06-25T08:31:14.475Z\",\n      \"updated_at\": \"1981-06-02T04:35:40.537Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65fd93a5-83d0-4072-925f-b0a320ab7a42",
+          "name": "Get Period Group",
+          "request": {
+            "name": "Get Period Group",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "period-groups",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a2a09e7d-1fa3-4ead-a49e-602cac62c699",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "period-groups",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"is_active\": true,\n  \"name\": \"string\",\n  \"object\": \"period_group\",\n  \"id\": \"string\",\n  \"plan\": \"string\",\n  \"plan_name\": \"string\",\n  \"workbook\": \"string\",\n  \"created_at\": \"1985-10-19T22:01:36.046Z\",\n  \"updated_at\": \"1980-01-18T13:18:04.004Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e548305-0ec3-4bf2-8b35-3a2383be0e58",
+          "name": "List Commission Plans",
+          "request": {
+            "name": "List Commission Plans",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "plans",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "`true` to request only active plans, or `false` to request only inactive. Leave blank to see all."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`, `(-)is_active`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_date_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by payout date UUID"
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by period group UUID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ef2cdf0a-0afc-4801-905f-556d57dd59dd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "plans",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payout_date_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "period_group_ids[]",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"confetti_enabled\": false,\n      \"is_active\": true,\n      \"name\": \"string\",\n      \"object\": \"plan\",\n      \"id\": \"string\",\n      \"period_groups\": [\n        \"3235da75-a31b-37b1-dece-1f8b930c403f\",\n        \"a6c2ff37-c048-e8ba-2b45-6bf2377f59ac\"\n      ],\n      \"payout_dates\": [\n        \"ca492d2d-f6fa-76a9-ed68-46e830b84034\",\n        \"247e74ac-42b1-5ea3-8303-819a4e686e5b\"\n      ],\n      \"created_at\": \"1959-03-06T18:09:27.258Z\",\n      \"updated_at\": \"2021-04-19T04:53:13.661Z\",\n      \"preview_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"attainment_display_setting\": \"string\"\n    },\n    {\n      \"confetti_enabled\": true,\n      \"is_active\": true,\n      \"name\": \"string\",\n      \"object\": \"plan\",\n      \"id\": \"string\",\n      \"period_groups\": [\n        \"0bc7eed2-682a-5621-b3cc-7f9ea91861b8\",\n        \"4daf2513-8103-0194-32f3-82f552d7b6c3\"\n      ],\n      \"payout_dates\": [\n        \"63f9dbf1-6e54-6ed7-bd09-cea114cb3ff2\",\n        \"49412757-e7a8-8cbd-f029-38a6db5ef451\"\n      ],\n      \"created_at\": \"1967-06-05T02:22:48.438Z\",\n      \"updated_at\": \"2025-08-19T20:58:12.976Z\",\n      \"preview_config\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"attainment_display_setting\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f14fbd32-eef5-498a-af3b-c7347db69bab",
+          "name": "Get Commission Plan",
+          "request": {
+            "name": "Get Commission Plan",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "plans",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c72e49c-ec2b-4140-bf4f-2f7e4b791ab6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "plans",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"confetti_enabled\": false,\n  \"is_active\": true,\n  \"name\": \"string\",\n  \"object\": \"plan\",\n  \"id\": \"string\",\n  \"period_groups\": [\n    \"a857140d-0a8d-eacf-f619-cd77032b0536\",\n    \"620f765e-a562-193c-b36b-ff6a653ba2c5\"\n  ],\n  \"payout_dates\": [\n    \"3d93919e-0565-6069-5758-713323dae9e6\",\n    \"8004f6ad-2f05-bbde-831e-68e76d7094e6\"\n  ],\n  \"created_at\": \"1961-08-15T17:04:07.480Z\",\n  \"updated_at\": \"1954-08-04T06:38:43.486Z\",\n  \"preview_config\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"attainment_display_setting\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebe75bf6-5b33-4457-b85e-2397a52edbbe",
+          "name": "Export Employee Assumptions for Period Group",
+          "request": {
+            "name": "Export Employee Assumptions for Period Group",
+            "description": {
+              "content": "Export employee assumptions for a specific period group as CSV",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "plans",
+                ":plan_uuid",
+                "period-groups",
+                ":period_group_uuid",
+                "employee-assumptions",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "period_group_uuid",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "plan_uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "03ff4640-6b93-440e-9049-aa5038f55766",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "plans",
+                    ":plan_uuid",
+                    "period-groups",
+                    ":period_group_uuid",
+                    "employee-assumptions",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "period_group_uuid",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "plan_uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "30b896c0-bdb2-44cd-9a61-746b7d8a4cf4",
+    "name": "CaptivateIQ Attribute Worksheets Commission Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

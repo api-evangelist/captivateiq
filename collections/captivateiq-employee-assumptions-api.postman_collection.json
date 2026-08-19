@@ -1,0 +1,1228 @@
+{
+  "item": [
+    {
+      "id": "cb554adc-fbbc-4eba-bff9-bbf656f0f6ae",
+      "name": "Employee Assumptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6922ce14-a578-487a-8273-8f5884b3901a",
+          "name": "Create Employee Assumption",
+          "request": {
+            "name": "Create Employee Assumption",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-assumptions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Required.  Contains the UUID of the Employee for this Employee Assumption."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) The end date of the Employee Assumption. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group",
+                  "value": "<uuid>",
+                  "description": "(Required) Required.  The Period Group ID to which this Employee Assumption belongs."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The start date of the Employee Assumption. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_currency",
+                  "value": "<string>",
+                  "description": "The payout currency of the Employee Assumption"
+                },
+                {
+                  "disabled": false,
+                  "key": "hierarchy_group_override",
+                  "value": "<uuid>",
+                  "description": "Optional.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_date_override",
+                  "value": "<date>",
+                  "description": "Optional.  Contains a list of payout date overrides for the Employee Assumption."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_date_override",
+                  "value": "<date>",
+                  "description": "Optional.  Contains a list of payout date overrides for the Employee Assumption."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_final_process_date",
+                  "value": "<dateTime>",
+                  "description": "Optional. For processing payouts past an employee's plan end date."
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "Column data for the Employee Assumption record."
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "Column data for the Employee Assumption record."
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "{}",
+                  "description": "Column data for the Employee Assumption record."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8314f1a8-30ad-43aa-8322-03e83f02ac26",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-assumptions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.  Contains the UUID of the Employee for this Employee Assumption.",
+                        "type": "text/plain"
+                      },
+                      "key": "employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The end date of the Employee Assumption. YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.  The Period Group ID to which this Employee Assumption belongs.",
+                        "type": "text/plain"
+                      },
+                      "key": "period_group",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The start date of the Employee Assumption. YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The payout currency of the Employee Assumption",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group.",
+                        "type": "text/plain"
+                      },
+                      "key": "hierarchy_group_override",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional.  Contains a list of payout date overrides for the Employee Assumption.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_date_override",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional.  Contains a list of payout date overrides for the Employee Assumption.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_date_override",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. For processing payouts past an employee's plan end date.",
+                        "type": "text/plain"
+                      },
+                      "key": "period_group_final_process_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Column data for the Employee Assumption record.",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"employee\": \"string\",\n  \"end_date\": \"1957-10-14\",\n  \"start_date\": \"1954-05-01\",\n  \"statement_template\": \"string\",\n  \"object\": \"employee_assumption\",\n  \"id\": \"string\",\n  \"eid\": \"string\",\n  \"display_value\": \"string\",\n  \"period_group\": \"string\",\n  \"payout_currency\": \"<string>\",\n  \"hierarchy_group_override\": \"string\",\n  \"updated_at\": \"1961-03-20T22:58:52.710Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89dbacab-5f76-4af0-83f5-56a9d3fd8ee2",
+          "name": "List Employee Assumptions",
+          "request": {
+            "name": "List Employee Assumptions",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-assumptions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "employee_id",
+                  "value": "<string>",
+                  "description": "Filter by your unique identifier for the employee within your organization"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_after",
+                  "value": "<date>",
+                  "description": "Filter by end date after a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_before",
+                  "value": "<date>",
+                  "description": "Filter by end date before a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`employee_id`]. Available fields for ordering: [`(-)employee_id`, `(-)start_date`, `(-)end_date`, `(-)employee_first_name`, `(-)employee_last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by period group UUIDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by plan UUIDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Perform a case-insensitive text search over the                     record display value for the given string."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date_after",
+                  "value": "<date>",
+                  "description": "Filter by start dates after a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date_before",
+                  "value": "<date>",
+                  "description": "Filter by start dates before a date, inclusive of that date. YYYY-MM-DD format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52fc18b1-8b4a-4a1f-9893-2dd42aefb60f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-assumptions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "employee_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date_after",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date_before",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period_group_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "plan_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_after",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "start_date_before",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"employee\": \"string\",\n      \"end_date\": \"2004-09-28\",\n      \"start_date\": \"1986-06-17\",\n      \"statement_template\": \"string\",\n      \"object\": \"employee_assumption\",\n      \"id\": \"string\",\n      \"eid\": \"string\",\n      \"display_value\": \"string\",\n      \"period_group\": \"string\",\n      \"payout_currency\": \"<string>\",\n      \"hierarchy_group_override\": \"string\",\n      \"updated_at\": \"1985-12-22T01:52:05.989Z\"\n    },\n    {\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"employee\": \"string\",\n      \"end_date\": \"1989-10-20\",\n      \"start_date\": \"1967-04-14\",\n      \"statement_template\": \"string\",\n      \"object\": \"employee_assumption\",\n      \"id\": \"string\",\n      \"eid\": \"string\",\n      \"display_value\": \"string\",\n      \"period_group\": \"string\",\n      \"payout_currency\": \"<string>\",\n      \"hierarchy_group_override\": \"string\",\n      \"updated_at\": \"1999-01-26T02:15:09.100Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76661ae9-8ed1-46c6-9fb8-2932defece7d",
+          "name": "Batch Update Employee Assumptions",
+          "request": {
+            "name": "Batch Update Employee Assumptions",
+            "description": {
+              "content": "Batch create, update, and delete employee assumptions.\nAll employee assumptions in the request must belong to the same period group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-assumptions",
+                "batch",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "<uuid>",
+                  "description": "(Required) Employee assumptions IDs to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "<uuid>",
+                  "description": "(Required) Employee assumptions IDs to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"data\":{\"key_0\":{},\"key_1\":{},\"key_2\":{},\"key_3\":{}},\"employee\":\"<uuid>\",\"end_date\":\"<date>\",\"hierarchy_group_override\":\"<uuid>\",\"payout_currency\":\"<string>\",\"payout_date_override\":[\"<date>\",\"<date>\"],\"period_group\":\"<uuid>\",\"start_date\":\"<date>\",\"statement_template\":\"<uuid>\",\"id\":\"<uuid>\",\"period_group_final_process_date\":\"<date>\",\"assignment_type\":\"<string>\"}",
+                  "description": "(Required) Employee assumptions to create or update."
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"data\":{\"key_0\":{}},\"employee\":\"<uuid>\",\"end_date\":\"<date>\",\"hierarchy_group_override\":\"<uuid>\",\"payout_currency\":\"<string>\",\"payout_date_override\":[\"<date>\",\"<date>\"],\"period_group\":\"<uuid>\",\"start_date\":\"<date>\",\"statement_template\":\"<uuid>\",\"id\":\"<uuid>\",\"period_group_final_process_date\":\"<date>\",\"assignment_type\":\"<string>\"}",
+                  "description": "(Required) Employee assumptions to create or update."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6f5889f-9d52-4fe5-8bd2-7dad725de452",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-assumptions",
+                    "batch",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Employee assumptions IDs to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Employee assumptions IDs to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Employee assumptions to create or update.",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"data\":{\"key_0\":{}},\"employee\":\"<uuid>\",\"end_date\":\"<date>\",\"hierarchy_group_override\":\"<uuid>\",\"payout_currency\":\"<string>\",\"payout_date_override\":[\"<date>\",\"<date>\"],\"period_group\":\"<uuid>\",\"start_date\":\"<date>\",\"statement_template\":\"<uuid>\",\"id\":\"<uuid>\",\"period_group_final_process_date\":\"<date>\",\"assignment_type\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Employee assumptions to create or update.",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"data\":{\"key_0\":{}},\"employee\":\"<uuid>\",\"end_date\":\"<date>\",\"hierarchy_group_override\":\"<uuid>\",\"payout_currency\":\"<string>\",\"payout_date_override\":[\"<date>\",\"<date>\"],\"period_group\":\"<uuid>\",\"start_date\":\"<date>\",\"statement_template\":\"<uuid>\",\"id\":\"<uuid>\",\"period_group_final_process_date\":\"<date>\",\"assignment_type\":\"<string>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": [\n    \"string\",\n    \"string\"\n  ],\n  \"deleted\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5596112-2dff-4324-b734-f387044f390b",
+          "name": "Delete Employee Assumption",
+          "request": {
+            "name": "Delete Employee Assumption",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-assumptions",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e05df100-2f2c-4bb0-b803-a47829ea45ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-assumptions",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"string\",\n  \"id\": \"b51fcd3a-1195-5635-0d60-34447007d23d\",\n  \"deleted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6442d706-01c6-4f64-9979-8f724c9b179e",
+          "name": "Get Employee Assumption",
+          "request": {
+            "name": "Get Employee Assumption",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-assumptions",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c4c7f933-5464-4217-bd90-bd7196845dae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-assumptions",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"employee\": \"string\",\n  \"end_date\": \"1957-10-14\",\n  \"start_date\": \"1954-05-01\",\n  \"statement_template\": \"string\",\n  \"object\": \"employee_assumption\",\n  \"id\": \"string\",\n  \"eid\": \"string\",\n  \"display_value\": \"string\",\n  \"period_group\": \"string\",\n  \"payout_currency\": \"<string>\",\n  \"hierarchy_group_override\": \"string\",\n  \"updated_at\": \"1961-03-20T22:58:52.710Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b289f7cf-c52c-41de-9e3f-3c61c73ef9e8",
+          "name": "Update Employee Assumption",
+          "request": {
+            "name": "Update Employee Assumption",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-assumptions",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Required.  Contains the UUID of the Employee for this Employee Assumption."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) The end date of the Employee Assumption. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "hierarchy_group_override",
+                  "value": "<uuid>",
+                  "description": "(Required) Required in payload, but may be null.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_currency",
+                  "value": "<string>",
+                  "description": "(Required) The payout currency of the Employee Assumption"
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_date_override",
+                  "value": "<date>",
+                  "description": "(Required) Required in payload, but may be empty/null.  Contains a list of payout date overrides for the Employee Assumption.Can be formatted as: [\"YYYY-MM-DD\", \"YYYY-MM-DD\", ...]"
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_date_override",
+                  "value": "<date>",
+                  "description": "(Required) Required in payload, but may be empty/null.  Contains a list of payout date overrides for the Employee Assumption.Can be formatted as: [\"YYYY-MM-DD\", \"YYYY-MM-DD\", ...]"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) The start date of the Employee Assumption. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_final_process_date",
+                  "value": "<dateTime>",
+                  "description": "Optional. For processing payouts past an employee's plan end date."
+                },
+                {
+                  "disabled": false,
+                  "key": "key_0",
+                  "value": "{}",
+                  "description": "Column data for the Employee Assumption record."
+                },
+                {
+                  "disabled": false,
+                  "key": "key_1",
+                  "value": "{}",
+                  "description": "Column data for the Employee Assumption record."
+                },
+                {
+                  "disabled": false,
+                  "key": "key_2",
+                  "value": "{}",
+                  "description": "Column data for the Employee Assumption record."
+                },
+                {
+                  "disabled": false,
+                  "key": "assignment_type",
+                  "value": "<string>",
+                  "description": "Optional. The type of assignment. Set to 'manual' to convert an automatic assignment to manual (requires feature flags)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6fac3be2-e840-45db-9cd6-499279177326",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-assumptions",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.  Contains the UUID of the Employee for this Employee Assumption.",
+                        "type": "text/plain"
+                      },
+                      "key": "employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The end date of the Employee Assumption. YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required in payload, but may be null.  Contains the ID of a Hierarchy Group to assign this Employee to other than the Default Hierarchy Group.",
+                        "type": "text/plain"
+                      },
+                      "key": "hierarchy_group_override",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The payout currency of the Employee Assumption",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required in payload, but may be empty/null.  Contains a list of payout date overrides for the Employee Assumption.Can be formatted as: [\"YYYY-MM-DD\", \"YYYY-MM-DD\", ...]",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_date_override",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required in payload, but may be empty/null.  Contains a list of payout date overrides for the Employee Assumption.Can be formatted as: [\"YYYY-MM-DD\", \"YYYY-MM-DD\", ...]",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_date_override",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The start date of the Employee Assumption. YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. For processing payouts past an employee's plan end date.",
+                        "type": "text/plain"
+                      },
+                      "key": "period_group_final_process_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Column data for the Employee Assumption record.",
+                        "type": "text/plain"
+                      },
+                      "key": "key_0",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Column data for the Employee Assumption record.",
+                        "type": "text/plain"
+                      },
+                      "key": "key_1",
+                      "value": "{}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The type of assignment. Set to 'manual' to convert an automatic assignment to manual (requires feature flags).",
+                        "type": "text/plain"
+                      },
+                      "key": "assignment_type",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"employee\": \"string\",\n  \"end_date\": \"1957-10-14\",\n  \"start_date\": \"1954-05-01\",\n  \"statement_template\": \"string\",\n  \"object\": \"employee_assumption\",\n  \"id\": \"string\",\n  \"eid\": \"string\",\n  \"display_value\": \"string\",\n  \"period_group\": \"string\",\n  \"payout_currency\": \"<string>\",\n  \"hierarchy_group_override\": \"string\",\n  \"updated_at\": \"1961-03-20T22:58:52.710Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dc9ad8b2-3897-4471-acd2-9661a76f66ee",
+    "name": "CaptivateIQ Attribute Worksheets Employee Assumptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

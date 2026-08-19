@@ -1,0 +1,327 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Hierarchies API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hierarchies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Hierarchy Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/",
+            "params": [
+              {
+                "name": "is_default",
+                "value": "",
+                "type": "query",
+                "description": "Filter by hierarchy group's default status"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name_contains",
+                "value": "",
+                "type": "query",
+                "description": "Filter by fuzzy matching the hierarchy group's name"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)name`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Hierarchy Groups"
+        },
+        {
+          "info": {
+            "name": "List Hierarchies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy Group UUID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`start_date`]. Available fields for ordering: [`(-)start_date`, `(-)end_date`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Hierarchies"
+        },
+        {
+          "info": {
+            "name": "Create Hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy Group UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Hierarchy"
+        },
+        {
+          "info": {
+            "name": "Batch Update Hierarchies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/batch/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy group UUID. Only manual hierarchy groups are supported at this time."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch create, update, and delete hierarchies. Only manual hierarchy groups are supported at this time."
+        },
+        {
+          "info": {
+            "name": "Bulk Import Hierarchies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/import/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy Group UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "While the CSV file format is not fully standardized, CaptivateIQ's implementation of CSV parsing will have\nyou surround a field's data with quotation marks in order to allow for commas that may be present in the data.\n\nFor example:\n```\nColumn1,Column2\n\"Foo, bar\",baz\n```"
+        },
+        {
+          "info": {
+            "name": "Get Hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/:hierarchy_uuid/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy Group UUID."
+              },
+              {
+                "name": "hierarchy_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Hierarchy"
+        },
+        {
+          "info": {
+            "name": "Update Hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/:hierarchy_uuid/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy Group UUID."
+              },
+              {
+                "name": "hierarchy_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Hierarchy"
+        },
+        {
+          "info": {
+            "name": "Delete Hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:hierarchy_group_uuid/hierarchies/:hierarchy_uuid/",
+            "params": [
+              {
+                "name": "hierarchy_group_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Hierarchy Group UUID."
+              },
+              {
+                "name": "hierarchy_uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Hierarchy"
+        },
+        {
+          "info": {
+            "name": "Get Hierarchy Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/hierarchy-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Hierarchy Group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

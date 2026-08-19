@@ -1,16 +1,69 @@
-generated: '2026-07-18'
-method: derived
-source: openapi/captivateiq-openapi-original.yml
+generated: '2026-08-13'
+method: searched
+source: https://developers.captivateiq.com/docs/getting-started-with-captivateiq, https://app.captivateiq.com/.well-known/oauth-authorization-server
+  (probed 2026-08-13), openapi/captivateiq-openapi-original.yml
+docs: https://developers.captivateiq.com/docs/getting-started-with-captivateiq
 summary:
   types:
   - apiKey
+  - oauth2
   api_key_in:
   - header
+  oauth2: true
+  openid_connect: false
+  mutual_tls: false
 schemes:
 - name: tokenAuth
   type: apiKey
   in: header
   parameter: Authorization
+  format: Token <your token value>
   description: Token-based authentication with required prefix "Token"
+  docs_quote: '"set the `Authorization` header to `Token <your token value>`"'
   sources:
   - openapi/captivateiq-openapi-original.yml
+  - https://developers.captivateiq.com/docs/getting-started-with-captivateiq
+- name: oauth2AuthorizationCode
+  type: oauth2
+  flow: authorizationCode
+  in: header
+  parameter: Authorization
+  format: Bearer <access token>
+  discovery: https://app.captivateiq.com/.well-known/oauth-authorization-server
+  issuer: https://app.captivateiq.com
+  authorization_endpoint: https://app.captivateiq.com/o/authorize/
+  token_endpoint: https://app.captivateiq.com/o/token/
+  revocation_endpoint: https://app.captivateiq.com/o/revoke_token/
+  introspection_endpoint: https://app.captivateiq.com/o/introspect/
+  pkce: S256 (required method advertised)
+  grant_types:
+  - authorization_code
+  - refresh_token
+  scopes:
+  - read
+  client_registration: 'client_id_metadata_document_supported: true'
+  documented_by_provider: false
+  description: Real RFC 8414 authorization-server metadata served at HTTP 200 on the app host. This OAuth
+    surface is NOT documented anywhere in the public developer reference, which describes only static
+    token auth; it was found by probe. The single advertised scope is read, so the OAuth path is read-only
+    as published.
+  sources:
+  - https://app.captivateiq.com/.well-known/oauth-authorization-server
+  - well-known/captivateiq-oauth-authorization-server.json
+  ref: scopes/captivateiq-scopes.yml
+token_management:
+  where: CaptivateIQ app > user profile settings > API Tokens tab
+  creation: Enter a label and click create.
+  visibility: '"Save the token value somewhere safe. It will never be shown again." — shown once at creation.'
+  rotation_policy: null
+  expiry: null
+  scopes: null
+  note: 'No token scopes, permission levels, or expiry are documented for static API tokens; the token
+    inherits the permissions of the CaptivateIQ user that created it. Scopes exist only on the separate,
+    undocumented OAuth surface — see scopes/captivateiq-scopes.yml.'
+gaps:
+- OAuth 2.0 is served but entirely undocumented — the developer reference names only token auth.
+- Only a read scope is advertised; OAuth clients cannot perform ciq/v1 writes.
+- No token expiry or rotation policy published for static API tokens.
+- No /.well-known/openid-configuration or jwks.json (404) — OAuth 2.0, not OpenID Connect.
+- api.captivateiq.com WAF answers 403 for every /.well-known/ path, so the API host publishes no discovery.

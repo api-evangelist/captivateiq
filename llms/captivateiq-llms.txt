@@ -102,7 +102,7 @@
 - [Update a Hierarchy](https://developers.captivateiq.com/recipes/update-a-hierarchy.md)
 
 ## Pages
-- [API Terms and Conditions](https://developers.captivateiq.com/terms-and-conditions.md)
+- [API Terms and Conditions](https://developers.captivateiq.com/page/terms-and-conditions.md)
 
 ## Changelog
 - [Updates Mar 4, 2026](https://developers.captivateiq.com/changelog/updates-mar-4-2026.md)
@@ -110,3 +110,8 @@
 - [Updates Feb 4, 2026](https://developers.captivateiq.com/changelog/updates-feb-4-2026.md)
 - [Updates Dec 2, 2025](https://developers.captivateiq.com/changelog/updates-dec-2.md)
 - [Updates for October 13, 2025](https://developers.captivateiq.com/changelog/updates-for-october-13-2025.md)
+- [Add query_column param to list records endpoint](https://developers.captivateiq.com/changelog/add-query_column-param-to-list-records-endpoint.md)
+- [Updates for March 26, 2025](https://developers.captivateiq.com/changelog/updates-for-march-26-2025.md)
+- [Updates for March 3, 2025](https://developers.captivateiq.com/changelog/updates-for-march-3-2025.md)
+- [Updates for February 26, 2025](https://developers.captivateiq.com/changelog/updates-for-february-26-2025.md)
+- [Updates for January 30, 2025](https://developers.captivateiq.com/changelog/updates-for-january-30-2025.md)

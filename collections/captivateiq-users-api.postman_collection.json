@@ -1,0 +1,1140 @@
+{
+  "item": [
+    {
+      "id": "279e3d0c-949d-4210-9482-6a79d5686714",
+      "name": "Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73aa68cb-1b31-468f-986e-487e5ccfb20e",
+          "name": "Create User",
+          "request": {
+            "name": "Create User",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) User first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) User last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "(Required) User [timezone name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "User email. Required if organization uses email as unique identifier (most organizations)."
+                },
+                {
+                  "disabled": false,
+                  "key": "login_id",
+                  "value": "<string>",
+                  "description": "User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used."
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "Name of the role to apply to the user."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_inquiry_notifications",
+                  "value": "false",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_statement_notifications",
+                  "value": "true",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`."
+                },
+                {
+                  "disabled": false,
+                  "key": "eligible_to_receive_inquiries",
+                  "value": "true",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`."
+                },
+                {
+                  "disabled": false,
+                  "key": "eligible_to_submit_inquiries",
+                  "value": "true",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`. Enable user to submit inquiries."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_payout_processing_notifications",
+                  "value": "false",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_connector_sync_email_notifications",
+                  "value": "true",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_scim_email_notifications",
+                  "value": "false",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_audit_log_export_notifications",
+                  "value": "false",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_organization_admin",
+                  "value": "false",
+                  "description": "Optional, defaults to `false`."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "true",
+                  "description": "Optional, defaults to `true`."
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `None`. The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`."
+                },
+                {
+                  "disabled": false,
+                  "key": "send_initial_email",
+                  "value": "true",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`. Send the user a welcome email."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3192c577-932a-4b81-9068-44ce74ad0122",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User [timezone name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).",
+                        "type": "text/plain"
+                      },
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "User email. Required if organization uses email as unique identifier (most organizations).",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used.",
+                        "type": "text/plain"
+                      },
+                      "key": "login_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of the role to apply to the user.",
+                        "type": "text/plain"
+                      },
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_inquiry_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_statement_notifications",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`.",
+                        "type": "text/plain"
+                      },
+                      "key": "eligible_to_receive_inquiries",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`. Enable user to submit inquiries.",
+                        "type": "text/plain"
+                      },
+                      "key": "eligible_to_submit_inquiries",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_payout_processing_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_connector_sync_email_notifications",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_scim_email_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_audit_log_export_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `false`.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_organization_admin",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `true`.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `None`. The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.",
+                        "type": "text/plain"
+                      },
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `true`. Send the user a welcome email.",
+                        "type": "text/plain"
+                      },
+                      "key": "send_initial_email",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"timezone\": \"string\",\n  \"object\": \"user\",\n  \"id\": \"string\",\n  \"email\": \"2AeqY4mt9JsYCIC@BnonYIaqLufdzogsFykIxhY.zor\",\n  \"login_id\": \"string\",\n  \"role\": \"string\",\n  \"enable_inquiry_notifications\": false,\n  \"enable_statement_notifications\": true,\n  \"eligible_to_receive_inquiries\": true,\n  \"eligible_to_submit_inquiries\": true,\n  \"enable_payout_processing_notifications\": false,\n  \"enable_connector_sync_email_notifications\": true,\n  \"enable_scim_email_notifications\": false,\n  \"enable_audit_log_export_notifications\": false,\n  \"is_organization_admin\": false,\n  \"is_active\": true,\n  \"linked_employee\": \"f6ce43e9-b65c-584f-d69e-0ac98d01047f\",\n  \"last_activity\": \"1972-05-20T07:51:41.070Z\",\n  \"created_at\": \"2021-03-01T12:54:12.807Z\",\n  \"updated_at\": \"1997-10-14T14:01:22.440Z\",\n  \"locale\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c343e2a4-7a8a-4510-84c8-80cd2eb4ba47",
+          "name": "List Users",
+          "request": {
+            "name": "List Users",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "Filter by email address"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "Filter by first name"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Filter by last name"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)created_at`, `(-)email`, `(-)first_name`, `(-)last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5fa9a07c-f9bf-41f2-9aa6-ab1aec81f685",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"timezone\": \"string\",\n      \"object\": \"user\",\n      \"id\": \"string\",\n      \"email\": \"AQdvAn-fJ@mepujdIfIeRsCAmjXxZsdotkc.lkua\",\n      \"login_id\": \"string\",\n      \"role\": \"string\",\n      \"enable_inquiry_notifications\": false,\n      \"enable_statement_notifications\": true,\n      \"eligible_to_receive_inquiries\": true,\n      \"eligible_to_submit_inquiries\": true,\n      \"enable_payout_processing_notifications\": false,\n      \"enable_connector_sync_email_notifications\": true,\n      \"enable_scim_email_notifications\": false,\n      \"enable_audit_log_export_notifications\": false,\n      \"is_organization_admin\": false,\n      \"is_active\": true,\n      \"linked_employee\": \"8449cc32-3161-d4d1-d42e-15c70b8c642d\",\n      \"last_activity\": \"1957-09-28T18:57:23.824Z\",\n      \"created_at\": \"1980-01-21T05:29:16.285Z\",\n      \"updated_at\": \"2019-08-30T08:59:11.101Z\",\n      \"locale\": \"<string>\"\n    },\n    {\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"timezone\": \"string\",\n      \"object\": \"user\",\n      \"id\": \"string\",\n      \"email\": \"gFEigqB7gxtF5@KJCptpMWpNxNrNjBpkTdmOHYuTd.af\",\n      \"login_id\": \"string\",\n      \"role\": \"string\",\n      \"enable_inquiry_notifications\": false,\n      \"enable_statement_notifications\": true,\n      \"eligible_to_receive_inquiries\": true,\n      \"eligible_to_submit_inquiries\": true,\n      \"enable_payout_processing_notifications\": false,\n      \"enable_connector_sync_email_notifications\": true,\n      \"enable_scim_email_notifications\": false,\n      \"enable_audit_log_export_notifications\": false,\n      \"is_organization_admin\": false,\n      \"is_active\": true,\n      \"linked_employee\": \"38985ae7-c676-fb5a-dd1d-807b025c56b1\",\n      \"last_activity\": \"1996-01-24T11:53:14.424Z\",\n      \"created_at\": \"1965-06-01T22:32:24.150Z\",\n      \"updated_at\": \"1974-12-13T13:31:05.183Z\",\n      \"locale\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4b9a488-ae1a-44c9-94c0-055e80343b4d",
+          "name": "Delete User",
+          "request": {
+            "name": "Delete User",
+            "description": {
+              "content": "If an individual is no longer with a company, it's recommended that the user be deactivated and not deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3d6c68e3-2d3d-4e18-ac17-5da4f8b1a953",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4806fb0-d73c-410d-8ce3-4aaa94abfbc6",
+          "name": "Get User",
+          "request": {
+            "name": "Get User",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "effeef3a-cd5f-4d41-a19e-5c3ab8451d1c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"timezone\": \"string\",\n  \"object\": \"user\",\n  \"id\": \"string\",\n  \"email\": \"2AeqY4mt9JsYCIC@BnonYIaqLufdzogsFykIxhY.zor\",\n  \"login_id\": \"string\",\n  \"role\": \"string\",\n  \"enable_inquiry_notifications\": false,\n  \"enable_statement_notifications\": true,\n  \"eligible_to_receive_inquiries\": true,\n  \"eligible_to_submit_inquiries\": true,\n  \"enable_payout_processing_notifications\": false,\n  \"enable_connector_sync_email_notifications\": true,\n  \"enable_scim_email_notifications\": false,\n  \"enable_audit_log_export_notifications\": false,\n  \"is_organization_admin\": false,\n  \"is_active\": true,\n  \"linked_employee\": \"f6ce43e9-b65c-584f-d69e-0ac98d01047f\",\n  \"last_activity\": \"1972-05-20T07:51:41.070Z\",\n  \"created_at\": \"2021-03-01T12:54:12.807Z\",\n  \"updated_at\": \"1997-10-14T14:01:22.440Z\",\n  \"locale\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba19399c-db35-4d75-abc9-40c4ca53c201",
+          "name": "Update User",
+          "request": {
+            "name": "Update User",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "eligible_to_receive_inquiries",
+                  "value": "<boolean>",
+                  "description": "(Required) Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "eligible_to_submit_inquiries",
+                  "value": "<boolean>",
+                  "description": "(Required) Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_inquiry_notifications",
+                  "value": "<boolean>",
+                  "description": "(Required) Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_statement_notifications",
+                  "value": "<boolean>",
+                  "description": "(Required) Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) User first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "(Required) Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_organization_admin",
+                  "value": "<boolean>",
+                  "description": "(Required) Required."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) User last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "(Required) User timezone name. Accepts [tz database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "User email. Required if organization uses email as unique identifier (most organizations)."
+                },
+                {
+                  "disabled": false,
+                  "key": "login_id",
+                  "value": "<string>",
+                  "description": "User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used."
+                },
+                {
+                  "disabled": false,
+                  "key": "send_initial_email",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`."
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "Name of the role to apply to the user."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "db411c79-1c4f-46d6-a591-1a57aef9a925",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "eligible_to_receive_inquiries",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "eligible_to_submit_inquiries",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_inquiry_notifications",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_statement_notifications",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_organization_admin",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User timezone name. Accepts [tz database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).",
+                        "type": "text/plain"
+                      },
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "User email. Required if organization uses email as unique identifier (most organizations).",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "User login ID. Required if organization does not use email as unique identifier, otherwise email value will be used.",
+                        "type": "text/plain"
+                      },
+                      "key": "login_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "send_initial_email",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The user's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.",
+                        "type": "text/plain"
+                      },
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of the role to apply to the user.",
+                        "type": "text/plain"
+                      },
+                      "key": "role",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"timezone\": \"string\",\n  \"object\": \"user\",\n  \"id\": \"string\",\n  \"email\": \"2AeqY4mt9JsYCIC@BnonYIaqLufdzogsFykIxhY.zor\",\n  \"login_id\": \"string\",\n  \"role\": \"string\",\n  \"enable_inquiry_notifications\": false,\n  \"enable_statement_notifications\": true,\n  \"eligible_to_receive_inquiries\": true,\n  \"eligible_to_submit_inquiries\": true,\n  \"enable_payout_processing_notifications\": false,\n  \"enable_connector_sync_email_notifications\": true,\n  \"enable_scim_email_notifications\": false,\n  \"enable_audit_log_export_notifications\": false,\n  \"is_organization_admin\": false,\n  \"is_active\": true,\n  \"linked_employee\": \"f6ce43e9-b65c-584f-d69e-0ac98d01047f\",\n  \"last_activity\": \"1972-05-20T07:51:41.070Z\",\n  \"created_at\": \"2021-03-01T12:54:12.807Z\",\n  \"updated_at\": \"1997-10-14T14:01:22.440Z\",\n  \"locale\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f8922f18-f161-45f8-98ef-a43c355646ac",
+    "name": "CaptivateIQ Attribute Worksheets Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

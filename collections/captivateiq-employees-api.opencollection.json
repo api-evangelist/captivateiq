@@ -1,0 +1,342 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Employees API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Employees",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Employee Visibilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-visibilities/",
+            "params": [
+              {
+                "name": "hierarchy_group_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter visibilities by a hierarchy group name."
+              },
+              {
+                "name": "hierarchy_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter visibilities by hierarchy id."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Use `start_date` or `end_date` to order by start or end date, and `-start_date` or `-end_date` to reverse them respectively. Defaults to `start_date`."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter visibilities by user_id."
+              },
+              {
+                "name": "visible_employee_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter visibilities by an employee_id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Hierarchy visibilities include an extra field, `managing_employee` which contains the UUID of the managing employee."
+        },
+        {
+          "info": {
+            "name": "Create Employee Visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-visibilities/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Employee Visibility"
+        },
+        {
+          "info": {
+            "name": "Get Employee Visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-visibilities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves Employee Visibilities with the `object: \"employee visibility\"` field. To retrieve Hierarchies, see the Hierarchies documentation."
+        },
+        {
+          "info": {
+            "name": "Update Employee Visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-visibilities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Employee Visibility"
+        },
+        {
+          "info": {
+            "name": "Delete Employee Visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-visibilities/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Employee Visibility"
+        },
+        {
+          "info": {
+            "name": "List Employees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/employees/",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by employee id"
+              },
+              {
+                "name": "first_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by first name"
+              },
+              {
+                "name": "last_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last name"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`employee_id`]. Available fields for ordering: [`(-)employee_id`, `(-)first_name`, `(-)last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Employees"
+        },
+        {
+          "info": {
+            "name": "Create Employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/employees/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Employee"
+        },
+        {
+          "info": {
+            "name": "Get Employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/employees/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Employee"
+        },
+        {
+          "info": {
+            "name": "Update Employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.captivateiq.com/ciq/v1/employees/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Employee"
+        },
+        {
+          "info": {
+            "name": "Delete Employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.captivateiq.com/ciq/v1/employees/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Employee"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

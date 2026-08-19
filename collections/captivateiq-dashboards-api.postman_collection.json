@@ -1,0 +1,578 @@
+{
+  "item": [
+    {
+      "id": "690f9738-d003-4ad5-9d68-f9d10dbd668b",
+      "name": "Dashboards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7ca9ea9-5ca4-4736-b9aa-3cff6cf8b6ac",
+          "name": "List Published Dashboards",
+          "request": {
+            "name": "List Published Dashboards",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "dashboards",
+                "published-dashboards",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2dcd0e8d-126d-4841-aa3d-7a9cadb0ef66",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "dashboards",
+                    "published-dashboards",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"data\": [\n    {\n      \"object\": \"dashboard\",\n      \"description\": \"string\",\n      \"archived\": false,\n      \"name\": \"string\",\n      \"id\": 738,\n      \"display\": \"dashboard\",\n      \"favorite\": true,\n      \"updated_at\": \"1972-04-10T19:41:04.381Z\",\n      \"created_at\": \"1965-04-11T04:53:49.916Z\",\n      \"enable_embedding\": true,\n      \"locked_to\": \"string\"\n    },\n    {\n      \"object\": \"dashboard\",\n      \"description\": \"string\",\n      \"archived\": false,\n      \"name\": \"string\",\n      \"id\": 1733,\n      \"display\": \"dashboard\",\n      \"favorite\": true,\n      \"updated_at\": \"1997-10-16T07:27:45.070Z\",\n      \"created_at\": \"2010-05-29T12:01:09.012Z\",\n      \"enable_embedding\": false,\n      \"locked_to\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a7d5529-12f0-4a0a-9e54-14a6a804d818",
+          "name": "Share Dashboard",
+          "request": {
+            "name": "Share Dashboard",
+            "description": {
+              "content": "This dashboard will be shared with the selected individuals. Once granted access, these individuals will be able to see and download all data on this dashboard, including any data associated with peers.\nIt is not recommended to share sensitive data such as individual commission payouts on dashboards unless deemed necessary.\nBy using this API, you acknowledge the risks of sharing this dashboard, including any sensitive data it may contain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "dashboards",
+                ":dashboard_id",
+                "embedded_share"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "dashboard_id",
+                  "description": "(Required) ID of the dashboard to grant access to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<uuid>",
+                  "description": "(Required) List of user UUIDs to modify dashboard access for."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<uuid>",
+                  "description": "(Required) List of user UUIDs to modify dashboard access for."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "27f5c73c-9a3a-4633-9959-a88d3af0bf5b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "dashboards",
+                    ":dashboard_id",
+                    "embedded_share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "dashboard_id",
+                      "description": "(Required) ID of the dashboard to grant access to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of user UUIDs to modify dashboard access for.",
+                        "type": "text/plain"
+                      },
+                      "key": "ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of user UUIDs to modify dashboard access for.",
+                        "type": "text/plain"
+                      },
+                      "key": "ids",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"data\": [\n    {\n      \"email\": \"jub@HRoxyhPcItgJVItyfuALGXoKIaYXOyUr.tnl\",\n      \"id\": \"string\",\n      \"type\": \"user\",\n      \"name\": \"string\",\n      \"isAdmin\": false\n    },\n    {\n      \"email\": \"Nluc@QdbbNifVXFb.gdh\",\n      \"id\": \"string\",\n      \"type\": \"user\",\n      \"name\": \"string\",\n      \"isAdmin\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a88e7e45-1335-412c-9b7d-559b0c8f99aa",
+          "name": "Unshare Dashboard",
+          "request": {
+            "name": "Unshare Dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "dashboards",
+                ":dashboard_id",
+                "embedded_share"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "dashboard_id",
+                  "description": "(Required) ID of the dashboard to remove access from"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<uuid>",
+                  "description": "(Required) List of user UUIDs to modify dashboard access for."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<uuid>",
+                  "description": "(Required) List of user UUIDs to modify dashboard access for."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "faeb3cf6-afe8-49c0-b770-1e269e24f8f1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "dashboards",
+                    ":dashboard_id",
+                    "embedded_share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "dashboard_id",
+                      "description": "(Required) ID of the dashboard to remove access from"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of user UUIDs to modify dashboard access for.",
+                        "type": "text/plain"
+                      },
+                      "key": "ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of user UUIDs to modify dashboard access for.",
+                        "type": "text/plain"
+                      },
+                      "key": "ids",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "308b7951-5185-477a-92dd-75bd110b76f2",
+          "name": "List Users With Access",
+          "request": {
+            "name": "List Users With Access",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "dashboards",
+                ":dashboard_id",
+                "embedded_share"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "dashboard_id",
+                  "description": "(Required) Dashboard ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a504e0e-c000-44c5-8bcc-b6a3a6a8b86b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "dashboards",
+                    ":dashboard_id",
+                    "embedded_share"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "dashboard_id",
+                      "description": "(Required) Dashboard ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"data\": [\n    {\n      \"email\": \"Yll80JSTnfoADP@KEzzZZyTQSDUmetRqr.ej\",\n      \"id\": \"string\",\n      \"type\": \"user\",\n      \"name\": \"string\",\n      \"isAdmin\": true\n    },\n    {\n      \"email\": \"2XtL1gQKItdVSaH@gFvRQeecFpUovqcYniodShOFsGdaiJMzk.fuv\",\n      \"id\": \"string\",\n      \"type\": \"user\",\n      \"name\": \"string\",\n      \"isAdmin\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d7418d79-4729-42e9-a564-a61bde504e67",
+    "name": "CaptivateIQ Attribute Worksheets Dashboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

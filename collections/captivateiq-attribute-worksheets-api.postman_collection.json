@@ -1,0 +1,971 @@
+{
+  "item": [
+    {
+      "id": "3722ebda-243e-43e9-a387-243d2b735537",
+      "name": "Attribute Worksheets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cd41a537-2ac9-4e41-a767-eeeb5cdd0ce1",
+          "name": "List Attribute Worksheets",
+          "request": {
+            "name": "List Attribute Worksheets",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "attribute-worksheets",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "name_contains",
+                  "value": "<string>",
+                  "description": "Case-insensitive search to list attribute worksheets whose names contain the given string."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_uuid",
+                  "value": "<uuid>",
+                  "description": "Filter by period group UUID"
+                },
+                {
+                  "disabled": false,
+                  "key": "pk_type",
+                  "value": "<string>",
+                  "description": "Filter by attribute worksheet PK type. Valid choices are `employee`, `plan_period_group`, or `custom`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f56421bb-749d-471e-b196-35a3b2a7db5d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "attribute-worksheets",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "period_group_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "pk_type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"object\": \"attribute_worksheet\",\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"output\",\n      \"workbook\": \"7735d8bc-bac7-1d9e-e981-9cebbd94aa95\",\n      \"columns\": [\n        {\n          \"data_type\": \"object\",\n          \"formula\": \"string\",\n          \"source\": \"string\",\n          \"source_column\": \"string\",\n          \"source_field_label\": \"string\",\n          \"source_field_name\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"variant\": \"string\",\n          \"format\": {},\n          \"user_defined\": true,\n          \"read_only\": true,\n          \"worksheet_id\": \"string\",\n          \"worksheet_name\": \"string\",\n          \"parent_column\": \"string\",\n          \"custom_picklist_options\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"object\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"option_group_id\": \"string\",\n          \"is_primary_key\": false,\n          \"mapped\": true\n        },\n        {\n          \"data_type\": \"boolean\",\n          \"formula\": \"string\",\n          \"source\": \"string\",\n          \"source_column\": \"string\",\n          \"source_field_label\": \"string\",\n          \"source_field_name\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"variant\": \"string\",\n          \"format\": {},\n          \"user_defined\": true,\n          \"read_only\": false,\n          \"worksheet_id\": \"string\",\n          \"worksheet_name\": \"string\",\n          \"parent_column\": \"string\",\n          \"custom_picklist_options\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"object\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"option_group_id\": \"string\",\n          \"is_primary_key\": false,\n          \"mapped\": true\n        }\n      ],\n      \"is_hidden\": true,\n      \"pk_type\": \"string\",\n      \"pk_column_uuids\": [\n        \"a7466d26-591d-a172-dfe4-19bc96e9912a\",\n        \"a3614468-f3f5-617f-932d-6110db2ce02a\"\n      ],\n      \"created_at\": \"1979-06-22T07:08:09.882Z\",\n      \"updated_at\": \"1958-02-13T21:15:54.084Z\",\n      \"columns_width\": {},\n      \"records_per_page\": 742\n    },\n    {\n      \"name\": \"string\",\n      \"object\": \"attribute_worksheet\",\n      \"id\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"workspace_model\",\n      \"workbook\": \"ea2b9977-ea91-b307-eef2-a69396cdac9e\",\n      \"columns\": [\n        {\n          \"data_type\": \"datetime\",\n          \"formula\": \"string\",\n          \"source\": \"string\",\n          \"source_column\": \"string\",\n          \"source_field_label\": \"string\",\n          \"source_field_name\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"variant\": \"string\",\n          \"format\": {},\n          \"user_defined\": true,\n          \"read_only\": false,\n          \"worksheet_id\": \"string\",\n          \"worksheet_name\": \"string\",\n          \"parent_column\": \"string\",\n          \"custom_picklist_options\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"object\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"option_group_id\": \"string\",\n          \"is_primary_key\": true,\n          \"mapped\": true\n        },\n        {\n          \"data_type\": \"date\",\n          \"formula\": \"string\",\n          \"source\": \"string\",\n          \"source_column\": \"string\",\n          \"source_field_label\": \"string\",\n          \"source_field_name\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"variant\": \"string\",\n          \"format\": {},\n          \"user_defined\": true,\n          \"read_only\": false,\n          \"worksheet_id\": \"string\",\n          \"worksheet_name\": \"string\",\n          \"parent_column\": \"string\",\n          \"custom_picklist_options\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"object\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"option_group_id\": \"string\",\n          \"is_primary_key\": true,\n          \"mapped\": false\n        }\n      ],\n      \"is_hidden\": false,\n      \"pk_type\": \"string\",\n      \"pk_column_uuids\": [\n        \"e2c0ae07-d7e9-2f6d-9740-b9f8543fcd29\",\n        \"2ad492d7-22e1-654a-d448-55a8392d4f51\"\n      ],\n      \"created_at\": \"1984-03-13T10:18:35.131Z\",\n      \"updated_at\": \"1981-03-01T13:40:18.251Z\",\n      \"columns_width\": {},\n      \"records_per_page\": 2781\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dfd196e-d96b-4c39-b705-6d00d6327855",
+          "name": "List Custom Picklist Options",
+          "request": {
+            "name": "List Custom Picklist Options",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "attribute-worksheets",
+                ":worksheet_uuid",
+                "columns",
+                ":column_uuid",
+                "custom-picklist-options",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "column_uuid",
+                  "description": "(Required) Column UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "29065ac9-ea64-4ae6-8fcf-608f41138fe5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "attribute-worksheets",
+                    ":worksheet_uuid",
+                    "columns",
+                    ":column_uuid",
+                    "custom-picklist-options",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "column_uuid",
+                      "description": "(Required) Column UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"order\": 1018,\n      \"value\": \"b88d281f-500f-9ca5-c980-fa9e48976714\",\n      \"object\": \"picklist_option\",\n      \"label\": \"string\"\n    },\n    {\n      \"order\": 6162,\n      \"value\": \"980d7827-0f6b-a937-939a-9217264d3bf6\",\n      \"object\": \"picklist_option\",\n      \"label\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f3fa797-bbee-49e6-b7b6-a14aab8faf7a",
+          "name": "Bulk Import Custom Picklist Options",
+          "request": {
+            "name": "Bulk Import Custom Picklist Options",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "attribute-worksheets",
+                ":worksheet_uuid",
+                "columns",
+                ":column_uuid",
+                "custom_picklist_options",
+                "import",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "column_uuid",
+                  "description": "(Required) Column UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "file_name",
+                  "value": "<string>",
+                  "description": "(Required) File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files."
+                },
+                {
+                  "disabled": false,
+                  "key": "data_mappings",
+                  "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\",\"key_2\":\"<string>\"}",
+                  "description": "(Required) Parameters for the upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "import_mode",
+                  "value": "<string>",
+                  "description": "(Required) Parameters for the upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "encoding",
+                  "value": "<string>",
+                  "description": "Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_format",
+                  "value": "<string>",
+                  "description": "Optional. The file's format for all date fields, by default we assume the organization's `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": "<string>",
+                  "description": "Optional. The file's delimiter, by default we assume `,`. Valid choices are: `,`, `\\t`, `|` and `;`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8fae0d29-b33d-4f6b-811a-99aae72e088e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "attribute-worksheets",
+                    ":worksheet_uuid",
+                    "columns",
+                    ":column_uuid",
+                    "custom_picklist_options",
+                    "import",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "column_uuid",
+                      "description": "(Required) Column UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.",
+                        "type": "text/plain"
+                      },
+                      "key": "file_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_mappings",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "import_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.",
+                        "type": "text/plain"
+                      },
+                      "key": "encoding",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's format for all date fields, by default we assume the organization's `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.",
+                        "type": "text/plain"
+                      },
+                      "key": "date_format",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's delimiter, by default we assume `,`. Valid choices are: `,`, `\\t`, `|` and `;`.",
+                        "type": "text/plain"
+                      },
+                      "key": "delimiter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date_format\": \"<string>\",\n  \"delimiter\": \"<string>\",\n  \"encoding\": \"string\",\n  \"file_name\": \"string\",\n  \"object\": \"upload\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"object_type\": \"hierarchies_api\",\n  \"status\": \"string\",\n  \"params\": {},\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created_at\": \"1954-02-21T19:59:53.821Z\",\n  \"updated_at\": \"1997-04-03T08:47:11.762Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f0434c1-203f-4821-9ce0-8b1232e6182f",
+          "name": "List Records",
+          "request": {
+            "name": "List Records",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "attribute-worksheets",
+                ":worksheet_uuid",
+                "records",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "end_date_after",
+                  "value": "<date>",
+                  "description": "Filter by end date after a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_before",
+                  "value": "<date>",
+                  "description": "Filter by end date before a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Perform a case-insensitive text search over record data for the given string."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date_after",
+                  "value": "<date>",
+                  "description": "Filter by start dates after a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date_before",
+                  "value": "<date>",
+                  "description": "Filter by start dates before a date, inclusive of that date. YYYY-MM-DD format."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Attribute Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1638ea08-ece5-4a65-b5fe-77e38406ddb0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "attribute-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "end_date_after",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date_before",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date_after",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "start_date_before",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Attribute Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"end_date\": \"1974-08-10\",\n      \"start_date\": \"2015-07-03\",\n      \"object\": \"attribute_record\",\n      \"id\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      }\n    },\n    {\n      \"end_date\": \"1978-11-25\",\n      \"start_date\": \"2013-04-21\",\n      \"object\": \"attribute_record\",\n      \"id\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73309ddb-5b29-40b9-bd87-62fa59a4a76b",
+          "name": "Batch Update Records",
+          "request": {
+            "name": "Batch Update Records",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "attribute-worksheets",
+                ":worksheet_uuid",
+                "records",
+                "batch",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Attribute Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "{\"key_0\":{},\"key_1\":{},\"key_2\":{}}",
+                  "description": "(Required) Records to delete by primary key columns and start dates."
+                },
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "{\"key_0\":{},\"key_1\":{}}",
+                  "description": "(Required) Records to delete by primary key columns and start dates."
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"key_0\":{}}",
+                  "description": "(Required) Records to create or update by primary key columns and start dates."
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"key_0\":{},\"key_1\":{}}",
+                  "description": "(Required) Records to create or update by primary key columns and start dates."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9781f88f-178c-4bc8-98c5-ebbce763f885",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "attribute-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    "batch",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Attribute Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Records to delete by primary key columns and start dates.",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "{\"key_0\":{},\"key_1\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Records to delete by primary key columns and start dates.",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "{\"key_0\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Records to create or update by primary key columns and start dates.",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"key_0\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Records to create or update by primary key columns and start dates.",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"key_0\":{},\"key_1\":{},\"key_2\":{}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    }\n  ],\n  \"deleted\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"updated\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "da1cf895-147f-4898-8756-f7632dec88ff",
+    "name": "CaptivateIQ Attribute Worksheets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+generated: '2026-08-13'
+method: probed
+source: https://app.captivateiq.com/.well-known/oauth-authorization-server
+docs: null
+verbatim: well-known/captivateiq-oauth-authorization-server.json
+note: >-
+  These scopes were read from CaptivateIQ's own RFC 8414 authorization-server metadata document
+  (HTTP 200, application/json), NOT from the OpenAPI and NOT from the docs. The public developer
+  reference documents only static token auth ("Authorization: Token <value>") and never mentions
+  OAuth, so there is no scopes/permissions reference page to enrich this from — the OAuth surface
+  is served but undocumented. The server advertises exactly one scope, `read`, which means the
+  OAuth path as published is read-only and cannot authorize any of the write operations
+  (create/update/delete/batch/import) in the ciq/v1 OpenAPI; those require a static API token.
+  Do not infer additional scopes: the metadata document names one.
+issuer: https://app.captivateiq.com
+authorization_endpoint: https://app.captivateiq.com/o/authorize/
+token_endpoint: https://app.captivateiq.com/o/token/
+revocation_endpoint: https://app.captivateiq.com/o/revoke_token/
+introspection_endpoint: https://app.captivateiq.com/o/introspect/
+grant_types_supported:
+- authorization_code
+- refresh_token
+response_types_supported:
+- code
+code_challenge_methods_supported:
+- S256
+token_endpoint_auth_methods_supported:
+- none
+- client_secret_post
+- client_secret_basic
+client_id_metadata_document_supported: true
+scope_count: 1
+scopes:
+- name: read
+  description: >-
+    The only scope advertised in scopes_supported. Description is not published by the
+    provider; no scope reference page exists.
+  source: scopes_supported in the RFC 8414 metadata document
+  documented_by_provider: false
+gaps:
+- No write scope is advertised, so OAuth clients cannot perform ciq/v1 write operations.
+- No scope-to-operation mapping is published; the OpenAPI declares only the apiKey scheme.
+- No /.well-known/openid-configuration and no jwks.json (404) — OAuth 2.0 only, not OIDC.
+evidence:
+- url: https://app.captivateiq.com/.well-known/oauth-authorization-server
+  status: 200
+- url: https://app.captivateiq.com/.well-known/openid-configuration
+  status: 404

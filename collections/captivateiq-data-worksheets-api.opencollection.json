@@ -1,0 +1,425 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Data Worksheets API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Worksheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Worksheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/",
+            "params": [
+              {
+                "name": "data_workbook_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by data workbook UUIDs"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name_contains",
+                "value": "",
+                "type": "query",
+                "description": "Case-insensitive search to list data workbooks whose names contain the given string."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by worksheet type. Valid choices are `raw` or `derived`."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Data Worksheets"
+        },
+        {
+          "info": {
+            "name": "Get Data Worksheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Data Worksheet"
+        },
+        {
+          "info": {
+            "name": "List Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/",
+            "params": [
+              {
+                "name": "created_at_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by created_at dates after a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "created_at_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter by created_at dates before a date. YYYY-MM-DD format."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)created_at`, `(-)updated_at`]. Also accepts column name or UUIDs. For worksheets that are bulk upserted it is recommended to use the worksheet Unique ID name or UUID to avoid duplicates."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Perform a case-insensitive text search over record data for the given string."
+              },
+              {
+                "name": "query_column",
+                "value": "",
+                "type": "query",
+                "description": "When provided along with query, search only within the specified column name instead of searching all columns."
+              },
+              {
+                "name": "updated_at_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updated_at dates after a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "updated_at_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter by updated_at dates before a date. YYYY-MM-DD format."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint returns only the raw data values present in the worksheet.\nIf you experience performance issues, or want to also see derived values, please use the\n[Bulk Export Records](https://developers.captivateiq.com/reference/data_worksheets_records_export_create-1) endpoint instead."
+        },
+        {
+          "info": {
+            "name": "Create Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/",
+            "params": [
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Record"
+        },
+        {
+          "info": {
+            "name": "Batch Update Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/batch/",
+            "params": [
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch Update Records"
+        },
+        {
+          "info": {
+            "name": "Bulk Export Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/export/",
+            "params": [
+              {
+                "name": "export_format",
+                "value": "",
+                "type": "query",
+                "description": "Format for the records export."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export all records as a downloadable CSV file for the given data worksheet. This exports both data and\nderived columns."
+        },
+        {
+          "info": {
+            "name": "Bulk Import Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/import/",
+            "params": [
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "While the CSV file format is not fully standardized, CaptivateIQ's implementation of CSV parsing will have\nyou surround a field's data with quotation marks in order to allow for commas that may be present in the data.\n\nFor example:\n```\nColumn1,Column2\n\"Foo, bar\",baz\n```"
+        },
+        {
+          "info": {
+            "name": "Get Bulk Import Records Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/import/template/",
+            "params": [
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Bulk Import Records Template"
+        },
+        {
+          "info": {
+            "name": "Get Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/:unique_id/",
+            "params": [
+              {
+                "name": "unique_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID column value of a record within the worksheet `worksheet_uuid`."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Record"
+        },
+        {
+          "info": {
+            "name": "Update Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/:unique_id/",
+            "params": [
+              {
+                "name": "unique_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID column value of a record within the worksheet `worksheet_uuid`."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Record"
+        },
+        {
+          "info": {
+            "name": "Delete Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.captivateiq.com/ciq/v1/data-worksheets/:worksheet_uuid/records/:unique_id/",
+            "params": [
+              {
+                "name": "unique_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique ID column value of a record within the worksheet `worksheet_uuid`."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Record"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

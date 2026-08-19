@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Report Models API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Report Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/report-models/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter Report Models by name"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)name`, `(-)created_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "period_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter Report Models by period date (YYYY-MM-DD format)"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter Report Models by type. Defaults to 'time_series'."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Report Models"
+        },
+        {
+          "info": {
+            "name": "Export Report Model Worksheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/report-models/export-worksheet/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export report output worksheet"
+        },
+        {
+          "info": {
+            "name": "List Report Models Exports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/report-models/exports",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "locked_status",
+                "value": "",
+                "type": "query",
+                "description": "Filter Report Models by locked status"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter Report Models Exports by name"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`-period_date`]. Available fields for ordering: [`(-)name`, `(-)created_at`, `(-)period_date`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "period_date",
+                "value": "",
+                "type": "query",
+                "description": "Filter Report Models Exports by period date (YYYY-MM-DD format)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Report Models Exports"
+        },
+        {
+          "info": {
+            "name": "Retrieve Report Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/report-models/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve Report Model"
+        },
+        {
+          "info": {
+            "name": "Export Report Model Worksheet Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/report-models/:report_model_uuid/records/export/",
+            "params": [
+              {
+                "name": "report_model_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Report Model UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export Report Model Worksheet Records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

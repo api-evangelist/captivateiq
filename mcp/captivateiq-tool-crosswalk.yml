@@ -1,0 +1,530 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: mcp/captivateiq-mcp.yml, openapi/captivateiq-*-openapi.yml, https://developers.captivateiq.com/mcp
+  (probed 2026-08-13)
+note: 'READ THIS BEFORE USING THE ROWS. CaptivateIQ serves a live remote MCP endpoint at https://developers.captivateiq.com/mcp,
+  but its tools/list is AUTH-GATED: a JSON-RPC POST returns HTTP 401 {"code":-32001,"message":"Authorization
+  required"} and there is no OAuth discovery document to negotiate against. The provider''s REAL tool
+  inventory was therefore never observed and is NOT what is listed below. Every crosswalk row binds a
+  DERIVED CANDIDATE tool (one per OpenAPI operation, from mcp/captivateiq-mcp.yml) to the operation it
+  was derived from, so confidence is ''low'' on all of them by construction: the binding is real about
+  our candidate server and asserts nothing about CaptivateIQ''s hosted one. Verifying the true crosswalk
+  requires authenticated MCP introspection.'
+surfaces:
+  openapi:
+    files: 16
+    operations: 82
+    base: https://api.captivateiq.com/ciq/v1/
+    gated: false
+    source: openapi/ (harvested from developers.captivateiq.com/reference)
+  graphql:
+    present: false
+  mcp:
+    url: https://developers.captivateiq.com/mcp
+    gated: true
+    tools_observed: false
+    probe_status: 401
+    transport: http
+coverage:
+  candidate_tools: 82
+  rest_operations: 82
+  bound: 82
+  mcp_only: 0
+  rest_only: 0
+  verified_against_live_server: 0
+crosswalk:
+- tool: attribute_worksheets_list
+  category: Attribute Worksheets
+  rest:
+  - attribute_worksheets_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: attribute_worksheets_columns_custom_picklist_options_list
+  category: Attribute Worksheets
+  rest:
+  - attribute_worksheets_columns_custom_picklist_options_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: attribute_worksheets_columns_custom_picklist_options_import_create
+  category: Attribute Worksheets
+  rest:
+  - attribute_worksheets_columns_custom_picklist_options_import_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: attribute_worksheets_records_list
+  category: Attribute Worksheets
+  rest:
+  - attribute_worksheets_records_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: attribute_worksheets_records_batch_create
+  category: Attribute Worksheets
+  rest:
+  - attribute_worksheets_records_batch_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: audit_logs_list
+  category: Audit Logs
+  rest:
+  - audit_logs_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: dashboards_published_dashboards_list
+  category: Dashboards
+  rest:
+  - dashboards_published_dashboards_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: dashboards_embedded_share_create
+  category: Dashboards
+  rest:
+  - dashboards_embedded_share_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: dashboards_embedded_share_destroy
+  category: Dashboards
+  rest:
+  - dashboards_embedded_share_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: dashboards_embedded_share_list
+  category: Dashboards
+  rest:
+  - dashboards_embedded_share_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_workbooks_list
+  category: Data Workbooks
+  rest:
+  - data_workbooks_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_workbooks_retrieve
+  category: Data Workbooks
+  rest:
+  - data_workbooks_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_list
+  category: Data Worksheets
+  rest:
+  - data_worksheets_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_retrieve
+  category: Data Worksheets
+  rest:
+  - data_worksheets_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_create
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_list
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_batch_create
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_batch_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_export_create
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_import_create
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_import_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_import_template_retrieve
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_import_template_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_destroy
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_retrieve
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: data_worksheets_records_update
+  category: Data Worksheets
+  rest:
+  - data_worksheets_records_update
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_assumptions_create
+  category: Employee Assumptions
+  rest:
+  - employee_assumptions_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_assumptions_list
+  category: Employee Assumptions
+  rest:
+  - employee_assumptions_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_assumptions_batch_create
+  category: Employee Assumptions
+  rest:
+  - employee_assumptions_batch_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_assumptions_destroy
+  category: Employee Assumptions
+  rest:
+  - employee_assumptions_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_assumptions_retrieve
+  category: Employee Assumptions
+  rest:
+  - employee_assumptions_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_assumptions_update
+  category: Employee Assumptions
+  rest:
+  - employee_assumptions_update
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_visibilities_create
+  category: Employees
+  rest:
+  - employee_visibilities_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_visibilities_list
+  category: Employees
+  rest:
+  - employee_visibilities_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_visibilities_destroy
+  category: Employees
+  rest:
+  - employee_visibilities_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_visibilities_retrieve
+  category: Employees
+  rest:
+  - employee_visibilities_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: employee_visibilities_update
+  category: Employees
+  rest:
+  - employee_visibilities_update
+  binding: derived-one-to-one
+  confidence: low
+- tool: employees_create
+  category: Employees
+  rest:
+  - employees_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: employees_list
+  category: Employees
+  rest:
+  - employees_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: employees_destroy
+  category: Employees
+  rest:
+  - employees_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: employees_retrieve
+  category: Employees
+  rest:
+  - employees_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: employees_update
+  category: Employees
+  rest:
+  - employees_update
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_list
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_create
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_list
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_batch_create
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_batch_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_import_create
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_import_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_destroy
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_retrieve
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_hierarchies_update
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_hierarchies_update
+  binding: derived-one-to-one
+  confidence: low
+- tool: hierarchy_groups_retrieve
+  category: Hierarchies
+  rest:
+  - hierarchy_groups_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: job_aggregations_list
+  category: Jobs
+  rest:
+  - job_aggregations_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: job_aggregations_retrieve
+  category: Jobs
+  rest:
+  - job_aggregations_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: jobs_list
+  category: Jobs
+  rest:
+  - jobs_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: jobs_retrieve
+  category: Jobs
+  rest:
+  - jobs_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: me_organizations_list
+  category: Metadata
+  rest:
+  - me_organizations_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_adjustments_export_create
+  category: Payouts
+  rest:
+  - payouts_adjustments_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_employee_assumptions_export_create
+  category: Payouts
+  rest:
+  - payouts_employee_assumptions_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_payout_dates_list
+  category: Payouts
+  rest:
+  - payouts_payout_dates_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_payout_summaries_export_create
+  category: Payouts
+  rest:
+  - payouts_payout_summaries_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_period_groups_list
+  category: Payouts
+  rest:
+  - payouts_period_groups_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_plans_list
+  category: Payouts
+  rest:
+  - payouts_plans_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_worksheets_list
+  category: Payouts
+  rest:
+  - payouts_worksheets_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: payouts_worksheets_export_create
+  category: Payouts
+  rest:
+  - payouts_worksheets_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: period_groups_list
+  category: Commission Plans
+  rest:
+  - period_groups_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: period_groups_retrieve
+  category: Commission Plans
+  rest:
+  - period_groups_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: plans_list
+  category: Commission Plans
+  rest:
+  - plans_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: plans_retrieve
+  category: Commission Plans
+  rest:
+  - plans_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: plans_period_groups_employee_assumptions_export_create
+  category: Commission Plans
+  rest:
+  - plans_period_groups_employee_assumptions_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: report_models_list
+  category: Report Models
+  rest:
+  - report_models_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: report_models_export_worksheet_create
+  category: Report Models
+  rest:
+  - report_models_export_worksheet_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: report_models_exports_list
+  category: Report Models
+  rest:
+  - report_models_exports_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: report_models_retrieve
+  category: Report Models
+  rest:
+  - report_models_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: report_models_records_export_create
+  category: Report Models
+  rest:
+  - report_models_records_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: transformation_worksheets_list
+  category: Transformation Worksheets
+  rest:
+  - transformation_worksheets_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: transformation_worksheets_retrieve
+  category: Transformation Worksheets
+  rest:
+  - transformation_worksheets_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: transformation_worksheets_records_export_create
+  category: Transformation Worksheets
+  rest:
+  - transformation_worksheets_records_export_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: uploads_list
+  category: Uploads
+  rest:
+  - uploads_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: uploads_retrieve
+  category: Uploads
+  rest:
+  - uploads_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: uploads_process_create
+  category: Uploads
+  rest:
+  - uploads_process_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: users_create
+  category: Users
+  rest:
+  - users_create
+  binding: derived-one-to-one
+  confidence: low
+- tool: users_list
+  category: Users
+  rest:
+  - users_list
+  binding: derived-one-to-one
+  confidence: low
+- tool: users_destroy
+  category: Users
+  rest:
+  - users_destroy
+  binding: derived-one-to-one
+  confidence: low
+- tool: users_retrieve
+  category: Users
+  rest:
+  - users_retrieve
+  binding: derived-one-to-one
+  confidence: low
+- tool: users_update
+  category: Users
+  rest:
+  - users_update
+  binding: derived-one-to-one
+  confidence: low
+mcp_only: []
+rest_only: []

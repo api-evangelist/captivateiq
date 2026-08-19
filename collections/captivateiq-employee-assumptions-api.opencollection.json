@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Employee Assumptions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Employee Assumptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Employee Assumptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-assumptions/",
+            "params": [
+              {
+                "name": "employee_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by your unique identifier for the employee within your organization"
+              },
+              {
+                "name": "end_date_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date after a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "end_date_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date before a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`employee_id`]. Available fields for ordering: [`(-)employee_id`, `(-)start_date`, `(-)end_date`, `(-)employee_first_name`, `(-)employee_last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "period_group_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period group UUIDs"
+              },
+              {
+                "name": "plan_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plan UUIDs"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Perform a case-insensitive text search over the                     record display value for the given string."
+              },
+              {
+                "name": "start_date_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start dates after a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "start_date_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start dates before a date, inclusive of that date. YYYY-MM-DD format."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Employee Assumptions"
+        },
+        {
+          "info": {
+            "name": "Create Employee Assumption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-assumptions/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Employee Assumption"
+        },
+        {
+          "info": {
+            "name": "Batch Update Employee Assumptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-assumptions/batch/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch create, update, and delete employee assumptions.\nAll employee assumptions in the request must belong to the same period group."
+        },
+        {
+          "info": {
+            "name": "Get Employee Assumption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-assumptions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Employee Assumption"
+        },
+        {
+          "info": {
+            "name": "Update Employee Assumption",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-assumptions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Employee Assumption"
+        },
+        {
+          "info": {
+            "name": "Delete Employee Assumption",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.captivateiq.com/ciq/v1/employee-assumptions/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Employee Assumption"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,421 @@
+{
+  "item": [
+    {
+      "id": "ae37072e-0fcc-4861-aa79-53e129fd6f5f",
+      "name": "Transformation Worksheets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6a8129b2-74f7-4e90-ab88-14a8e72e19d5",
+          "name": "List Transformation Worksheets",
+          "request": {
+            "name": "List Transformation Worksheets",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "transformation-worksheets",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96267693-3ebe-46a8-9deb-7f216dc62db9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "transformation-worksheets",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"object\": \"transformation_worksheet\",\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"workbook\": \"8df3e3a7-9d86-fb93-a533-bd7b4c8fb4b3\",\n      \"workbook_name\": \"string\",\n      \"columns\": [\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": true,\n          \"created_at\": \"1955-01-17T16:45:33.186Z\",\n          \"updated_at\": \"1996-02-26T09:29:22.803Z\"\n        },\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": false,\n          \"created_at\": \"2020-10-03T02:53:30.958Z\",\n          \"updated_at\": \"1954-11-04T10:02:06.622Z\"\n        }\n      ],\n      \"created_at\": \"2010-01-31T05:06:34.111Z\",\n      \"updated_at\": \"1984-05-31T08:40:07.624Z\"\n    },\n    {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"object\": \"transformation_worksheet\",\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"workbook\": \"921c3f0a-a718-2c13-3c52-c6589615329c\",\n      \"workbook_name\": \"string\",\n      \"columns\": [\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": false,\n          \"created_at\": \"1948-02-27T19:18:27.712Z\",\n          \"updated_at\": \"2026-07-04T11:54:50.468Z\"\n        },\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": true,\n          \"created_at\": \"2009-12-11T00:02:54.516Z\",\n          \"updated_at\": \"1948-05-10T15:23:48.027Z\"\n        }\n      ],\n      \"created_at\": \"2019-09-03T00:27:43.891Z\",\n      \"updated_at\": \"1985-06-23T05:10:51.764Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83f1cf91-1c4b-4609-baa2-e516bd29f27b",
+          "name": "Get Transformation Worksheet",
+          "request": {
+            "name": "Get Transformation Worksheet",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "transformation-worksheets",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2913321b-6c0a-499c-9ebd-9f0c32bf6cdc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "transformation-worksheets",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"object\": \"transformation_worksheet\",\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"workbook\": \"8b19b1a0-c834-3f79-ea47-810423541e6d\",\n  \"workbook_name\": \"string\",\n  \"columns\": [\n    {\n      \"data_type\": \"string\",\n      \"description\": \"string\",\n      \"format\": {},\n      \"name\": \"string\",\n      \"variant\": \"string\",\n      \"object\": \"column\",\n      \"id\": \"string\",\n      \"formula\": \"string\",\n      \"read_only\": false,\n      \"created_at\": \"1973-11-09T08:56:58.920Z\",\n      \"updated_at\": \"2023-06-25T18:27:10.461Z\"\n    },\n    {\n      \"data_type\": \"string\",\n      \"description\": \"string\",\n      \"format\": {},\n      \"name\": \"string\",\n      \"variant\": \"string\",\n      \"object\": \"column\",\n      \"id\": \"string\",\n      \"formula\": \"string\",\n      \"read_only\": false,\n      \"created_at\": \"2008-07-29T08:43:22.481Z\",\n      \"updated_at\": \"2015-03-28T19:06:30.551Z\"\n    }\n  ],\n  \"created_at\": \"2007-08-06T08:47:35.060Z\",\n  \"updated_at\": \"2025-06-03T21:17:28.982Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9cb0339-cd9c-4cac-8c74-1dc2f45a8d06",
+          "name": "Bulk Export Records",
+          "request": {
+            "name": "Bulk Export Records",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "transformation-worksheets",
+                ":worksheet_uuid",
+                "records",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "export_format",
+                  "value": "csv",
+                  "description": "Format for the records export."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "724c7113-0f31-4d0e-947f-b87b0ed86cc7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "transformation-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "export_format",
+                      "value": "csv"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"846c875d-4638-22c2-7ff4-ca45e28259a0\",\n    \"user_email\": \"277a43e2-135e-dc17-f6d8-dcba3a2550e9\",\n    \"created_at\": \"1988-08-11T20:37:00.010Z\",\n    \"updated_at\": \"1947-01-02T08:52:29.074Z\",\n    \"aggregation_id\": \"22eb79a3-7b18-b2d1-f81e-decef4305c28\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0f827b5c-13d7-439a-a601-330c1285de92",
+    "name": "CaptivateIQ Attribute Worksheets Transformation Worksheets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

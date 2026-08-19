@@ -1,4 +1,4 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
 source: >-
   https://developers.captivateiq.com/docs/getting-started-with-captivateiq,
@@ -11,6 +11,16 @@ authentication:
     Tokens are generated in the CaptivateIQ app under user profile settings > API Tokens.
     The token value is shown once at creation.
   ref: authentication/captivateiq-authentication.yml
+  oauth2:
+    served: true
+    documented: false
+    discovery: https://app.captivateiq.com/.well-known/oauth-authorization-server
+    scopes: [read]
+    note: >-
+      An RFC 8414 authorization-server metadata document is served at HTTP 200 on the app host
+      (authorization_code + refresh_token, PKCE S256, one "read" scope). It is not mentioned
+      anywhere in the developer reference, which documents only static token auth.
+    ref: scopes/captivateiq-scopes.yml
 base_url: https://api.captivateiq.com/ciq/v1/
 media_type: application/json
 pagination:

@@ -1,10 +1,13 @@
-generated: '2026-07-18'
-method: derived
-source: openapi/captivateiq-openapi-original.yml
+generated: '2026-08-13'
+method: searched
+source: https://www.captivateiq.com/security-policy, https://www.captivateiq.com/trust, https://developers.captivateiq.com/docs/getting-started-with-captivateiq,
+  openapi/captivateiq-openapi-original.yml, https://app.captivateiq.com/.well-known/oauth-authorization-server
 standards:
 - id: oauth2
-  conforms: false
-  evidence: no oauth2 securityScheme in OpenAPI
+  conforms: true
+  evidence: no oauth2 securityScheme in the OpenAPI, but a real RFC 8414 authorization-server metadata
+    document is served at https://app.captivateiq.com/.well-known/oauth-authorization-server (200) advertising
+    authorization_code + refresh_token, PKCE S256 and scope "read"
 - id: api-key-auth
   conforms: true
   evidence: tokenAuth apiKey scheme (Authorization header, 'Token' prefix)
@@ -30,3 +33,39 @@ standards:
 - id: gdpr
   conforms: true
   evidence: GDPR referenced on trust center
+- id: iso27001
+  conforms: true
+  evidence: security policy names "its ISO 27001 certification" alongside SOC reports
+- id: mcp
+  conforms: true
+  evidence: live remote MCP endpoint at https://developers.captivateiq.com/mcp (GET 200, JSON-RPC 401
+    gated); see mcp/captivateiq-mcp.yml
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no /.well-known/security.txt on api./developers./www. hosts (403/404)
+- id: rfc8594-sunset
+  conforms: false
+  evidence: no Sunset/Deprecation header or written deprecation policy published; changes announced only
+    in the dated changelog
+- id: a2a
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 403 (api.) / 404 (developers.,
+    www., app.)
+- id: webhooks
+  conforms: false
+  evidence: no webhook or event surface documented; developers.captivateiq.com/llms.txt indexes no webhook/event
+    page
+- id: rfc8414-oauth-as-metadata
+  conforms: true
+  evidence: https://app.captivateiq.com/.well-known/oauth-authorization-server returns 200 application/json
+    with issuer/authorization_endpoint/token_endpoint
+- id: pkce-rfc7636
+  conforms: true
+  evidence: 'code_challenge_methods_supported: ["S256"]'
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration 404 on every host; no jwks.json
+- id: rfc9728-oauth-protected-resource
+  conforms: false
+  evidence: /.well-known/oauth-protected-resource 404 on app. and developers.; the gated MCP endpoint
+    returns 401 with no WWW-Authenticate challenge

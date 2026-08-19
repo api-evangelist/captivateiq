@@ -1,0 +1,249 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attribute Worksheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Attribute Worksheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/attribute-worksheets/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "name_contains",
+                "value": "",
+                "type": "query",
+                "description": "Case-insensitive search to list attribute worksheets whose names contain the given string."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "period_group_uuid",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period group UUID"
+              },
+              {
+                "name": "pk_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by attribute worksheet PK type. Valid choices are `employee`, `plan_period_group`, or `custom`."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Attribute Worksheets"
+        },
+        {
+          "info": {
+            "name": "List Custom Picklist Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/attribute-worksheets/:worksheet_uuid/columns/:column_uuid/custom-picklist-options/",
+            "params": [
+              {
+                "name": "column_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Column UUID."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Custom Picklist Options"
+        },
+        {
+          "info": {
+            "name": "Bulk Import Custom Picklist Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/attribute-worksheets/:worksheet_uuid/columns/:column_uuid/custom_picklist_options/import/",
+            "params": [
+              {
+                "name": "column_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Column UUID."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Worksheet UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Bulk Import Custom Picklist Options"
+        },
+        {
+          "info": {
+            "name": "List Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/attribute-worksheets/:worksheet_uuid/records/",
+            "params": [
+              {
+                "name": "end_date_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date after a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "end_date_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date before a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Perform a case-insensitive text search over record data for the given string."
+              },
+              {
+                "name": "start_date_after",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start dates after a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "start_date_before",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start dates before a date, inclusive of that date. YYYY-MM-DD format."
+              },
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Attribute Worksheet UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Records"
+        },
+        {
+          "info": {
+            "name": "Batch Update Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/attribute-worksheets/:worksheet_uuid/records/batch/",
+            "params": [
+              {
+                "name": "worksheet_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Attribute Worksheet UUID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch Update Records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

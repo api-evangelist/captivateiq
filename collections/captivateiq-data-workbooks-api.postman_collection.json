@@ -1,0 +1,311 @@
+{
+  "item": [
+    {
+      "id": "6f83985b-edab-4573-809f-1eb1f02d8df4",
+      "name": "Data Workbooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "085c8aea-9677-4fbf-b008-ac81091d6ae4",
+          "name": "List Data Workbooks",
+          "request": {
+            "name": "List Data Workbooks",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-workbooks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "`true` to request only active data workbooks, or `false` to request only inactive. Leave blank to see all."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "name_contains",
+                  "value": "<string>",
+                  "description": "Case-insensitive search to list data workbooks whose names contain the given string."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a1acc1d-1249-45ec-8e82-e1d98ac2cc27",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-workbooks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"is_active\": true,\n      \"name\": \"string\",\n      \"object\": \"data_workbook\",\n      \"id\": \"string\",\n      \"worksheets\": {\n        \"description\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"data_worksheet\",\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"created_at\": \"2017-11-03T04:49:12.683Z\",\n        \"updated_at\": \"1980-12-16T22:11:30.805Z\"\n      },\n      \"created_at\": \"1960-06-17T03:06:02.242Z\",\n      \"updated_at\": \"1985-03-17T22:59:17.532Z\"\n    },\n    {\n      \"is_active\": false,\n      \"name\": \"string\",\n      \"object\": \"data_workbook\",\n      \"id\": \"string\",\n      \"worksheets\": {\n        \"description\": \"string\",\n        \"name\": \"string\",\n        \"object\": \"data_worksheet\",\n        \"id\": \"string\",\n        \"type\": \"string\",\n        \"created_at\": \"1994-11-05T09:31:33.235Z\",\n        \"updated_at\": \"2002-01-19T01:30:03.499Z\"\n      },\n      \"created_at\": \"1969-01-25T21:18:10.406Z\",\n      \"updated_at\": \"2009-01-05T10:56:36.908Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8308fecd-202b-4abb-9bc2-34314aeb80c4",
+          "name": "Get Data Workbook",
+          "request": {
+            "name": "Get Data Workbook",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-workbooks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dcc76038-c8f5-47e7-ac26-5483b53cbcba",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-workbooks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"is_active\": true,\n  \"name\": \"string\",\n  \"object\": \"data_workbook\",\n  \"id\": \"string\",\n  \"worksheets\": {\n    \"description\": \"string\",\n    \"name\": \"string\",\n    \"object\": \"data_worksheet\",\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"created_at\": \"2019-07-07T15:53:36.430Z\",\n    \"updated_at\": \"1986-02-09T23:12:06.231Z\"\n  },\n  \"created_at\": \"1946-08-31T01:06:31.565Z\",\n  \"updated_at\": \"1977-09-25T20:33:38.820Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "08206c4b-865a-4bd8-bb5d-fd39fae0b63d",
+    "name": "CaptivateIQ Attribute Worksheets Data Workbooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

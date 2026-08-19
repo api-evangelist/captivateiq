@@ -1,0 +1,312 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Payouts API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export Payout Adjustments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/adjustments/export/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export payout adjustments"
+        },
+        {
+          "info": {
+            "name": "Export Employee Assumptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/employee-assumptions/export/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export payout snapshot related employee assumptions"
+        },
+        {
+          "info": {
+            "name": "List Payout Dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/payout-dates/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`-payout_date`]. Available fields for ordering: [`(-)payout_date`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "period_group_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period group UUIDs"
+              },
+              {
+                "name": "plan_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by commission plan UUIDs"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List payout snapshot related payout dates"
+        },
+        {
+          "info": {
+            "name": "Export Payout Summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/payout-summaries/export/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export payout snapshot related payout summaries"
+        },
+        {
+          "info": {
+            "name": "List Period Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/period-groups/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`period_group_name`]. Available fields for ordering: [`(-)period_group_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "payout_dates[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payout dates (YYYY-MM-DD format)"
+              },
+              {
+                "name": "plan_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by commission plan UUIDs"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List payout snapshot related period groups"
+        },
+        {
+          "info": {
+            "name": "List Commission Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/plans/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`plan_name`]. Available fields for ordering: [`(-)plan_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "payout_dates[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payout dates (YYYY-MM-DD format)"
+              },
+              {
+                "name": "period_group_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period group UUIDs"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Commission Plans related to Snapshots"
+        },
+        {
+          "info": {
+            "name": "List Worksheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/worksheets/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`worksheet_name`]. Available fields for ordering: [`(-)worksheet_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "payout_dates[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payout dates (YYYY-MM-DD format)"
+              },
+              {
+                "name": "period_group_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period group UUIDs"
+              },
+              {
+                "name": "plan_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by commission plan UUIDs"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List payout snapshot related calculation workbook worksheets"
+        },
+        {
+          "info": {
+            "name": "Export Worksheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/payouts/worksheets/export/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export payout snapshot related calculation workbook worksheets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

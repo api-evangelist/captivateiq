@@ -1,0 +1,30 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.captivateiq.com/pricing
+plan_count: 0
+model: per-seat, custom-quote
+currency: null
+billing_period: null
+note: >-
+  CaptivateIQ publishes NO named pricing tiers and NO prices. The pricing page states
+  "Simple, per-seat pricing" with "a one-time setup fee to get you up and running quickly",
+  and defines a seat as "the number of admin users plus the total number of payees who will
+  be managing their compensation on our platform". Every call to action on the page routes to
+  a quote request ("Contact us for a custom quote", "Get a Custom Quote"). ASC-606 reporting
+  is named as an optional add-on subscription. No API-metered or developer-tier pricing is
+  published — the REST API is included with the platform subscription and its rate-limit tier
+  (Standard vs Enterprise, see rate-limits/captivateiq-rate-limits.yml) is the only
+  contract-visible plan distinction.
+plans: []
+add_ons:
+- name: ASC-606 reporting
+  price: null
+  note: Published as an optional add-on subscription; price not disclosed.
+tier_signals:
+- name: Standard
+  evidence: rate-limits/captivateiq-rate-limits.yml (5 req/s burst, 1500 req/hour sustained)
+- name: Enterprise
+  evidence: rate-limits/captivateiq-rate-limits.yml (15 req/s burst, 6000 req/hour sustained)
+evidence:
+- url: https://www.captivateiq.com/pricing
+  status: 200

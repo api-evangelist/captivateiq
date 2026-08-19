@@ -1,0 +1,1535 @@
+{
+  "item": [
+    {
+      "id": "27925046-03a0-4f59-a6bd-960e42e653b9",
+      "name": "Hierarchies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "98b8bac6-3f68-4217-a902-ea561eddf507",
+          "name": "List Hierarchy Groups",
+          "request": {
+            "name": "List Hierarchy Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "is_default",
+                  "value": "<boolean>",
+                  "description": "Filter by hierarchy group's default status"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "name_contains",
+                  "value": "<string>",
+                  "description": "Filter by fuzzy matching the hierarchy group's name"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)name`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c79334d6-cf6f-4dcb-8190-9855a89392f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_default",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"id\": \"24df1567-c7e8-713e-5316-5859d1f790c9\",\n      \"name\": \"string\",\n      \"object\": \"hierarchy group\",\n      \"default\": false,\n      \"created_at\": \"1974-07-17T21:19:19.202Z\",\n      \"updated_at\": \"1968-01-01T11:35:54.754Z\"\n    },\n    {\n      \"id\": \"fbc95a82-a859-0d63-c303-6c4a8d58d9fd\",\n      \"name\": \"string\",\n      \"object\": \"hierarchy group\",\n      \"default\": false,\n      \"created_at\": \"1993-05-20T19:56:01.381Z\",\n      \"updated_at\": \"2011-03-28T01:19:41.279Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bae1d3b2-6e92-4704-8484-9b4aae7298a1",
+          "name": "Create Hierarchy",
+          "request": {
+            "name": "Create Hierarchy",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy Group UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "managing_employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Managing Employee UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "reporting_employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Reporting Employee UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Optional, defaults to null. Start date formatted YYYY-MM-DD."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Optional, defaults to null. End date formatted YYYY-MM-DD."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f21a9c49-c43a-4843-a7dc-17e6bb522d87",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy Group UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Managing Employee UUID.",
+                        "type": "text/plain"
+                      },
+                      "key": "managing_employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Reporting Employee UUID.",
+                        "type": "text/plain"
+                      },
+                      "key": "reporting_employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to null. Start date formatted YYYY-MM-DD.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to null. End date formatted YYYY-MM-DD.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hierarchy_group\": \"34a0a23f-dd0c-05a4-e561-25b94a09b87c\",\n  \"managing_employee\": \"db7da765-e8e7-4d20-2f11-b7d15640b7b0\",\n  \"reporting_employee\": \"736d41fa-73c0-2fea-5a6e-ac921cc42bcb\",\n  \"object\": \"hierarchy\",\n  \"id\": \"81166f05-570e-44e4-131c-47be3c5b8aa0\",\n  \"start_date\": \"2007-02-02\",\n  \"end_date\": \"1987-07-17\",\n  \"created_at\": \"1964-06-03T02:25:34.593Z\",\n  \"updated_at\": \"1994-09-08T05:54:14.224Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "519c100f-7e65-4ff6-87ee-e2c1846053b6",
+          "name": "List Hierarchies",
+          "request": {
+            "name": "List Hierarchies",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`start_date`]. Available fields for ordering: [`(-)start_date`, `(-)end_date`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy Group UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e646790a-e732-4ff0-8186-ac3677d0a8fb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy Group UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"hierarchy_group\": \"a2244d29-475e-a05a-fa8e-e4106f2d9d21\",\n      \"managing_employee\": \"59e932cd-fd5a-407e-83e9-09a51cbd812c\",\n      \"reporting_employee\": \"383f7f02-cfed-d628-edd3-130c6ffd63d3\",\n      \"object\": \"hierarchy\",\n      \"id\": \"ed2a8ade-1ec4-7d8f-0a0f-a07f574e2e12\",\n      \"start_date\": \"1995-06-28\",\n      \"end_date\": \"1987-09-04\",\n      \"created_at\": \"1952-07-22T21:06:22.264Z\",\n      \"updated_at\": \"2022-08-01T15:35:39.826Z\"\n    },\n    {\n      \"hierarchy_group\": \"09340043-b30c-8e50-2d96-035212fb119b\",\n      \"managing_employee\": \"a0ab82ab-1f70-3404-73f2-93bb95718f86\",\n      \"reporting_employee\": \"162b2689-6f8b-186b-cd65-061edbe3d356\",\n      \"object\": \"hierarchy\",\n      \"id\": \"f930f15c-ead6-76b9-1996-7b0a9eb30291\",\n      \"start_date\": \"1980-06-03\",\n      \"end_date\": \"1996-05-24\",\n      \"created_at\": \"1965-07-25T08:37:23.426Z\",\n      \"updated_at\": \"2025-10-30T17:52:05.952Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ede58ef5-472b-469a-8c4a-6e9fb1070b6c",
+          "name": "Batch Update Hierarchies",
+          "request": {
+            "name": "Batch Update Hierarchies",
+            "description": {
+              "content": "Batch create, update, and delete hierarchies. Only manual hierarchy groups are supported at this time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                "batch",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy group UUID. Only manual hierarchy groups are supported at this time."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "<uuid>",
+                  "description": "(Required) IDs for the hierarchies to delete"
+                },
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "<uuid>",
+                  "description": "(Required) IDs for the hierarchies to delete"
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"end_date\":\"<date>\",\"managing_employee\":\"<uuid>\",\"reporting_employee\":\"<uuid>\",\"start_date\":\"<date>\",\"id\":\"<uuid>\"}",
+                  "description": "(Required) Hierarchies to create or update"
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"end_date\":\"<date>\",\"managing_employee\":\"<uuid>\",\"reporting_employee\":\"<uuid>\",\"start_date\":\"<date>\",\"id\":\"<uuid>\"}",
+                  "description": "(Required) Hierarchies to create or update"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "75528669-8d4d-41f9-a13e-09ee28908e5a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    "batch",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy group UUID. Only manual hierarchy groups are supported at this time."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs for the hierarchies to delete",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) IDs for the hierarchies to delete",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hierarchies to create or update",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"end_date\":\"<date>\",\"managing_employee\":\"<uuid>\",\"reporting_employee\":\"<uuid>\",\"start_date\":\"<date>\",\"id\":\"<uuid>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Hierarchies to create or update",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"end_date\":\"<date>\",\"managing_employee\":\"<uuid>\",\"reporting_employee\":\"<uuid>\",\"start_date\":\"<date>\",\"id\":\"<uuid>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": [\n    \"string\",\n    \"string\"\n  ],\n  \"deleted\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9d8564-4653-47a4-b1e8-6fafc276630b",
+          "name": "Bulk Import Hierarchies",
+          "request": {
+            "name": "Bulk Import Hierarchies",
+            "description": {
+              "content": "While the CSV file format is not fully standardized, CaptivateIQ's implementation of CSV parsing will have\nyou surround a field's data with quotation marks in order to allow for commas that may be present in the data.\n\nFor example:\n```\nColumn1,Column2\n\"Foo, bar\",baz\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                "import",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy Group UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "file_name",
+                  "value": "<string>",
+                  "description": "(Required) File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files."
+                },
+                {
+                  "disabled": false,
+                  "key": "data_mappings",
+                  "value": "{\"key_0\":\"<string>\"}",
+                  "description": "(Required) Parameters for the upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "import_mode",
+                  "value": "<string>",
+                  "description": "(Required) Parameters for the upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "encoding",
+                  "value": "<string>",
+                  "description": "Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_format",
+                  "value": "<string>",
+                  "description": "Optional. The file's format for all date fields, by default we assume the organization's `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": "<string>",
+                  "description": "Optional. The file's delimiter, by default we assume `,`. Valid choices are: `,`, `\\t`, `|` and `;`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9dce0d0c-da8a-46f7-85fc-bd527ac46639",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    "import",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy Group UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.",
+                        "type": "text/plain"
+                      },
+                      "key": "file_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_mappings",
+                      "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "import_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.",
+                        "type": "text/plain"
+                      },
+                      "key": "encoding",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's format for all date fields, by default we assume the organization's `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.",
+                        "type": "text/plain"
+                      },
+                      "key": "date_format",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's delimiter, by default we assume `,`. Valid choices are: `,`, `\\t`, `|` and `;`.",
+                        "type": "text/plain"
+                      },
+                      "key": "delimiter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date_format\": \"<string>\",\n  \"delimiter\": \"<string>\",\n  \"encoding\": \"string\",\n  \"file_name\": \"string\",\n  \"object\": \"upload\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"object_type\": \"bulk_plan_document_index_template\",\n  \"status\": \"string\",\n  \"params\": {},\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"created_at\": \"1960-07-08T22:31:46.436Z\",\n  \"updated_at\": \"2003-07-08T10:42:24.680Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec76cc9a-9513-4108-850f-82d35c3d3d78",
+          "name": "Delete Hierarchy",
+          "request": {
+            "name": "Delete Hierarchy",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                ":hierarchy_uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy Group UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_uuid",
+                  "description": "(Required) The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76f91ae9-1ed0-4e80-934d-fd70d9de69a3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    ":hierarchy_uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy Group UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_uuid",
+                      "description": "(Required) The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"string\",\n  \"id\": \"c9155a02-ae91-fd2a-3844-1f9d674ce8a9\",\n  \"deleted\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "153dbb76-69c6-45d4-9517-926510a23f08",
+          "name": "Get Hierarchy",
+          "request": {
+            "name": "Get Hierarchy",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                ":hierarchy_uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy Group UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_uuid",
+                  "description": "(Required) The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f68ad9dd-7009-4913-8646-e85ae136570a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    ":hierarchy_uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy Group UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_uuid",
+                      "description": "(Required) The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hierarchy_group\": \"34a0a23f-dd0c-05a4-e561-25b94a09b87c\",\n  \"managing_employee\": \"db7da765-e8e7-4d20-2f11-b7d15640b7b0\",\n  \"reporting_employee\": \"736d41fa-73c0-2fea-5a6e-ac921cc42bcb\",\n  \"object\": \"hierarchy\",\n  \"id\": \"81166f05-570e-44e4-131c-47be3c5b8aa0\",\n  \"start_date\": \"2007-02-02\",\n  \"end_date\": \"1987-07-17\",\n  \"created_at\": \"1964-06-03T02:25:34.593Z\",\n  \"updated_at\": \"1994-09-08T05:54:14.224Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6be96cc-fe75-4026-8c1b-f90d5fe24586",
+          "name": "Update Hierarchy",
+          "request": {
+            "name": "Update Hierarchy",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":hierarchy_group_uuid",
+                "hierarchies",
+                ":hierarchy_uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_group_uuid",
+                  "description": "(Required) Hierarchy Group UUID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "hierarchy_uuid",
+                  "description": "(Required) The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "(Required) Required, and can be `null`. End date formatted YYYY-MM-DD."
+                },
+                {
+                  "disabled": false,
+                  "key": "managing_employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Required, and cannot be null. Managing Employee UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "reporting_employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Required, and cannot be null. Reporting Employee UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "(Required) Required, and can be `null`. Start date formatted YYYY-MM-DD."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bdf29534-d778-444e-a55e-a9d03cdbb25a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":hierarchy_group_uuid",
+                    "hierarchies",
+                    ":hierarchy_uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_group_uuid",
+                      "description": "(Required) Hierarchy Group UUID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "hierarchy_uuid",
+                      "description": "(Required) The UUID of an individual hierarchy within hierarchy_group `hierarchy_group_uuid`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, and can be `null`. End date formatted YYYY-MM-DD.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, and cannot be null. Managing Employee UUID.",
+                        "type": "text/plain"
+                      },
+                      "key": "managing_employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, and cannot be null. Reporting Employee UUID.",
+                        "type": "text/plain"
+                      },
+                      "key": "reporting_employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, and can be `null`. Start date formatted YYYY-MM-DD.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hierarchy_group\": \"34a0a23f-dd0c-05a4-e561-25b94a09b87c\",\n  \"managing_employee\": \"db7da765-e8e7-4d20-2f11-b7d15640b7b0\",\n  \"reporting_employee\": \"736d41fa-73c0-2fea-5a6e-ac921cc42bcb\",\n  \"object\": \"hierarchy\",\n  \"id\": \"81166f05-570e-44e4-131c-47be3c5b8aa0\",\n  \"start_date\": \"2007-02-02\",\n  \"end_date\": \"1987-07-17\",\n  \"created_at\": \"1964-06-03T02:25:34.593Z\",\n  \"updated_at\": \"1994-09-08T05:54:14.224Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05105010-ccff-4a51-983b-47fee537290e",
+          "name": "Get Hierarchy Group",
+          "request": {
+            "name": "Get Hierarchy Group",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "hierarchy-groups",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a5b35452-26dc-4d2f-84fc-8421a779e91d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "hierarchy-groups",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"acf65970-91dd-0f1e-d18f-e9dca2f6e2a0\",\n  \"name\": \"string\",\n  \"object\": \"hierarchy group\",\n  \"default\": false,\n  \"created_at\": \"1967-05-05T20:21:46.255Z\",\n  \"updated_at\": \"1974-07-15T13:12:49.883Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "889eeabc-5627-4d8a-b906-66c29af52da4",
+    "name": "CaptivateIQ Attribute Worksheets Hierarchies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

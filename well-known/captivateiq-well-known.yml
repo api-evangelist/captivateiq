@@ -1,12 +1,45 @@
-generated: '2026-07-18'
-method: searched
-source: live probes of /.well-known/ on CaptivateIQ hosts
+generated: '2026-08-13'
+method: probed
+source: live probes of /.well-known/ across all CaptivateIQ hosts (2026-08-13)
 note: >-
-  No /.well-known/ discovery documents are published. api.captivateiq.com returns 403
-  (WAF) for all probed paths; developers.* and www.* return 404. Recorded as valid
-  absence — no documents to index.
+  ONE real document is served: an RFC 8414 OAuth 2.0 Authorization Server Metadata document at
+  https://app.captivateiq.com/.well-known/oauth-authorization-server (HTTP 200,
+  application/json, parses as a JSON object with issuer/authorization_endpoint/token_endpoint).
+  It is saved verbatim as captivateiq-oauth-authorization-server.json and feeds
+  scopes/captivateiq-scopes.yml and authentication/captivateiq-authentication.yml. This is a
+  NEW find on this pass — the previous round probed only api./developers./www. and missed the
+  app. host, which is the one running the OAuth server. Everything else is absent:
+  api.captivateiq.com answers 403 (WAF) for every /.well-known/ path, and developers.*, www.*
+  and app.* return 404. No security.txt, no api-catalog, no ai-plugin.json, no OpenID Connect
+  discovery, and no A2A agent card on any host.
+documents_found: 1
 hosts:
+- host: https://app.captivateiq.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: application/json
+    file: captivateiq-oauth-authorization-server.json
+    kind: RFC 8414 OAuth 2.0 Authorization Server Metadata
+    real_document: true
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/jwks.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
 - host: https://api.captivateiq.com
+  note: WAF returns 403 with an HTML error page for every /.well-known/ path; not a document.
   documents:
   - path: /.well-known/security.txt
     status: 403
@@ -17,6 +50,10 @@ hosts:
   - path: /.well-known/api-catalog
     status: 403
   - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
     status: 403
 - host: https://developers.captivateiq.com
   documents:
@@ -26,9 +63,17 @@ hosts:
     status: 404
   - path: /.well-known/oauth-authorization-server
     status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/oauth-protected-resource/mcp
+    status: 404
   - path: /.well-known/api-catalog
     status: 404
   - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
     status: 404
 - host: https://www.captivateiq.com
   documents:
@@ -41,4 +86,8 @@ hosts:
   - path: /.well-known/api-catalog
     status: 404
   - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
     status: 404

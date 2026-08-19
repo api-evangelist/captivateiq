@@ -1,0 +1,200 @@
+{
+  "item": [
+    {
+      "id": "4d0705fd-d4a3-405f-80d6-46b5557fcb92",
+      "name": "Audit Logs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d78370e0-ff5d-4b6f-8859-e5ed28cf8d9b",
+          "name": "List Audit Logs",
+          "request": {
+            "name": "List Audit Logs",
+            "description": {
+              "content": "Get a list of all the Audit Logs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "audit-logs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "Filter Audit Logs by user email"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Filter Audit Logs by end date (YYYY-MM-DD format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Filter Audit Logs by start date (YYYY-MM-DD format)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b92ea77a-e699-4db7-ae68-053994e4f5b2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "audit-logs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"id\": \"ccc69297-61b0-1732-d253-0db1357e7c71\",\n      \"object\": \"audit_log\",\n      \"organization_id\": \"09a0871a-185d-f71e-ce88-2a59af39ca3a\",\n      \"organization_name\": \"string\",\n      \"user_id\": \"string\",\n      \"user_name\": \"string\",\n      \"user_email\": \"blpX1m6X@OZblowioiTWd.djk\",\n      \"logged_in_user_id\": \"string\",\n      \"logged_in_user_name\": \"string\",\n      \"logged_in_user_email\": \"W9Dp2w@DVLMvSgrDqVoBpExEjEvRLwcgWa.rja\",\n      \"ip_address\": \"string\",\n      \"created_at\": \"1977-02-16T23:24:41.191Z\",\n      \"event_type\": \"string\",\n      \"version\": 4005,\n      \"data\": {},\n      \"object_id\": \"string\",\n      \"object_name\": \"string\",\n      \"object_type\": \"string\"\n    },\n    {\n      \"id\": \"e6a09aa7-3abf-1011-8aa2-d4dd5bf4e64c\",\n      \"object\": \"audit_log\",\n      \"organization_id\": \"7478ce32-9dcc-9c07-b653-5708225b52ac\",\n      \"organization_name\": \"string\",\n      \"user_id\": \"string\",\n      \"user_name\": \"string\",\n      \"user_email\": \"iBXZtAG1a-DlK@HgAYKBQIqUrIxQU.waac\",\n      \"logged_in_user_id\": \"string\",\n      \"logged_in_user_name\": \"string\",\n      \"logged_in_user_email\": \"9alcztQj@ehyYrvvTkCfa.utk\",\n      \"ip_address\": \"string\",\n      \"created_at\": \"2007-03-23T05:13:06.495Z\",\n      \"event_type\": \"string\",\n      \"version\": 3273,\n      \"data\": {},\n      \"object_id\": \"string\",\n      \"object_name\": \"string\",\n      \"object_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "45d6a819-0469-40dc-b46b-c5ff165fa610",
+    "name": "CaptivateIQ Attribute Worksheets Audit Logs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

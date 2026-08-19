@@ -1,21 +1,33 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
 probe: true
 source: https://www.captivateiq.com/trust
 url: https://www.captivateiq.com/trust
 url_alt: https://trust.captivateiq.com/
 certifications:
+- ISO 27001
 - SOC 1
 - SOC 2
 - SOX
 - GDPR
 evidence:
 - source: https://www.captivateiq.com/trust
+  status: 200
   keywords:
   - soc 2
   - trust center
   - gdpr
-- source: https://www.captivateiq.com/security-policy
+- source: https://trust.captivateiq.com/
+  status: 200
   detail: >-
-    Security policy documents annual SOC 1 and SOC 2 (Security, Availability,
-    Confidentiality) audits and SOX compliance; a bug bounty program is maintained.
+    Dedicated trust-center subdomain resolves and serves a CaptivateIQ Trust Center page.
+- source: https://www.captivateiq.com/security-policy
+  status: 200
+  detail: >-
+    Security policy names ISO 27001 ("information on its ISO 27001 certification and Service
+    Organization Control (SOC) reports") and states "CaptivateIQ completes annual audits
+    against SOC1 and SOC2 security requirements", with SOC 2 covering Security, Availability
+    and Confidentiality. A SOX compliance surface is published at /sox.
+note: >-
+  ISO 27001, SOC 1 and SOX are carried from the published security policy; they were dropped
+  by an automated keyword probe on 2026-08-13 and restored here from the provider's own text.

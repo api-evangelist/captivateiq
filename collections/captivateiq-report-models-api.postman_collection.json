@@ -1,0 +1,874 @@
+{
+  "item": [
+    {
+      "id": "ccdab349-988b-4c26-b218-e6f2672a71af",
+      "name": "Report Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d41d682d-42d8-4123-9808-3ddf9abcc280",
+          "name": "List Report Models",
+          "request": {
+            "name": "List Report Models",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "report-models",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter Report Models by name"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)name`, `(-)created_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_date",
+                  "value": "<date>",
+                  "description": "Filter Report Models by period date (YYYY-MM-DD format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter Report Models by type. Defaults to 'time_series'."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1110644a-e4b5-44df-be08-698e16a0e2a6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "report-models",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"description\": \"string\",\n      \"id\": \"adf32d1c-a239-fa75-18c8-5f0f3188361c\",\n      \"name\": \"string\",\n      \"period_dates\": [\n        {\n          \"id\": \"ea325fe6-d8cc-6a64-352b-68b0505285d8\",\n          \"object\": \"period_date\",\n          \"date\": \"2019-02-15\"\n        },\n        {\n          \"id\": \"58e86b25-2820-0bf3-2784-a40d0c9ad0d7\",\n          \"object\": \"period_date\",\n          \"date\": \"1985-12-12\"\n        }\n      ],\n      \"type\": \"string\",\n      \"worksheets\": [\n        {\n          \"id\": \"575a5005-22f9-957f-f4c0-95145a54b5bb\",\n          \"is_hidden\": false,\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"object\": \"worksheet\"\n        },\n        {\n          \"id\": \"e13bae9b-625f-346b-b092-572101c2c2f0\",\n          \"is_hidden\": false,\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"object\": \"worksheet\"\n        }\n      ],\n      \"object\": \"report_model\"\n    },\n    {\n      \"description\": \"string\",\n      \"id\": \"e501acd7-97f7-b4b7-df7e-60d5eefd3f60\",\n      \"name\": \"string\",\n      \"period_dates\": [\n        {\n          \"id\": \"204e56a3-af47-7c47-ba6c-bef56c9ca886\",\n          \"object\": \"period_date\",\n          \"date\": \"1949-08-11\"\n        },\n        {\n          \"id\": \"e20f7c36-e7e3-25fc-0af7-a73a1966281a\",\n          \"object\": \"period_date\",\n          \"date\": \"1999-03-13\"\n        }\n      ],\n      \"type\": \"string\",\n      \"worksheets\": [\n        {\n          \"id\": \"263b802b-9429-91ce-428d-ed8ff504a8a0\",\n          \"is_hidden\": false,\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"object\": \"worksheet\"\n        },\n        {\n          \"id\": \"41d3fe68-efd2-4107-2675-4ed0395a34e0\",\n          \"is_hidden\": true,\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"object\": \"worksheet\"\n        }\n      ],\n      \"object\": \"report_model\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "947cb926-0bcb-404c-93f6-3c36cea103b3",
+          "name": "Export Report Model Worksheet",
+          "request": {
+            "name": "Export Report Model Worksheet",
+            "description": {
+              "content": "Export report output worksheet",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "report-models",
+                "export-worksheet",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "period_date",
+                  "value": "<date>",
+                  "description": "(Required) Required. The period date to be exported (YYYY-MM-DD format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "report_model_uuid",
+                  "value": "<uuid>",
+                  "description": "(Required) Required. The report model whose report is to be exported"
+                },
+                {
+                  "disabled": false,
+                  "key": "worksheet_uuid",
+                  "value": "<uuid>",
+                  "description": "(Required) Required. The worksheet to be exported"
+                },
+                {
+                  "disabled": false,
+                  "key": "reprocess",
+                  "value": "false",
+                  "description": "Optional. Whether or not to trigger a reprocess of the report model"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b0e094c0-d6c3-4558-b899-f0c2476f04d4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "report-models",
+                    "export-worksheet",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The period date to be exported (YYYY-MM-DD format)",
+                        "type": "text/plain"
+                      },
+                      "key": "period_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The report model whose report is to be exported",
+                        "type": "text/plain"
+                      },
+                      "key": "report_model_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The worksheet to be exported",
+                        "type": "text/plain"
+                      },
+                      "key": "worksheet_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Whether or not to trigger a reprocess of the report model",
+                        "type": "text/plain"
+                      },
+                      "key": "reprocess",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"c7b8af8f-a19f-fad4-7536-d01cd0174cf4\",\n    \"user_email\": \"4f159a9a-f705-d701-ebf1-0bc0d4d6019c\",\n    \"created_at\": \"2020-12-15T02:03:04.850Z\",\n    \"updated_at\": \"2019-04-08T20:26:55.678Z\",\n    \"aggregation_id\": \"6ba58967-e878-ad2b-00f7-fcd5bb1dffe3\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {},\n    \"key_4\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36286246-9b37-4b54-8f4e-b153fd6df661",
+          "name": "List Report Models Exports",
+          "request": {
+            "name": "List Report Models Exports",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "report-models",
+                "exports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "locked_status",
+                  "value": "<boolean>",
+                  "description": "Filter Report Models by locked status"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter Report Models Exports by name"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`-period_date`]. Available fields for ordering: [`(-)name`, `(-)created_at`, `(-)period_date`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_date",
+                  "value": "<date>",
+                  "description": "Filter Report Models Exports by period date (YYYY-MM-DD format)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a3fdc4a-eedb-4734-8524-fc3ae9eb7e00",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "report-models",
+                    "exports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "locked_status",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"id\": \"2a870726-8df2-9dee-4e3b-d01b14eef9c5\",\n      \"report_model_id\": \"52877206-e90a-d5ff-00be-7e36781a99ed\",\n      \"report_model_name\": \"string\",\n      \"worksheets\": [\n        {\n          \"id\": \"45d843c1-23eb-3574-75ab-c915eb928bee\",\n          \"name\": \"string\",\n          \"object\": \"worksheet\"\n        },\n        {\n          \"id\": \"3efcc91a-2c57-39ee-9b8c-4468913100cc\",\n          \"name\": \"string\",\n          \"object\": \"worksheet\"\n        }\n      ],\n      \"object\": \"report_model_export\",\n      \"period_date\": \"2024-08-20\",\n      \"is_locked\": true\n    },\n    {\n      \"id\": \"e7ef79f4-aef2-0756-7dac-65743eaf599c\",\n      \"report_model_id\": \"893e7d21-1ecb-a790-855a-5a19f44b00b6\",\n      \"report_model_name\": \"string\",\n      \"worksheets\": [\n        {\n          \"id\": \"fcc87861-678f-dacd-ce42-2a379dd78665\",\n          \"name\": \"string\",\n          \"object\": \"worksheet\"\n        },\n        {\n          \"id\": \"2dbb9b7d-3204-94f2-7a33-71668ce86ade\",\n          \"name\": \"string\",\n          \"object\": \"worksheet\"\n        }\n      ],\n      \"object\": \"report_model_export\",\n      \"period_date\": \"1955-01-23\",\n      \"is_locked\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ad3621c-4b7c-4d6e-9b83-6e795d0894ef",
+          "name": "Retrieve Report Model",
+          "request": {
+            "name": "Retrieve Report Model",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "report-models",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "85c41766-a8cb-4433-9b23-e46443ee37f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "report-models",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"id\": \"ee97801e-b84e-ba5b-1a42-29a1d8c34fc6\",\n  \"name\": \"string\",\n  \"period_dates\": [\n    {\n      \"id\": \"0820b365-3517-e17e-1a14-81ff25693abf\",\n      \"object\": \"period_date\",\n      \"date\": \"1963-10-21\"\n    },\n    {\n      \"id\": \"9aa69b5f-6539-aa04-789c-129eb911e75c\",\n      \"object\": \"period_date\",\n      \"date\": \"2017-02-18\"\n    }\n  ],\n  \"type\": \"string\",\n  \"worksheets\": [\n    {\n      \"columns\": [\n        {\n          \"data_type\": \"string\",\n          \"id\": \"cbd3b4db-b805-d8a6-3dd2-b1fa90c253c1\",\n          \"name\": \"string\",\n          \"object\": \"column\"\n        },\n        {\n          \"data_type\": \"string\",\n          \"id\": \"21aa221c-1ba2-2f49-a647-346ab5e542e1\",\n          \"name\": \"string\",\n          \"object\": \"column\"\n        }\n      ],\n      \"id\": \"23b14df7-d951-fe2a-ae89-2e19ae2386e0\",\n      \"is_hidden\": true,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"object\": \"worksheet\"\n    },\n    {\n      \"columns\": [\n        {\n          \"data_type\": \"string\",\n          \"id\": \"410cb137-b2a8-088b-6e4d-8c898fdef953\",\n          \"name\": \"string\",\n          \"object\": \"column\"\n        },\n        {\n          \"data_type\": \"string\",\n          \"id\": \"0d9aa407-d4d7-59c9-14a1-a19e00e88019\",\n          \"name\": \"string\",\n          \"object\": \"column\"\n        }\n      ],\n      \"id\": \"5898e313-8cfe-720a-1678-e17f8dbba89f\",\n      \"is_hidden\": false,\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"object\": \"worksheet\"\n    }\n  ],\n  \"object\": \"report_model\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d51c246-e198-450c-ac07-c7ef32de2d72",
+          "name": "Export Report Model Worksheet Records",
+          "request": {
+            "name": "Export Report Model Worksheet Records",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "report-models",
+                ":report_model_uuid",
+                "records",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_model_uuid",
+                  "description": "(Required) Report Model UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "worksheet_uuid",
+                  "value": "<uuid>",
+                  "description": "(Required) The UUID of the worksheet to export records from"
+                },
+                {
+                  "disabled": false,
+                  "key": "period_date",
+                  "value": "<date>",
+                  "description": "The period date in YYYY-MM-DD format. Required for time_series report models."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Free-text search filter applied to records."
+                },
+                {
+                  "disabled": false,
+                  "key": "column_filters",
+                  "value": "{\"id\":\"<string>\",\"op\":\"<string>\",\"term\":\"<string>\"}",
+                  "description": "Array of column filters. Each filter: {\"id\": \"<column_uuid>\", \"op\": \"<operator>\", \"term\": \"<value>\"}. Operators: contains, eq, ne, lt, lte, gt, gte, is, in."
+                },
+                {
+                  "disabled": false,
+                  "key": "column_filters",
+                  "value": "{\"id\":\"<string>\",\"op\":\"<string>\",\"term\":\"<string>\"}",
+                  "description": "Array of column filters. Each filter: {\"id\": \"<column_uuid>\", \"op\": \"<operator>\", \"term\": \"<value>\"}. Operators: contains, eq, ne, lt, lte, gt, gte, is, in."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "[[\"<string>\",\"<string>\"]]",
+                  "description": "Sort configuration. Format: {\"order\": [[\"<column_uuid>\", 1]]} where 1=ascending, 0=descending."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2fd7f445-d117-40b0-8a1c-d0ad8d41dc19",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "report-models",
+                    ":report_model_uuid",
+                    "records",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_model_uuid",
+                      "description": "(Required) Report Model UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The UUID of the worksheet to export records from",
+                        "type": "text/plain"
+                      },
+                      "key": "worksheet_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The period date in YYYY-MM-DD format. Required for time_series report models.",
+                        "type": "text/plain"
+                      },
+                      "key": "period_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Free-text search filter applied to records.",
+                        "type": "text/plain"
+                      },
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Array of column filters. Each filter: {\"id\": \"<column_uuid>\", \"op\": \"<operator>\", \"term\": \"<value>\"}. Operators: contains, eq, ne, lt, lte, gt, gte, is, in.",
+                        "type": "text/plain"
+                      },
+                      "key": "column_filters",
+                      "value": "{\"id\":\"<string>\",\"op\":\"<string>\",\"term\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Array of column filters. Each filter: {\"id\": \"<column_uuid>\", \"op\": \"<operator>\", \"term\": \"<value>\"}. Operators: contains, eq, ne, lt, lte, gt, gte, is, in.",
+                        "type": "text/plain"
+                      },
+                      "key": "column_filters",
+                      "value": "{\"id\":\"<string>\",\"op\":\"<string>\",\"term\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sort configuration. Format: {\"order\": [[\"<column_uuid>\", 1]]} where 1=ascending, 0=descending.",
+                        "type": "text/plain"
+                      },
+                      "key": "order",
+                      "value": "[[\"<string>\",\"<string>\"]]"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"c7b8af8f-a19f-fad4-7536-d01cd0174cf4\",\n    \"user_email\": \"4f159a9a-f705-d701-ebf1-0bc0d4d6019c\",\n    \"created_at\": \"2020-12-15T02:03:04.850Z\",\n    \"updated_at\": \"2019-04-08T20:26:55.678Z\",\n    \"aggregation_id\": \"6ba58967-e878-ad2b-00f7-fcd5bb1dffe3\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {},\n    \"key_4\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "832f7f04-9832-47f9-a63c-3cbcd6edf76e",
+    "name": "CaptivateIQ Attribute Worksheets Report Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

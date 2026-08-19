@@ -1,13 +1,38 @@
-generated: '2026-07-18'
-method: derived
-status: candidate
-source: openapi/captivateiq-openapi-original.yml
-note: No official hosted CaptivateIQ MCP server was found. This is a derived candidate tool list (one
-  tool per OpenAPI operation) for building an MCP server over the ciq/v1 REST API.
+generated: '2026-08-13'
+method: probed
+status: live-server-found
+source: >-
+  https://developers.captivateiq.com/mcp (probed 2026-08-13),
+  https://www.prnewswire.com/news-releases/captivateiq-launches-captivateiq-agents-marking-a-new-generation-of-compensation-and-sales-planning-with-purpose-built-ai-302772451.html,
+  openapi/captivateiq-openapi-original.yml
+note: >-
+  CaptivateIQ serves a live remote MCP endpoint on its own developer-docs host at
+  https://developers.captivateiq.com/mcp. A GET returns HTTP 200 with the body
+  "This URL can only be accessed with a MCP client"; a JSON-RPC POST of
+  initialize/tools/list returns HTTP 401 {"code":-32001,"message":"Authorization required"}
+  with no WWW-Authenticate challenge and no OAuth discovery documents
+  (/.well-known/oauth-protected-resource and /.well-known/oauth-authorization-server both 404).
+  The live tool inventory is therefore AUTH-GATED and was NOT observed. Separately,
+  CaptivateIQ publicly announced a product-level "CaptivateIQ MCP Server" on 2026-05-14
+  for connecting live compensation and planning data to customer AI tools — announced as
+  limited beta for select enterprise customers with GA planned later in 2026; no public
+  endpoint for that server is documented. The tools[] list below is NOT the live inventory:
+  it is a DERIVED candidate mapping (one tool per OpenAPI operation) over the ciq/v1 REST API,
+  retained from the previous pass and clearly marked as such.
+tools_provenance:
+  method: derived
+  status: candidate
+  source: openapi/captivateiq-openapi-original.yml
+  observed: false
+  reason: live tools/list returns HTTP 401 (Authorization required)
 server:
   name: captivateiq
   transport: http
-  auth: 'apiKey (Authorization: Token <token>)'
+  url: https://developers.captivateiq.com/mcp
+  auth: gated
+  auth_note: >-
+    401 "Authorization required" with no WWW-Authenticate header and no RFC 9728
+    protected-resource metadata; the authentication scheme is not publicly documented.
 tools:
 - name: attribute_worksheets_list
   description: List Attribute Worksheets
@@ -255,3 +280,23 @@ tools:
 - name: users_update
   description: Update User
   source_operation: openapi/captivateiq-openapi-original.yml#users_update
+deployment:
+  mode: remote
+  endpoint: https://developers.captivateiq.com/mcp
+  auth: unknown
+  verified: probed
+  probe:
+    fetched: '2026-08-13'
+    get_status: 200
+    get_body: This URL can only be accessed with a MCP client.
+    jsonrpc_post_status: 401
+    jsonrpc_error: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"},"id":null}'
+    tools_observed: false
+  announced_product_server:
+    name: CaptivateIQ MCP Server
+    status: limited-beta
+    announced: '2026-05-14'
+    availability: select enterprise customers; GA planned later in 2026
+    endpoint: null
+    source: https://www.prnewswire.com/news-releases/captivateiq-launches-captivateiq-agents-marking-a-new-generation-of-compensation-and-sales-planning-with-purpose-built-ai-302772451.html
+  candidate_tools: 82

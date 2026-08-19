@@ -1,0 +1,1870 @@
+{
+  "item": [
+    {
+      "id": "00eb44fa-631f-4208-a7ff-0afd36a2e4a2",
+      "name": "Employees",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73a60939-3d18-4b05-ab72-91e36add9aa9",
+          "name": "Create Employee Visibility",
+          "request": {
+            "name": "Create Employee Visibility",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-visibilities",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<uuid>",
+                  "description": "(Required) Required. The uuid of the user."
+                },
+                {
+                  "disabled": false,
+                  "key": "visible_employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Required. The uuid of the visible employee."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Required. The visibility start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Required. The visibility end date."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "295a5a2f-e3df-4392-bea6-a3ce111c3887",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-visibilities",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The uuid of the user.",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The uuid of the visible employee.",
+                        "type": "text/plain"
+                      },
+                      "key": "visible_employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required. The visibility start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required. The visibility end date.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": \"5d17d57a-ee28-3224-6c89-7a1ebaf55bce\",\n  \"visible_employee\": \"dc814a9a-7204-5d5e-5da1-97b22d4d7b3d\",\n  \"object\": \"employee visibility\",\n  \"id\": \"string\",\n  \"start_date\": \"1955-07-28\",\n  \"end_date\": \"2009-08-21\",\n  \"source\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created_at\": \"1968-01-21T14:07:54.598Z\",\n  \"updated_at\": \"1977-01-17T19:45:43.912Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6cd08207-1a1b-42ce-9e1e-98d02800a39f",
+          "name": "List Employee Visibilities",
+          "request": {
+            "name": "List Employee Visibilities",
+            "description": {
+              "content": "Hierarchy visibilities include an extra field, `managing_employee` which contains the UUID of the managing employee.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-visibilities",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hierarchy_group_name",
+                  "value": "<string>",
+                  "description": "Filter visibilities by a hierarchy group name."
+                },
+                {
+                  "disabled": false,
+                  "key": "hierarchy_id",
+                  "value": "<uuid>",
+                  "description": "Filter visibilities by hierarchy id."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Use `start_date` or `end_date` to order by start or end date, and `-start_date` or `-end_date` to reverse them respectively. Defaults to `start_date`."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<uuid>",
+                  "description": "Filter visibilities by user_id."
+                },
+                {
+                  "disabled": false,
+                  "key": "visible_employee_id",
+                  "value": "<uuid>",
+                  "description": "Filter visibilities by an employee_id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8d9b0677-edae-4286-812e-aa5605478889",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-visibilities",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hierarchy_group_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hierarchy_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "visible_employee_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"user\": \"d4ddfebd-fd54-c32d-e362-4b9ca4656997\",\n      \"visible_employee\": \"ed50826e-d6dd-8109-2b04-a9e34cbc90eb\",\n      \"object\": \"employee visibility\",\n      \"id\": \"string\",\n      \"start_date\": \"1982-11-04\",\n      \"end_date\": \"2015-11-02\",\n      \"source\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"created_at\": \"1954-09-17T18:08:54.368Z\",\n      \"updated_at\": \"1989-02-01T16:29:44.629Z\"\n    },\n    {\n      \"user\": \"54542f6a-adb5-a666-42c9-6f76e5047fcd\",\n      \"visible_employee\": \"6c3f6f18-3f47-bd1c-2ccd-f5c0b6979ef0\",\n      \"object\": \"employee visibility\",\n      \"id\": \"string\",\n      \"start_date\": \"1960-07-07\",\n      \"end_date\": \"1968-07-13\",\n      \"source\": {\n        \"key_0\": {}\n      },\n      \"created_at\": \"1953-01-20T12:34:40.217Z\",\n      \"updated_at\": \"1961-04-03T22:25:43.600Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9a0bfe6-dd20-4f51-9c0d-4adccffe2473",
+          "name": "Delete Employee Visibility",
+          "request": {
+            "name": "Delete Employee Visibility",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-visibilities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c9a10ac-ad8f-41af-b171-be02917b0590",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-visibilities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"string\",\n  \"id\": \"29326baa-68b5-14ee-ec44-cfd211ac2592\",\n  \"deleted\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ccc717d-4008-424b-8938-6ca41a00ca2d",
+          "name": "Get Employee Visibility",
+          "request": {
+            "name": "Get Employee Visibility",
+            "description": {
+              "content": "Retrieves Employee Visibilities with the `object: \"employee visibility\"` field. To retrieve Hierarchies, see the Hierarchies documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-visibilities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2fcce32b-993e-46f4-82b6-6fb49cebf330",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-visibilities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": \"5d17d57a-ee28-3224-6c89-7a1ebaf55bce\",\n  \"visible_employee\": \"dc814a9a-7204-5d5e-5da1-97b22d4d7b3d\",\n  \"object\": \"employee visibility\",\n  \"id\": \"string\",\n  \"start_date\": \"1955-07-28\",\n  \"end_date\": \"2009-08-21\",\n  \"source\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created_at\": \"1968-01-21T14:07:54.598Z\",\n  \"updated_at\": \"1977-01-17T19:45:43.912Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5becb01-2e34-4121-a64d-768c1187861b",
+          "name": "Update Employee Visibility",
+          "request": {
+            "name": "Update Employee Visibility",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employee-visibilities",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<uuid>",
+                  "description": "(Required) Required. The uuid of the user."
+                },
+                {
+                  "disabled": false,
+                  "key": "visible_employee",
+                  "value": "<uuid>",
+                  "description": "(Required) Required. The uuid of the visible employee."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Required. The visibility start date."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "Required. The visibility end date."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b6f7019-a2fc-4609-9792-926e9e3ea35b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employee-visibilities",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The uuid of the user.",
+                        "type": "text/plain"
+                      },
+                      "key": "user",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. The uuid of the visible employee.",
+                        "type": "text/plain"
+                      },
+                      "key": "visible_employee",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required. The visibility start date.",
+                        "type": "text/plain"
+                      },
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required. The visibility end date.",
+                        "type": "text/plain"
+                      },
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user\": \"5d17d57a-ee28-3224-6c89-7a1ebaf55bce\",\n  \"visible_employee\": \"dc814a9a-7204-5d5e-5da1-97b22d4d7b3d\",\n  \"object\": \"employee visibility\",\n  \"id\": \"string\",\n  \"start_date\": \"1955-07-28\",\n  \"end_date\": \"2009-08-21\",\n  \"source\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created_at\": \"1968-01-21T14:07:54.598Z\",\n  \"updated_at\": \"1977-01-17T19:45:43.912Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afad0aa9-daa4-409a-9010-9dc81358deae",
+          "name": "Create Employee",
+          "request": {
+            "name": "Create Employee",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employees",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "employee_id",
+                  "value": "<string>",
+                  "description": "(Required) Required, must be unique. Your unique identifier for the employee within your organization."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "Required if `linked_user` not provided, otherwise optional. The employee's email address."
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "Required if `linked_user` not provided, otherwise optional. The employee's first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Required if `linked_user` not provided, otherwise optional. The employee's last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "final_process_date",
+                  "value": "<date>",
+                  "description": "Optional. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "true",
+                  "description": "Optional, defaults to `true`. Active employees count towards your seat count."
+                },
+                {
+                  "disabled": false,
+                  "key": "linked_user",
+                  "value": "<uuid>",
+                  "description": "Optional. Pass in a UUID to link to an existing User, otherwise a new User will be automatically created for this employee."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_inquiry_notifications",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_statement_notifications",
+                  "value": "true",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "eligible_to_receive_inquiries",
+                  "value": "true",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "eligible_to_submit_inquiries",
+                  "value": "true",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_payout_processing_notifications",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_connector_sync_email_notifications",
+                  "value": "true",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_scim_email_notifications",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_audit_log_export_notifications",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_organization_admin",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "send_initial_email",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "login_access",
+                  "value": "false",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "role",
+                  "value": "<string>",
+                  "description": "Optional. Values to be passed through if creating a new user"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "America/Los_Angeles",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `America/Los_Angeles`. Used only if creating a new linked user. User timezone name. Accepts [tz database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. `America/Los_Angeles`."
+                },
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `None`. The employee's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`."
+                },
+                {
+                  "disabled": false,
+                  "key": "login_id",
+                  "value": "<string>",
+                  "description": "Optional. This field is only used if an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and if linked_user does not have a value. If this is the case then login_id value will be used in creating the linked_user. If login_id is blank, the linked user will be created as a placeholder user."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a7160b4-cba8-4d3b-9b50-a681e67337eb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employees",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, must be unique. Your unique identifier for the employee within your organization.",
+                        "type": "text/plain"
+                      },
+                      "key": "employee_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required if `linked_user` not provided, otherwise optional. The employee's email address.",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required if `linked_user` not provided, otherwise optional. The employee's first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Required if `linked_user` not provided, otherwise optional. The employee's last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.",
+                        "type": "text/plain"
+                      },
+                      "key": "final_process_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `true`. Active employees count towards your seat count.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Pass in a UUID to link to an existing User, otherwise a new User will be automatically created for this employee.",
+                        "type": "text/plain"
+                      },
+                      "key": "linked_user",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_inquiry_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_statement_notifications",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "eligible_to_receive_inquiries",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "eligible_to_submit_inquiries",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_payout_processing_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_connector_sync_email_notifications",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_scim_email_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "enable_audit_log_export_notifications",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "is_organization_admin",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "send_initial_email",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "login_access",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Values to be passed through if creating a new user",
+                        "type": "text/plain"
+                      },
+                      "key": "role",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `America/Los_Angeles`. Used only if creating a new linked user. User timezone name. Accepts [tz database names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. `America/Los_Angeles`.",
+                        "type": "text/plain"
+                      },
+                      "key": "timezone",
+                      "value": "America/Los_Angeles"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, default to your \"Organization User Settings\" value. If an \"Organization User Settings\" value is not set will fallback to `None`. The employee's locale. Accepts [locale names](https://support.captivateiq.com/hc/en-us/articles/4418762747796-User-locale-settings-beta-), e.g. `en_US`.",
+                        "type": "text/plain"
+                      },
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. This field is only used if an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and if linked_user does not have a value. If this is the case then login_id value will be used in creating the linked_user. If login_id is blank, the linked user will be created as a placeholder user.",
+                        "type": "text/plain"
+                      },
+                      "key": "login_id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"employee_id\": \"string\",\n  \"is_active\": true,\n  \"object\": \"employee\",\n  \"id\": \"string\",\n  \"email\": \"ElNNozyI@NGIiCYAdzEJprpbhtiaxrOhJefx.oll\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"final_process_date\": \"1990-11-08\",\n  \"linked_user\": \"bc9f55c4-1fed-4d7c-65ba-3159c0ab41d9\",\n  \"created_at\": \"1963-01-23T03:07:36.770Z\",\n  \"updated_at\": \"1962-03-19T06:09:07.218Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bd40273-904f-41a6-80a8-3e2779045afb",
+          "name": "List Employees",
+          "request": {
+            "name": "List Employees",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employees",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "employee_id",
+                  "value": "<string>",
+                  "description": "Filter by employee id"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "Filter by first name"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "Filter by last name"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`employee_id`]. Available fields for ordering: [`(-)employee_id`, `(-)first_name`, `(-)last_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "38682479-2436-491f-b7af-cf25d2ed49d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employees",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "employee_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"employee_id\": \"string\",\n      \"is_active\": true,\n      \"object\": \"employee\",\n      \"id\": \"string\",\n      \"email\": \"WYTr@NwgrnqbKfSFiiStoNZcDe.nyc\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"final_process_date\": \"1959-03-18\",\n      \"linked_user\": \"09867154-2775-11cc-882a-9e9355e2eaa1\",\n      \"created_at\": \"1974-09-04T01:06:45.514Z\",\n      \"updated_at\": \"1984-03-08T02:24:44.872Z\"\n    },\n    {\n      \"employee_id\": \"string\",\n      \"is_active\": true,\n      \"object\": \"employee\",\n      \"id\": \"string\",\n      \"email\": \"jZbRcZi@nuRewTWjzgVZTXmCSEYrGheV.rydm\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"final_process_date\": \"1991-11-29\",\n      \"linked_user\": \"d5cd736c-8d2d-2434-8357-612ca474fe04\",\n      \"created_at\": \"1978-04-02T15:51:01.343Z\",\n      \"updated_at\": \"2024-09-02T15:55:16.505Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e70f9395-dbd2-4f20-aad4-ad3887f24a19",
+          "name": "Delete Employee",
+          "request": {
+            "name": "Delete Employee",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employees",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8c1d993e-ab2d-4c9f-a727-441512f74579",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employees",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3517eb53-b234-493c-bdf5-4526a09eeead",
+          "name": "Get Employee",
+          "request": {
+            "name": "Get Employee",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employees",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f8f8b5fd-d2d7-481f-b73b-73b28914d4db",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employees",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"employee_id\": \"string\",\n  \"is_active\": true,\n  \"object\": \"employee\",\n  \"id\": \"string\",\n  \"email\": \"ElNNozyI@NGIiCYAdzEJprpbhtiaxrOhJefx.oll\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"final_process_date\": \"1990-11-08\",\n  \"linked_user\": \"bc9f55c4-1fed-4d7c-65ba-3159c0ab41d9\",\n  \"created_at\": \"1963-01-23T03:07:36.770Z\",\n  \"updated_at\": \"1962-03-19T06:09:07.218Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0cee905-bd3f-418b-83d8-e9853d843557",
+          "name": "Update Employee",
+          "request": {
+            "name": "Update Employee",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "employees",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) Required, can be `null`. The employee's email address."
+                },
+                {
+                  "disabled": false,
+                  "key": "employee_id",
+                  "value": "<string>",
+                  "description": "(Required) Required, must be unique. Your unique identifier for the employee within your organization."
+                },
+                {
+                  "disabled": false,
+                  "key": "final_process_date",
+                  "value": "<date>",
+                  "description": "(Required) Required, can be `null`. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date."
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>",
+                  "description": "(Required) Required, can be `null`. The employee's first name."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "(Required) Required. Active employees count towards your seat count."
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>",
+                  "description": "(Required) Required, can be `null`. The employee's last name."
+                },
+                {
+                  "disabled": false,
+                  "key": "login_id",
+                  "value": "<string>",
+                  "description": "Optional. Only used when an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and the employee has a linked_user value. If linked_user has a value, then login_id will be used to update the login_id of the linked_user."
+                },
+                {
+                  "disabled": false,
+                  "key": "employee_license_automated_deactivation_date",
+                  "value": "<date>",
+                  "description": "Optional, can be `null`. YYYY-MM-DD format. The employee will be automatically deactivated on this date."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fcb41cc1-a1e8-4082-b18e-abdc6e9810d5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "employees",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, can be `null`. The employee's email address.",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, must be unique. Your unique identifier for the employee within your organization.",
+                        "type": "text/plain"
+                      },
+                      "key": "employee_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, can be `null`. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.",
+                        "type": "text/plain"
+                      },
+                      "key": "final_process_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, can be `null`. The employee's first name.",
+                        "type": "text/plain"
+                      },
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Active employees count towards your seat count.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required, can be `null`. The employee's last name.",
+                        "type": "text/plain"
+                      },
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. Only used when an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and the employee has a linked_user value. If linked_user has a value, then login_id will be used to update the login_id of the linked_user.",
+                        "type": "text/plain"
+                      },
+                      "key": "login_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, can be `null`. YYYY-MM-DD format. The employee will be automatically deactivated on this date.",
+                        "type": "text/plain"
+                      },
+                      "key": "employee_license_automated_deactivation_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"employee_id\": \"string\",\n  \"is_active\": true,\n  \"object\": \"employee\",\n  \"id\": \"string\",\n  \"email\": \"ElNNozyI@NGIiCYAdzEJprpbhtiaxrOhJefx.oll\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"final_process_date\": \"1990-11-08\",\n  \"linked_user\": \"bc9f55c4-1fed-4d7c-65ba-3159c0ab41d9\",\n  \"created_at\": \"1963-01-23T03:07:36.770Z\",\n  \"updated_at\": \"1962-03-19T06:09:07.218Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fe2ee77e-4628-4d6a-9e37-1d65c108182c",
+    "name": "CaptivateIQ Attribute Worksheets Employees API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

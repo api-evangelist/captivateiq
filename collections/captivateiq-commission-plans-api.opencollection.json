@@ -1,0 +1,215 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CaptivateIQ Attribute Worksheets Commission Plans API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commission Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Period Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/period-groups/",
+            "params": [
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "`true` to request only active period groups, or `false` to request only inactive. Leave blank to see all."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`, `(-)is_active`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "payout_date_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payout date UUID"
+              },
+              {
+                "name": "plan_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plan UUIDs. Each UUID should be put in its own `plan_ids[]` parameter."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Period Groups"
+        },
+        {
+          "info": {
+            "name": "Get Period Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/period-groups/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Period Group"
+        },
+        {
+          "info": {
+            "name": "List Commission Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/plans/",
+            "params": [
+              {
+                "name": "is_active",
+                "value": "",
+                "type": "query",
+                "description": "`true` to request only active plans, or `false` to request only inactive. Leave blank to see all."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`, `(-)is_active`, `(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+              },
+              {
+                "name": "payout_date_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payout date UUID"
+              },
+              {
+                "name": "period_group_ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period group UUID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Commission Plans"
+        },
+        {
+          "info": {
+            "name": "Get Commission Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.captivateiq.com/ciq/v1/plans/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Primary key, a UUID."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Commission Plan"
+        },
+        {
+          "info": {
+            "name": "Export Employee Assumptions for Period Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.captivateiq.com/ciq/v1/plans/:plan_uuid/period-groups/:period_group_uuid/employee-assumptions/export/",
+            "params": [
+              {
+                "name": "period_group_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "plan_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export employee assumptions for a specific period group as CSV"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

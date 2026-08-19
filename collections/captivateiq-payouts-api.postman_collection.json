@@ -1,0 +1,1330 @@
+{
+  "item": [
+    {
+      "id": "97e81efd-fc88-46d3-a397-5c8cf6b3b950",
+      "name": "Payouts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54984910-0715-4653-b005-268db8e9e295",
+          "name": "Export Payout Adjustments",
+          "request": {
+            "name": "Export Payout Adjustments",
+            "description": {
+              "content": "Export payout adjustments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "adjustments",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "locked_only",
+                  "value": "<boolean>",
+                  "description": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "880b1b00-9ccb-49fd-ab87-76bd745ec53e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "adjustments",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.",
+                        "type": "text/plain"
+                      },
+                      "key": "locked_only",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"f6370baf-814c-ab10-0bb0-31b1356df71a\",\n    \"user_email\": \"fce5265a-2472-eda0-d4b1-4064e077beae\",\n    \"created_at\": \"1965-08-09T15:51:17.240Z\",\n    \"updated_at\": \"1959-12-29T03:43:25.682Z\",\n    \"aggregation_id\": \"338324fb-8fdc-5485-5e9d-bf6ffc595370\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f5cc8b-c1d3-40dd-98aa-d4dad55836a3",
+          "name": "Export Employee Assumptions",
+          "request": {
+            "name": "Export Employee Assumptions",
+            "description": {
+              "content": "Export payout snapshot related employee assumptions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "employee-assumptions",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "locked_only",
+                  "value": "<boolean>",
+                  "description": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dcb40ec4-336a-488e-ba8f-dccc7703756b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "employee-assumptions",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.",
+                        "type": "text/plain"
+                      },
+                      "key": "locked_only",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"f6370baf-814c-ab10-0bb0-31b1356df71a\",\n    \"user_email\": \"fce5265a-2472-eda0-d4b1-4064e077beae\",\n    \"created_at\": \"1965-08-09T15:51:17.240Z\",\n    \"updated_at\": \"1959-12-29T03:43:25.682Z\",\n    \"aggregation_id\": \"338324fb-8fdc-5485-5e9d-bf6ffc595370\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b0dd302-661a-428a-a4c7-0901ff04bdec",
+          "name": "List Payout Dates",
+          "request": {
+            "name": "List Payout Dates",
+            "description": {
+              "content": "List payout snapshot related payout dates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "payout-dates",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`-payout_date`]. Available fields for ordering: [`(-)payout_date`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by period group UUIDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by commission plan UUIDs"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b6bd0ee6-d96a-4dfb-af9e-239e0a842ced",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "payout-dates",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period_group_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "plan_ids[]",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"payout_date\": \"2010-02-21\"\n    },\n    {\n      \"payout_date\": \"1985-03-01\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "151a3dfd-9b90-472e-aa48-15ac8982ec94",
+          "name": "Export Payout Summaries",
+          "request": {
+            "name": "Export Payout Summaries",
+            "description": {
+              "content": "Export payout snapshot related payout summaries",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "payout-summaries",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "locked_only",
+                  "value": "<boolean>",
+                  "description": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08c2bf47-afd4-4d31-81b8-4bb7d1e1a6ca",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "payout-summaries",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.",
+                        "type": "text/plain"
+                      },
+                      "key": "locked_only",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"f6370baf-814c-ab10-0bb0-31b1356df71a\",\n    \"user_email\": \"fce5265a-2472-eda0-d4b1-4064e077beae\",\n    \"created_at\": \"1965-08-09T15:51:17.240Z\",\n    \"updated_at\": \"1959-12-29T03:43:25.682Z\",\n    \"aggregation_id\": \"338324fb-8fdc-5485-5e9d-bf6ffc595370\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83c2be1f-37cf-4c2b-b4aa-4b857e206f69",
+          "name": "List Period Groups",
+          "request": {
+            "name": "List Period Groups",
+            "description": {
+              "content": "List payout snapshot related period groups",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "period-groups",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`period_group_name`]. Available fields for ordering: [`(-)period_group_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates[]",
+                  "value": "<date>",
+                  "description": "Filter by payout dates (YYYY-MM-DD format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by commission plan UUIDs"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "072f7e74-1c3a-49be-b48b-b3ba9dba44fc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "period-groups",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payout_dates[]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "plan_ids[]",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"object\": \"period_group\",\n      \"id\": \"string\",\n      \"plan\": \"string\",\n      \"payout_dates\": [\n        \"1973-10-27\",\n        \"1959-05-01\"\n      ],\n      \"name\": \"string\",\n      \"is_active\": true,\n      \"is_deleted\": false\n    },\n    {\n      \"object\": \"period_group\",\n      \"id\": \"string\",\n      \"plan\": \"string\",\n      \"payout_dates\": [\n        \"1973-06-14\",\n        \"2014-04-24\"\n      ],\n      \"name\": \"string\",\n      \"is_active\": true,\n      \"is_deleted\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c92cbfb5-1136-45ab-8f1a-ee093e476813",
+          "name": "List Commission Plans",
+          "request": {
+            "name": "List Commission Plans",
+            "description": {
+              "content": "List Commission Plans related to Snapshots",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "plans",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`plan_name`]. Available fields for ordering: [`(-)plan_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates[]",
+                  "value": "<date>",
+                  "description": "Filter by payout dates (YYYY-MM-DD format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by period group UUIDs"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3d3fb0c9-5567-4995-96b2-9b7d2fa8b20a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "plans",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payout_dates[]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period_group_ids[]",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"object\": \"plan\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"confetti_enabled\": true,\n      \"period_groups\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        }\n      ],\n      \"payout_dates\": [\n        \"2016-05-10\",\n        \"1974-05-05\"\n      ],\n      \"is_active\": true,\n      \"is_deleted\": false\n    },\n    {\n      \"object\": \"plan\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"confetti_enabled\": true,\n      \"period_groups\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      ],\n      \"payout_dates\": [\n        \"1978-02-03\",\n        \"2002-07-12\"\n      ],\n      \"is_active\": true,\n      \"is_deleted\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40ab9190-1f9d-4ed9-a981-e5cdb6c9ad50",
+          "name": "List Worksheets",
+          "request": {
+            "name": "List Worksheets",
+            "description": {
+              "content": "List payout snapshot related calculation workbook worksheets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "worksheets",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`worksheet_name`]. Available fields for ordering: [`(-)worksheet_name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates[]",
+                  "value": "<date>",
+                  "description": "Filter by payout dates (YYYY-MM-DD format)"
+                },
+                {
+                  "disabled": false,
+                  "key": "period_group_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by period group UUIDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by commission plan UUIDs"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ea853e4c-c4f9-4f40-86e5-77f0247e9baf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "worksheets",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payout_dates[]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period_group_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "plan_ids[]",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"object\": \"worksheet\",\n      \"name\": \"string\"\n    },\n    {\n      \"object\": \"worksheet\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e54a9119-fa25-4e10-b170-f5b41301f9cf",
+          "name": "Export Worksheet",
+          "request": {
+            "name": "Export Worksheet",
+            "description": {
+              "content": "Export payout snapshot related calculation workbook worksheets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "payouts",
+                "worksheets",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_dates",
+                  "value": "<date>",
+                  "description": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "worksheet_name",
+                  "value": "<string>",
+                  "description": "(Required) Required. Export the given worksheet name."
+                },
+                {
+                  "disabled": false,
+                  "key": "locked_only",
+                  "value": "<boolean>",
+                  "description": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f53b9e3a-d97b-417d-b4d7-780e699975c3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "payouts",
+                    "worksheets",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.",
+                        "type": "text/plain"
+                      },
+                      "key": "payout_dates",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Required. Export the given worksheet name.",
+                        "type": "text/plain"
+                      },
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.",
+                        "type": "text/plain"
+                      },
+                      "key": "locked_only",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"f6370baf-814c-ab10-0bb0-31b1356df71a\",\n    \"user_email\": \"fce5265a-2472-eda0-d4b1-4064e077beae\",\n    \"created_at\": \"1965-08-09T15:51:17.240Z\",\n    \"updated_at\": \"1959-12-29T03:43:25.682Z\",\n    \"aggregation_id\": \"338324fb-8fdc-5485-5e9d-bf6ffc595370\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "70fa29ca-013a-4554-89ce-30c21f62e678",
+    "name": "CaptivateIQ Attribute Worksheets Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

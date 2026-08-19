@@ -1,0 +1,556 @@
+{
+  "item": [
+    {
+      "id": "5c379d6f-acdb-4f2a-8e35-0e24cbf50dba",
+      "name": "Jobs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7d9617b-ac43-4727-a398-e03b28a757d5",
+          "name": "List Job Aggregation",
+          "request": {
+            "name": "List Job Aggregation",
+            "description": {
+              "content": "List details of job aggregations for the organization. Defaults to a 30-day lookback window;\npass `start_date` to override.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "job-aggregations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "job_status",
+                  "value": "<string>",
+                  "description": "Filter by job status: PENDING, STARTED, SUCCESS, FAILURE, RETRY, or REVOKED."
+                },
+                {
+                  "disabled": false,
+                  "key": "job_type",
+                  "value": "<string>",
+                  "description": "Optional. Filter by specific job type, eg. payouts.jobs.process_payout."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Optional. Filter aggregations created on or after this date (YYYY-MM-DD). Defaults to 30 days ago."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f36d64e-6337-4936-b10b-04b3cb0cdab6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "job-aggregations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "job_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "job_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"2025-11-27T18:36:03.288Z\",\n    \"failed_jobs_count\": 8716,\n    \"id\": \"ce70674f-917f-fd19-c469-cd62db68776d\",\n    \"jobs_count\": 1642,\n    \"pending_jobs_count\": 7503,\n    \"processed_jobs_count\": 4949,\n    \"retried_jobs_count\": 4027,\n    \"revoked_jobs_count\": 6937,\n    \"started_jobs_count\": 9008,\n    \"status\": \"string\",\n    \"successful_jobs_count\": 9100,\n    \"object\": \"job_aggregation\",\n    \"user_email\": \"string\",\n    \"completed_at\": \"2020-05-05T19:38:45.541Z\",\n    \"data\": [\n      {\n        \"metadata\": {\n          \"user_id\": \"17bf4803-0361-e754-c80a-23c71f2271df\",\n          \"user_email\": \"bd82b16e-6ad6-5d08-eee8-39a0385d36e7\",\n          \"created_at\": \"1957-10-11T06:17:13.975Z\",\n          \"updated_at\": \"1994-12-26T00:40:41.680Z\",\n          \"aggregation_id\": \"76ed4898-491c-10a2-7709-86613e33674d\"\n        },\n        \"object\": \"job\",\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"string\",\n        \"description\": \"string\",\n        \"details\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      {\n        \"metadata\": {\n          \"user_id\": \"311158ea-3804-0e5e-ff00-2d680a7d2118\",\n          \"user_email\": \"0b3b32bc-5a4c-9743-9e3a-9a482d1d72f6\",\n          \"created_at\": \"1994-11-27T10:18:07.690Z\",\n          \"updated_at\": \"1992-05-12T04:34:11.378Z\",\n          \"aggregation_id\": \"f5055974-c706-c98c-00dc-75fddaa732f0\"\n        },\n        \"object\": \"job\",\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"string\",\n        \"description\": \"string\",\n        \"details\": {\n          \"key_0\": {}\n        }\n      }\n    ]\n  },\n  {\n    \"created_at\": \"2007-02-11T11:11:41.890Z\",\n    \"failed_jobs_count\": 6343,\n    \"id\": \"58b546d7-6d52-a90b-5e9d-7a4a72023648\",\n    \"jobs_count\": 591,\n    \"pending_jobs_count\": 5836,\n    \"processed_jobs_count\": 8784,\n    \"retried_jobs_count\": 6269,\n    \"revoked_jobs_count\": 8386,\n    \"started_jobs_count\": 2445,\n    \"status\": \"string\",\n    \"successful_jobs_count\": 4604,\n    \"object\": \"job_aggregation\",\n    \"user_email\": \"string\",\n    \"completed_at\": \"2007-07-01T06:25:25.695Z\",\n    \"data\": [\n      {\n        \"metadata\": {\n          \"user_id\": \"0cd8b473-e034-5253-323e-5050c7b61a4c\",\n          \"user_email\": \"6d7b72fe-3367-d2d5-2080-0293b6c200fc\",\n          \"created_at\": \"1949-06-25T19:17:22.301Z\",\n          \"updated_at\": \"1955-11-05T02:52:55.154Z\",\n          \"aggregation_id\": \"3feb3960-aabf-e494-96b0-26b1f9a51877\"\n        },\n        \"object\": \"job\",\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"string\",\n        \"description\": \"string\",\n        \"details\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      {\n        \"metadata\": {\n          \"user_id\": \"144545c0-03d2-d632-c9c2-86af0dee3977\",\n          \"user_email\": \"28fff59f-8ee3-a4ce-97b1-200846bcb793\",\n          \"created_at\": \"2024-05-24T00:03:40.055Z\",\n          \"updated_at\": \"1950-03-08T13:20:09.107Z\",\n          \"aggregation_id\": \"d86595ff-0d8e-577e-956b-d31b8fd9c7fa\"\n        },\n        \"object\": \"job\",\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"type\": \"string\",\n        \"status\": \"string\",\n        \"description\": \"string\",\n        \"details\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7711e37-0c71-4d7f-9992-ebe872d5b13f",
+          "name": "Get Job Aggregation",
+          "request": {
+            "name": "Get Job Aggregation",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "job-aggregations",
+                ":job_aggregation_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "job_aggregation_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "17f86562-5aae-4384-a46e-832c540410eb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "job-aggregations",
+                    ":job_aggregation_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_aggregation_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1968-11-15T03:27:52.321Z\",\n  \"failed_jobs_count\": 553,\n  \"id\": \"e29824a8-077c-898b-94c6-c8fc5e015f09\",\n  \"jobs_count\": 4236,\n  \"pending_jobs_count\": 6609,\n  \"processed_jobs_count\": 2938,\n  \"retried_jobs_count\": 447,\n  \"revoked_jobs_count\": 2288,\n  \"started_jobs_count\": 3258,\n  \"status\": \"string\",\n  \"successful_jobs_count\": 9460,\n  \"object\": \"job_aggregation\",\n  \"user_email\": \"string\",\n  \"completed_at\": \"1990-04-20T21:26:57.878Z\",\n  \"data\": [\n    {\n      \"metadata\": {\n        \"user_id\": \"21730784-e4bb-ebc3-e5bc-1eae892bab31\",\n        \"user_email\": \"83b3c6a6-6dde-de22-2186-c8e6dc4ed799\",\n        \"created_at\": \"2026-08-10T03:13:40.071Z\",\n        \"updated_at\": \"1961-02-09T17:42:21.451Z\",\n        \"aggregation_id\": \"f59f3311-6086-c8f4-e19b-6f10ebd7b1c8\"\n      },\n      \"object\": \"job\",\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\",\n      \"details\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      }\n    },\n    {\n      \"metadata\": {\n        \"user_id\": \"7e52b418-5b30-c2d5-b878-5e1017486c5f\",\n        \"user_email\": \"672c7181-542a-bf19-0e54-5138fe9c5c41\",\n        \"created_at\": \"2020-07-19T14:56:59.796Z\",\n        \"updated_at\": \"1956-12-16T02:55:22.337Z\",\n        \"aggregation_id\": \"47ed0598-334b-8e90-7507-dba9611dfbdc\"\n      },\n      \"object\": \"job\",\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\",\n      \"details\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ad51002-e137-41a1-b0d6-67284ee48353",
+          "name": "List Jobs",
+          "request": {
+            "name": "List Jobs",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "jobs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`-created_at`]. Available fields for ordering: [`(-)created_at`, `(-)updated_at`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Optional. Filter jobs created on or after this date (YYYY-MM-DD)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52a4c920-0ea8-4502-971b-cf3c39d79844",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"metadata\": {\n        \"user_id\": \"df7ae8ec-a8bb-54e7-464a-050590ebe1f5\",\n        \"user_email\": \"367c8e64-f976-1839-ae11-4a287a264397\",\n        \"created_at\": \"1951-10-28T22:08:07.216Z\",\n        \"updated_at\": \"1952-10-20T22:41:31.179Z\",\n        \"aggregation_id\": \"95a1ad9e-dcea-a522-166f-eb26d4f97ec7\"\n      },\n      \"object\": \"job\",\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\",\n      \"details\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    {\n      \"metadata\": {\n        \"user_id\": \"7c62b4a3-ff80-7b0d-cf8d-38ce1ff2512e\",\n        \"user_email\": \"4ccce709-a14c-9881-69db-fe1553a99e37\",\n        \"created_at\": \"1964-06-12T15:16:51.322Z\",\n        \"updated_at\": \"2014-09-08T11:03:34.744Z\",\n        \"aggregation_id\": \"08bce072-531f-1bc1-b75b-8ab273b5dcbb\"\n      },\n      \"object\": \"job\",\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\",\n      \"details\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85c018fd-e3cc-4c6b-9584-4a6dd1c24fda",
+          "name": "Get Job",
+          "request": {
+            "name": "Get Job",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "jobs",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "09013c47-22db-4942-b7ac-308878ee05cf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "jobs",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"b90aff83-3bce-ab2d-8d12-338e12272d6d\",\n    \"user_email\": \"97b24047-525a-b8c0-4d6c-001f041a8982\",\n    \"created_at\": \"2003-10-24T19:38:48.362Z\",\n    \"updated_at\": \"1961-10-15T14:57:04.705Z\",\n    \"aggregation_id\": \"e98d35f5-f0d2-7a73-3e0a-3aafaf1946c2\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c00be16a-7b8e-40bf-9bab-f6165e73b13d",
+    "name": "CaptivateIQ Attribute Worksheets Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}

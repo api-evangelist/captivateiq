@@ -1,0 +1,1740 @@
+{
+  "item": [
+    {
+      "id": "89bb960a-22ce-4ec6-8183-6eae25a6771d",
+      "name": "Data Worksheets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d085ac88-9472-409e-9512-fdbaafa89b72",
+          "name": "List Data Worksheets",
+          "request": {
+            "name": "List Data Worksheets",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data_workbook_ids[]",
+                  "value": "<uuid>",
+                  "description": "Filter by data workbook UUIDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "name_contains",
+                  "value": "<string>",
+                  "description": "Case-insensitive search to list data workbooks whose names contain the given string."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`name`]. Available fields for ordering: [`(-)name`]. See the [FAQs](https://developers.captivateiq.com/docs/faqs) page for tips."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by worksheet type. Valid choices are `raw` or `derived`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f85c58ba-073f-4457-a84e-7732fdb279ab",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data_workbook_ids[]",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "name_contains",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"object\": \"data_worksheet\",\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"workbook\": \"3456a690-3c61-c743-bc5b-78107c2b784f\",\n      \"workbook_name\": \"string\",\n      \"columns\": [\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": true,\n          \"created_at\": \"2004-10-01T16:49:55.792Z\",\n          \"updated_at\": \"2011-03-04T07:49:00.758Z\"\n        },\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": true,\n          \"created_at\": \"2022-07-09T14:52:37.632Z\",\n          \"updated_at\": \"1977-01-28T19:11:11.993Z\"\n        }\n      ],\n      \"created_at\": \"1961-03-02T20:10:54.164Z\",\n      \"updated_at\": \"2000-04-09T05:47:27.700Z\"\n    },\n    {\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"object\": \"data_worksheet\",\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"workbook\": \"1152e8ee-e873-8c4d-18f4-bd6ea24f6668\",\n      \"workbook_name\": \"string\",\n      \"columns\": [\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": true,\n          \"created_at\": \"1975-04-23T18:51:51.384Z\",\n          \"updated_at\": \"1993-02-03T08:56:31.581Z\"\n        },\n        {\n          \"data_type\": \"string\",\n          \"description\": \"string\",\n          \"format\": {},\n          \"name\": \"string\",\n          \"variant\": \"string\",\n          \"object\": \"column\",\n          \"id\": \"string\",\n          \"formula\": \"string\",\n          \"read_only\": false,\n          \"created_at\": \"1972-02-26T01:16:48.644Z\",\n          \"updated_at\": \"1988-06-21T03:37:26.220Z\"\n        }\n      ],\n      \"created_at\": \"1981-12-29T00:19:35.245Z\",\n      \"updated_at\": \"1999-08-07T02:40:13.252Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "835cdd95-cd10-46d4-b302-a35b0565fc84",
+          "name": "Get Data Worksheet",
+          "request": {
+            "name": "Get Data Worksheet",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Primary key, a UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f93a7be2-c04f-42cb-abe8-6917e8c8f0f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Primary key, a UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"object\": \"data_worksheet\",\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"workbook\": \"8d447150-a541-6e6b-6f4a-4ae7b79737af\",\n  \"workbook_name\": \"string\",\n  \"columns\": [\n    {\n      \"data_type\": \"string\",\n      \"description\": \"string\",\n      \"format\": {},\n      \"name\": \"string\",\n      \"variant\": \"string\",\n      \"object\": \"column\",\n      \"id\": \"string\",\n      \"formula\": \"string\",\n      \"read_only\": false,\n      \"created_at\": \"1962-08-17T15:09:07.387Z\",\n      \"updated_at\": \"2003-06-04T22:28:39.196Z\"\n    },\n    {\n      \"data_type\": \"string\",\n      \"description\": \"string\",\n      \"format\": {},\n      \"name\": \"string\",\n      \"variant\": \"string\",\n      \"object\": \"column\",\n      \"id\": \"string\",\n      \"formula\": \"string\",\n      \"read_only\": false,\n      \"created_at\": \"1973-07-16T07:33:27.118Z\",\n      \"updated_at\": \"2025-01-23T05:08:36.907Z\"\n    }\n  ],\n  \"created_at\": \"2016-08-03T09:46:28.075Z\",\n  \"updated_at\": \"1992-09-06T06:46:58.527Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff99ba92-1bd8-4321-b7e4-7c3939ecf9f9",
+          "name": "Create Record",
+          "request": {
+            "name": "Create Record",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            }
+          },
+          "response": [
+            {
+              "id": "35576e68-2be7-404f-b5b4-898b07b8d849",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"object\": \"record\",\n  \"id\": \"string\",\n  \"created_at\": \"2009-10-22T13:58:41.067Z\",\n  \"updated_at\": \"1973-05-04T19:11:12.644Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "792fc3fd-4780-4b4a-8250-0caa5dd5b0e2",
+          "name": "List Records",
+          "request": {
+            "name": "List Records",
+            "description": {
+              "content": "This endpoint returns only the raw data values present in the worksheet.\nIf you experience performance issues, or want to also see derived values, please use the\n[Bulk Export Records](https://developers.captivateiq.com/reference/data_worksheets_records_export_create-1) endpoint instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "created_at_after",
+                  "value": "<date>",
+                  "description": "Filter by created_at dates after a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_before",
+                  "value": "<date>",
+                  "description": "Filter by created_at dates before a date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Optional. Which field to use when ordering the results. By default we assume [`created_at`]. Available fields for ordering: [`(-)created_at`, `(-)updated_at`]. Also accepts column name or UUIDs. For worksheets that are bulk upserted it is recommended to use the worksheet Unique ID name or UUID to avoid duplicates."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Perform a case-insensitive text search over record data for the given string."
+                },
+                {
+                  "disabled": false,
+                  "key": "query_column",
+                  "value": "<string>",
+                  "description": "When provided along with query, search only within the specified column name instead of searching all columns."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_after",
+                  "value": "<date>",
+                  "description": "Filter by updated_at dates after a date, inclusive of that date. YYYY-MM-DD format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_before",
+                  "value": "<date>",
+                  "description": "Filter by updated_at dates before a date. YYYY-MM-DD format."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a154092-e7a8-4f8d-9a86-38709f59b8a3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_at_after",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "created_at_before",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query_column",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_at_after",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "updated_at_before",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"total_count\": 123,\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\",\n  \"data\": [\n    {\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"object\": \"record\",\n      \"id\": \"string\",\n      \"created_at\": \"1995-03-16T07:39:16.172Z\",\n      \"updated_at\": \"2016-01-10T02:59:37.621Z\"\n    },\n    {\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {},\n        \"key_4\": {}\n      },\n      \"object\": \"record\",\n      \"id\": \"string\",\n      \"created_at\": \"1992-06-19T20:54:55.454Z\",\n      \"updated_at\": \"1990-11-05T11:02:12.200Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "438eea87-27c1-447f-af6c-b42242535bc1",
+          "name": "Batch Update Records",
+          "request": {
+            "name": "Batch Update Records",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                "batch",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "<string>",
+                  "description": "(Required) Unique IDs for the records to delete. Maximum batch size is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "deletes",
+                  "value": "<string>",
+                  "description": "(Required) Unique IDs for the records to delete. Maximum batch size is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"key_0\":{},\"key_1\":{},\"key_2\":{},\"key_3\":{}}",
+                  "description": "(Required) Records to create or update. Maximum batch size is 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "upserts",
+                  "value": "{\"key_0\":{},\"key_1\":{},\"key_2\":{}}",
+                  "description": "(Required) Records to create or update. Maximum batch size is 1000."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc9a7ac5-1ec2-4074-85c8-073b8f42fe5c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    "batch",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Unique IDs for the records to delete. Maximum batch size is 1000.",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Unique IDs for the records to delete. Maximum batch size is 1000.",
+                        "type": "text/plain"
+                      },
+                      "key": "deletes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Records to create or update. Maximum batch size is 1000.",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"key_0\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Records to create or update. Maximum batch size is 1000.",
+                        "type": "text/plain"
+                      },
+                      "key": "upserts",
+                      "value": "{\"key_0\":{},\"key_1\":{},\"key_2\":{},\"key_3\":{}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": [\n    \"string\",\n    \"string\"\n  ],\n  \"deleted\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ac021c7-046e-4e18-87a9-5b8efe00f441",
+          "name": "Bulk Export Records",
+          "request": {
+            "name": "Bulk Export Records",
+            "description": {
+              "content": "Export all records as a downloadable CSV file for the given data worksheet. This exports both data and\nderived columns.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                "export",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "export_format",
+                  "value": "csv",
+                  "description": "Format for the records export."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "69e0c30a-ac19-43c3-b6e0-c6b21eea4fef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    "export",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "export_format",
+                      "value": "csv"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"user_id\": \"c61ae2fa-67ce-3a46-120b-5b80ab7d3fe9\",\n    \"user_email\": \"063191b9-1264-a800-da5c-6c6e0478a51a\",\n    \"created_at\": \"2004-08-14T04:56:45.850Z\",\n    \"updated_at\": \"2000-01-30T15:19:49.225Z\",\n    \"aggregation_id\": \"1a5ce108-db75-1601-077e-0401e55b3d31\"\n  },\n  \"object\": \"job\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"type\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\",\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8160c3f2-2a7d-4cb7-96a0-68332157607f",
+          "name": "Bulk Import Records",
+          "request": {
+            "name": "Bulk Import Records",
+            "description": {
+              "content": "While the CSV file format is not fully standardized, CaptivateIQ's implementation of CSV parsing will have\nyou surround a field's data with quotation marks in order to allow for commas that may be present in the data.\n\nFor example:\n```\nColumn1,Column2\n\"Foo, bar\",baz\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                "import",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "file_name",
+                  "value": "<string>",
+                  "description": "(Required) File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files."
+                },
+                {
+                  "disabled": false,
+                  "key": "data_mappings",
+                  "value": "{\"key_0\":\"<string>\",\"key_1\":\"<string>\",\"key_2\":\"<string>\",\"key_3\":\"<string>\"}",
+                  "description": "(Required) Parameters for the data worksheet upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "import_mode",
+                  "value": "<string>",
+                  "description": "(Required) Parameters for the data worksheet upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "load_all_columns",
+                  "value": "true",
+                  "description": "(Required) Parameters for the data worksheet upload."
+                },
+                {
+                  "disabled": false,
+                  "key": "encoding",
+                  "value": "<string>",
+                  "description": "Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_format",
+                  "value": "<string>",
+                  "description": "Optional. The file's format for all date fields, by default we assume the organization's `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`."
+                },
+                {
+                  "disabled": false,
+                  "key": "delimiter",
+                  "value": "<string>",
+                  "description": "Optional. The file's delimiter, by default we assume `,`. Valid choices are: `,`, `\\t`, `|` and `;`."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "745dde74-edc3-4f5c-8608-f9bd84bed0a2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    "import",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.",
+                        "type": "text/plain"
+                      },
+                      "key": "file_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the data worksheet upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "data_mappings",
+                      "value": "{\"key_0\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the data worksheet upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "import_mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Parameters for the data worksheet upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "load_all_columns",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.",
+                        "type": "text/plain"
+                      },
+                      "key": "encoding",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's format for all date fields, by default we assume the organization's `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.",
+                        "type": "text/plain"
+                      },
+                      "key": "date_format",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Optional. The file's delimiter, by default we assume `,`. Valid choices are: `,`, `\\t`, `|` and `;`.",
+                        "type": "text/plain"
+                      },
+                      "key": "delimiter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date_format\": \"<string>\",\n  \"delimiter\": \"<string>\",\n  \"encoding\": \"string\",\n  \"file_name\": \"string\",\n  \"object\": \"upload\",\n  \"id\": \"string\",\n  \"url\": \"string\",\n  \"object_type\": \"plan_document_template\",\n  \"status\": \"string\",\n  \"params\": {},\n  \"details\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created_at\": \"2011-04-22T09:41:24.299Z\",\n  \"updated_at\": \"1986-06-25T09:47:41.382Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8bd7db2-2a41-451b-82c5-d5b9c27a8a66",
+          "name": "Get Bulk Import Records Template",
+          "request": {
+            "name": "Get Bulk Import Records Template",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                "import",
+                "template",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "25011823-e6d3-4d9c-8895-0890bba0f916",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    "import",
+                    "template",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45de411a-489e-4317-8a2b-6f7efac40920",
+          "name": "Delete Record",
+          "request": {
+            "name": "Delete Record",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                ":unique_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "unique_id",
+                  "description": "(Required) The unique ID column value of a record within the worksheet `worksheet_uuid`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "472605fe-6feb-44ae-bcc7-88c233c96a65",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    ":unique_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "unique_id",
+                      "description": "(Required) The unique ID column value of a record within the worksheet `worksheet_uuid`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4eef56f-1a60-460f-ad12-c293bd3c7e77",
+          "name": "Get Record",
+          "request": {
+            "name": "Get Record",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                ":unique_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "unique_id",
+                  "description": "(Required) The unique ID column value of a record within the worksheet `worksheet_uuid`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9acfbb00-0ebf-48e5-88bc-53d3ad954fbd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    ":unique_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "unique_id",
+                      "description": "(Required) The unique ID column value of a record within the worksheet `worksheet_uuid`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"object\": \"record\",\n  \"id\": \"string\",\n  \"created_at\": \"2009-10-22T13:58:41.067Z\",\n  \"updated_at\": \"1973-05-04T19:11:12.644Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77b4105a-5b7e-4891-a872-fca250240c02",
+          "name": "Update Record",
+          "request": {
+            "name": "Update Record",
+            "description": {},
+            "url": {
+              "path": [
+                "ciq",
+                "v1",
+                "data-worksheets",
+                ":worksheet_uuid",
+                "records",
+                ":unique_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "unique_id",
+                  "description": "(Required) The unique ID column value of a record within the worksheet `worksheet_uuid`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "worksheet_uuid",
+                  "description": "(Required) Worksheet UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            }
+          },
+          "response": [
+            {
+              "id": "a470560f-e03e-4960-9bf1-1be00ac469ae",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ciq",
+                    "v1",
+                    "data-worksheets",
+                    ":worksheet_uuid",
+                    "records",
+                    ":unique_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "unique_id",
+                      "description": "(Required) The unique ID column value of a record within the worksheet `worksheet_uuid`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "worksheet_uuid",
+                      "description": "(Required) Worksheet UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": {}\n  },\n  \"object\": \"record\",\n  \"id\": \"string\",\n  \"created_at\": \"2009-10-22T13:58:41.067Z\",\n  \"updated_at\": \"1973-05-04T19:11:12.644Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.captivateiq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d4d53469-bd4a-46f1-9558-36f706cd0535",
+    "name": "CaptivateIQ Attribute Worksheets Data Worksheets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).",
+      "type": "text/plain"
+    }
+  }
+}
