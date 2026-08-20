@@ -261,6 +261,8 @@ apis:
   humanURL: https://developers.captivateiq.com/
   baseURL: https://api.captivateiq.com/ciq/v1/
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -394,6 +396,8 @@ apis:
   humanURL: https://developers.captivateiq.com/
   baseURL: https://api.captivateiq.com/ciq/v1/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
