@@ -1,22 +1,7 @@
 {
   "provider": "captivateiq",
   "sources": [
-    "captivateiq-attribute-worksheets-api-openapi.yml",
-    "captivateiq-audit-logs-api-openapi.yml",
-    "captivateiq-commission-plans-api-openapi.yml",
-    "captivateiq-dashboards-api-openapi.yml",
-    "captivateiq-data-workbooks-api-openapi.yml",
-    "captivateiq-data-worksheets-api-openapi.yml",
-    "captivateiq-employee-assumptions-api-openapi.yml",
-    "captivateiq-employees-api-openapi.yml",
-    "captivateiq-hierarchies-api-openapi.yml",
-    "captivateiq-jobs-api-openapi.yml",
-    "captivateiq-metadata-api-openapi.yml",
-    "captivateiq-payouts-api-openapi.yml",
-    "captivateiq-report-models-api-openapi.yml",
-    "captivateiq-transformation-worksheets-api-openapi.yml",
-    "captivateiq-uploads-api-openapi.yml",
-    "captivateiq-users-api-openapi.yml"
+    "_original/captivateiq-openapi-original.yml"
   ],
   "outputs": [
     "captivateiq-attribute-worksheets-api-openapi.yml",
@@ -39,6 +24,27 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "captivateiq-openapi-original.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "captivateiq-attribute-worksheets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-audit-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-commission-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-dashboards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-data-workbooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-data-worksheets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-employee-assumptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-employees-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-hierarchies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-payouts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-report-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-transformation-worksheets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-uploads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "captivateiq-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

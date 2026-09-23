@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: CaptivateIQ Attribute Worksheets Dashboards API
+  title: CaptivateIQ Dashboards API
   version: v1
   description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
   x-apievangelist-provenance:
@@ -125,38 +125,6 @@ paths:
           description: ''
 components:
   schemas:
-    EmbeddedUsersUUID:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          description: List of user UUIDs to modify dashboard access for.
-      required:
-      - ids
-    EmbeddedUsersSharedResource:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-          default: user
-        id:
-          type: string
-        email:
-          type: string
-          format: email
-        name:
-          type: string
-          readOnly: true
-        isAdmin:
-          type: boolean
-          readOnly: true
-      required:
-      - email
-      - id
     PaginatedEmbeddedUsersSharedResourceList:
       type: object
       properties:
@@ -170,28 +138,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmbeddedUsersSharedResource'
-    PaginatedDashboardList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-    SharedResourcesDelete:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-      required:
-      - ids
     Dashboard:
       type: object
       properties:
@@ -232,6 +178,60 @@ components:
         locked_to:
           type: string
           readOnly: true
+    SharedResourcesDelete:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+      required:
+      - ids
+    PaginatedDashboardList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+    EmbeddedUsersSharedResource:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+          default: user
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+          readOnly: true
+        isAdmin:
+          type: boolean
+          readOnly: true
+      required:
+      - email
+      - id
+    EmbeddedUsersUUID:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of user UUIDs to modify dashboard access for.
+      required:
+      - ids
   securitySchemes:
     tokenAuth:
       type: apiKey

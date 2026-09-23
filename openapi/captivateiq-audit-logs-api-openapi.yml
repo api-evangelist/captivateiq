@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: CaptivateIQ Attribute Worksheets Audit Logs API
+  title: CaptivateIQ Audit Logs API
   version: v1
   description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
   x-apievangelist-provenance:
@@ -64,29 +64,6 @@ paths:
           description: ''
 components:
   schemas:
-    PaginatedAuditLogsList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditLogs'
     AuditLogs:
       type: object
       properties:
@@ -171,6 +148,31 @@ components:
           items: {}
           readOnly: true
           description: This field contains information about parent objects for the audit log. This field will contain object_id, object_name and object_type fields for each parent object. For example when a column is changed the parent objects of the column change audit log will be the containing worksheet and workbook.
+    PaginatedAuditLogsList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLogs'
   securitySchemes:
     tokenAuth:
       type: apiKey

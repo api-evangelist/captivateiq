@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: CaptivateIQ Attribute Worksheets Report Models API
+  title: CaptivateIQ Report Models API
   version: v1
   description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
   x-apievangelist-provenance:
@@ -220,6 +220,196 @@ paths:
           description: ''
 components:
   schemas:
+    PaginatedListReportModelOpenAPIList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportModelOpenAPI'
+    DetailReportModelOpenAPI:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: report_model
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        worksheets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DetailReportModelWorksheetOpenAPI'
+        period_dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeriodDate'
+      required:
+      - description
+      - id
+      - name
+      - period_dates
+      - type
+      - worksheets
+    ListReportModelCalculationModelWorksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: worksheet
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          type: string
+        is_hidden:
+          type: boolean
+      required:
+      - id
+      - is_hidden
+      - name
+      - type
+    ListReportModelOpenAPI:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: report_model
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        worksheets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportModelCalculationModelWorksheet'
+        period_dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeriodDate'
+      required:
+      - description
+      - id
+      - name
+      - period_dates
+      - type
+      - worksheets
+    ListReportOutputOpenAPI:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: report_model_export
+        id:
+          type: string
+          format: uuid
+        report_model_name:
+          type: string
+        report_model_id:
+          type: string
+          format: uuid
+        period_date:
+          type: string
+          format: date
+          readOnly: true
+        worksheets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportOutputWorksheetSnapshot'
+        is_locked:
+          type: boolean
+          readOnly: true
+      required:
+      - id
+      - report_model_id
+      - report_model_name
+      - worksheets
+    PaginatedListReportOutputOpenAPIList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportOutputOpenAPI'
+    DetailReportModelWorksheetOpenAPI:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: worksheet
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          type: string
+        is_hidden:
+          type: boolean
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportModelColumnOpenAPI'
+      required:
+      - columns
+      - id
+      - is_hidden
+      - name
+      - type
     ListReportOutputWorksheetSnapshot:
       type: object
       properties:
@@ -258,6 +448,33 @@ components:
       - period_date
       - report_model_uuid
       - worksheet_uuid
+    ReportModelRecordsExportRequest:
+      type: object
+      properties:
+        worksheet_uuid:
+          type: string
+          format: uuid
+          description: The UUID of the worksheet to export records from
+        period_date:
+          type: string
+          format: date
+          description: The period date in YYYY-MM-DD format. Required for time_series report models.
+        query:
+          type: string
+          description: Free-text search filter applied to records.
+        column_filters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ColumnFilter'
+          description: 'Array of column filters. Each filter: {"id": "<column_uuid>", "op": "<operator>", "term": "<value>"}. Operators: contains, eq, ne, lt, lte, gt, gte, is, in.'
+        sort:
+          allOf:
+          - $ref: '#/components/schemas/Sort'
+          description: 'Sort configuration. Format: {"order": [["<column_uuid>", 1]]} where 1=ascending, 0=descending.'
+      required:
+      - worksheet_uuid
     Job:
       type: object
       properties:
@@ -275,8 +492,9 @@ components:
           readOnly: true
           description: URL to retrieve job details and status.
         type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
           description: Job type.
         status:
@@ -284,8 +502,9 @@ components:
           readOnly: true
           description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           readOnly: true
           description: Detailed job description.
         details:
@@ -297,6 +516,18 @@ components:
           $ref: '#/components/schemas/JobMetadata'
       required:
       - metadata
+    OpEnum:
+      enum:
+      - contains
+      - eq
+      - ne
+      - lt
+      - lte
+      - gt
+      - gte
+      - is
+      - in
+      type: string
     ReportModelColumnOpenAPI:
       type: object
       properties:
@@ -315,6 +546,22 @@ components:
       - data_type
       - id
       - name
+    PeriodDate:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: period_date
+        id:
+          type: string
+          format: uuid
+        date:
+          type: string
+          format: date
+          readOnly: true
+      required:
+      - id
     Sort:
       type: object
       properties:
@@ -335,60 +582,6 @@ components:
           maxItems: 1
       required:
       - order
-    ListReportModelOpenAPI:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: report_model
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-        worksheets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListReportModelCalculationModelWorksheet'
-        period_dates:
-          type: array
-          items:
-            $ref: '#/components/schemas/PeriodDate'
-      required:
-      - description
-      - id
-      - name
-      - period_dates
-      - type
-      - worksheets
-    PaginatedListReportOutputOpenAPIList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListReportOutputOpenAPI'
     ColumnFilter:
       type: object
       properties:
@@ -410,97 +603,6 @@ components:
       - id
       - op
       - term
-    DetailReportModelOpenAPI:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: report_model
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-        worksheets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DetailReportModelWorksheetOpenAPI'
-        period_dates:
-          type: array
-          items:
-            $ref: '#/components/schemas/PeriodDate'
-      required:
-      - description
-      - id
-      - name
-      - period_dates
-      - type
-      - worksheets
-    PaginatedListReportModelOpenAPIList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListReportModelOpenAPI'
-    ListReportModelCalculationModelWorksheet:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: worksheet
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        type:
-          type: string
-        is_hidden:
-          type: boolean
-      required:
-      - id
-      - is_hidden
-      - name
-      - type
-    PeriodDate:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: period_date
-        id:
-          type: string
-          format: uuid
-        date:
-          type: string
-          format: date
-          readOnly: true
-      required:
-      - id
     JobMetadata:
       type: object
       properties:
@@ -529,102 +631,6 @@ components:
           format: uuid
           readOnly: true
           description: ID by which multiple jobs may be grouped together.
-    ReportModelRecordsExportRequest:
-      type: object
-      properties:
-        worksheet_uuid:
-          type: string
-          format: uuid
-          description: The UUID of the worksheet to export records from
-        period_date:
-          type: string
-          format: date
-          description: The period date in YYYY-MM-DD format. Required for time_series report models.
-        query:
-          type: string
-          description: Free-text search filter applied to records.
-        column_filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnFilter'
-          nullable: true
-          description: 'Array of column filters. Each filter: {"id": "<column_uuid>", "op": "<operator>", "term": "<value>"}. Operators: contains, eq, ne, lt, lte, gt, gte, is, in.'
-        sort:
-          allOf:
-          - $ref: '#/components/schemas/Sort'
-          nullable: true
-          description: 'Sort configuration. Format: {"order": [["<column_uuid>", 1]]} where 1=ascending, 0=descending.'
-      required:
-      - worksheet_uuid
-    OpEnum:
-      enum:
-      - contains
-      - eq
-      - ne
-      - lt
-      - lte
-      - gt
-      - gte
-      - is
-      - in
-      type: string
-    DetailReportModelWorksheetOpenAPI:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: worksheet
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        type:
-          type: string
-        is_hidden:
-          type: boolean
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportModelColumnOpenAPI'
-      required:
-      - columns
-      - id
-      - is_hidden
-      - name
-      - type
-    ListReportOutputOpenAPI:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: report_model_export
-        id:
-          type: string
-          format: uuid
-        report_model_name:
-          type: string
-        report_model_id:
-          type: string
-          format: uuid
-        period_date:
-          type: string
-          format: date
-          readOnly: true
-        worksheets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListReportOutputWorksheetSnapshot'
-        is_locked:
-          type: boolean
-          readOnly: true
-      required:
-      - id
-      - report_model_id
-      - report_model_name
-      - worksheets
   securitySchemes:
     tokenAuth:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: CaptivateIQ Attribute Worksheets Payouts API
+  title: CaptivateIQ Payouts API
   version: v1
   description: The CaptivateIQ REST API (ciq/v1) for managing employees, hierarchies, data worksheets, commission plans, payouts, reports, and related sales-compensation resources. Harvested from the public developer reference (developers.captivateiq.com).
   x-apievangelist-provenance:
@@ -332,45 +332,6 @@ paths:
           description: ''
 components:
   schemas:
-    Job:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: job
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        url:
-          type: string
-          readOnly: true
-          description: URL to retrieve job details and status.
-        type:
-          type: string
-          nullable: true
-          readOnly: true
-          description: Job type.
-        status:
-          type: string
-          readOnly: true
-          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
-        description:
-          type: string
-          nullable: true
-          readOnly: true
-          description: Detailed job description.
-        details:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-          description: Specific details about this job, such as error messages or download links.
-        metadata:
-          $ref: '#/components/schemas/JobMetadata'
-      required:
-      - metadata
     PaginatedPeriodGroupPayoutList:
       type: object
       properties:
@@ -381,13 +342,15 @@ components:
           type: integer
           example: 123
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?offset=200&limit=100
         data:
@@ -419,8 +382,9 @@ components:
           default: []
           description: Optional. Filter the export by 1 or more period group UUIDs
         locked_only:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
           description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
         worksheet_name:
           type: string
@@ -428,43 +392,105 @@ components:
       required:
       - payout_dates
       - worksheet_name
-    PeriodGroupPayout:
+    PaginatedWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Worksheet'
+    PaginatedPayoutDateList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDate'
+    Job:
       type: object
       properties:
         object:
           type: string
           readOnly: true
-          default: period_group
+          default: job
           description: Optional. Object type name.
         id:
           type: string
           readOnly: true
           description: Primary key, a UUID.
-        plan:
+        url:
           type: string
           readOnly: true
-          description: Commission plan UUID related to this period group.
-        payout_dates:
-          type: array
-          items:
-            type: string
-            format: date
+          description: URL to retrieve job details and status.
+        type:
+          type:
+          - string
+          - 'null'
           readOnly: true
-          description: List of payout dates related to this period group in YYYY-MM-DD format.
-        name:
+          description: Job type.
+        status:
           type: string
           readOnly: true
-          description: Period group name.
-        is_active:
-          type: boolean
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type:
+          - string
+          - 'null'
           readOnly: true
-          default: true
-          description: Period group's active status.
-        is_deleted:
-          type: boolean
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
           readOnly: true
-          default: false
-          description: '`false` if the period group still exists, `true` if it has been deleted since the payout was processed.'
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    PayoutDate:
+      type: object
+      properties:
+        payout_date:
+          type: string
+          format: date
+          readOnly: true
+          description: Payout date in YYYY-MM-DD format.
     Worksheet:
       type: object
       properties:
@@ -477,7 +503,7 @@ components:
           type: string
           readOnly: true
           description: Worksheet name.
-    PaginatedPayoutDateList:
+    PaginatedPlanPayoutList:
       type: object
       properties:
         object:
@@ -487,49 +513,21 @@ components:
           type: integer
           example: 123
         next:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?offset=400&limit=100
         previous:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           format: uri
           example: http://api.example.org/accounts/?offset=200&limit=100
         data:
           type: array
           items:
-            $ref: '#/components/schemas/PayoutDate'
-    PayoutSnapshotExportRequest:
-      type: object
-      properties:
-        payout_dates:
-          type: array
-          items:
-            type: string
-            format: date
-          description: Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.
-          maxItems: 5
-        plan_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-          description: Optional. Filter the export by 1 or more commission plan UUIDs
-        period_group_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-          description: Optional. Filter the export by 1 or more period group UUIDs
-        locked_only:
-          type: boolean
-          nullable: true
-          description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
-      required:
-      - payout_dates
+            $ref: '#/components/schemas/PlanPayout'
     PlanPayout:
       type: object
       properties:
@@ -574,29 +572,43 @@ components:
           readOnly: true
           default: false
           description: '`false` if the commission plan still exists, `true` if it has been deleted since the payout was processed.'
-    PaginatedWorksheetList:
+    PeriodGroupPayout:
       type: object
       properties:
         object:
           type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
+          readOnly: true
+          default: period_group
+          description: Optional. Object type name.
+        id:
           type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
+          readOnly: true
+          description: Primary key, a UUID.
+        plan:
           type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
+          readOnly: true
+          description: Commission plan UUID related to this period group.
+        payout_dates:
           type: array
           items:
-            $ref: '#/components/schemas/Worksheet'
+            type: string
+            format: date
+          readOnly: true
+          description: List of payout dates related to this period group in YYYY-MM-DD format.
+        name:
+          type: string
+          readOnly: true
+          description: Period group name.
+        is_active:
+          type: boolean
+          readOnly: true
+          default: true
+          description: Period group's active status.
+        is_deleted:
+          type: boolean
+          readOnly: true
+          default: false
+          description: '`false` if the period group still exists, `true` if it has been deleted since the payout was processed.'
     JobMetadata:
       type: object
       properties:
@@ -625,37 +637,37 @@ components:
           format: uuid
           readOnly: true
           description: ID by which multiple jobs may be grouped together.
-    PayoutDate:
+    PayoutSnapshotExportRequest:
       type: object
       properties:
-        payout_date:
-          type: string
-          format: date
-          readOnly: true
-          description: Payout date in YYYY-MM-DD format.
-    PaginatedPlanPayoutList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
+        payout_dates:
           type: array
           items:
-            $ref: '#/components/schemas/PlanPayout'
+            type: string
+            format: date
+          description: Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.
+          maxItems: 5
+        plan_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more commission plan UUIDs
+        period_group_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more period group UUIDs
+        locked_only:
+          type:
+          - boolean
+          - 'null'
+          description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
+      required:
+      - payout_dates
   securitySchemes:
     tokenAuth:
       type: apiKey
