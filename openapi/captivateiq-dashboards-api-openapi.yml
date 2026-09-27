@@ -125,6 +125,17 @@ paths:
           description: ''
 components:
   schemas:
+    EmbeddedUsersUUID:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of user UUIDs to modify dashboard access for.
+      required:
+      - ids
     PaginatedEmbeddedUsersSharedResourceList:
       type: object
       properties:
@@ -138,6 +149,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmbeddedUsersSharedResource'
+    EmbeddedUsersSharedResource:
+      type: object
+      properties:
+        type:
+          type: string
+          readOnly: true
+          default: user
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+          readOnly: true
+        isAdmin:
+          type: boolean
+          readOnly: true
+      required:
+      - email
+      - id
+    SharedResourcesDelete:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+      required:
+      - ids
     Dashboard:
       type: object
       properties:
@@ -178,15 +219,6 @@ components:
         locked_to:
           type: string
           readOnly: true
-    SharedResourcesDelete:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-      required:
-      - ids
     PaginatedDashboardList:
       type: object
       properties:
@@ -200,38 +232,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dashboard'
-    EmbeddedUsersSharedResource:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-          default: user
-        id:
-          type: string
-        email:
-          type: string
-          format: email
-        name:
-          type: string
-          readOnly: true
-        isAdmin:
-          type: boolean
-          readOnly: true
-      required:
-      - email
-      - id
-    EmbeddedUsersUUID:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          description: List of user UUIDs to modify dashboard access for.
-      required:
-      - ids
   securitySchemes:
     tokenAuth:
       type: apiKey

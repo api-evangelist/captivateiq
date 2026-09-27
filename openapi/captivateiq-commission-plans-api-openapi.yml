@@ -219,6 +219,53 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PeriodGroup'
+    Plan:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: plan
+        id:
+          type: string
+          readOnly: true
+        period_groups:
+          type: array
+          items:
+            type: string
+            format: uuid
+          readOnly: true
+        payout_dates:
+          type: array
+          items:
+            type: string
+            format: uuid
+          readOnly: true
+        name:
+          type: string
+        confetti_enabled:
+          type: boolean
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        preview_config:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        attainment_display_setting:
+          type: string
+          readOnly: true
+      required:
+      - confetti_enabled
+      - is_active
+      - name
     PeriodGroup:
       type: object
       properties:
@@ -278,53 +325,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Plan'
-    Plan:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: plan
-        id:
-          type: string
-          readOnly: true
-        period_groups:
-          type: array
-          items:
-            type: string
-            format: uuid
-          readOnly: true
-        payout_dates:
-          type: array
-          items:
-            type: string
-            format: uuid
-          readOnly: true
-        name:
-          type: string
-        confetti_enabled:
-          type: boolean
-        is_active:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-        preview_config:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        attainment_display_setting:
-          type: string
-          readOnly: true
-      required:
-      - confetti_enabled
-      - is_active
-      - name
   securitySchemes:
     tokenAuth:
       type: apiKey

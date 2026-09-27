@@ -106,56 +106,6 @@ paths:
           description: ''
 components:
   schemas:
-    TransformationWorksheet:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: transformation_worksheet
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        type:
-          type: string
-          readOnly: true
-          description: Worksheet type.
-        name:
-          type: string
-          description: Worksheet name.
-        description:
-          type: string
-          description: Worksheet description.
-        workbook:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Worksheet's associated data workbook UUID.
-        workbook_name:
-          type: string
-          readOnly: true
-          description: Worksheet's associated data workbook name.
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnListItem'
-          readOnly: true
-          description: Worksheet columns.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - description
-      - name
     PaginatedTransformationWorksheetList:
       type: object
       properties:
@@ -181,47 +131,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransformationWorksheet'
-    Job:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: job
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        url:
-          type: string
-          readOnly: true
-          description: URL to retrieve job details and status.
-        type:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Job type.
-        status:
-          type: string
-          readOnly: true
-          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
-        description:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Detailed job description.
-        details:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-          description: Specific details about this job, such as error messages or download links.
-        metadata:
-          $ref: '#/components/schemas/JobMetadata'
-      required:
-      - metadata
     ColumnListItem:
       type: object
       properties:
@@ -300,6 +209,97 @@ components:
           format: uuid
           readOnly: true
           description: ID by which multiple jobs may be grouped together.
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    TransformationWorksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: transformation_worksheet
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        type:
+          type: string
+          readOnly: true
+          description: Worksheet type.
+        name:
+          type: string
+          description: Worksheet name.
+        description:
+          type: string
+          description: Worksheet description.
+        workbook:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Worksheet's associated data workbook UUID.
+        workbook_name:
+          type: string
+          readOnly: true
+          description: Worksheet's associated data workbook name.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnListItem'
+          readOnly: true
+          description: Worksheet columns.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - description
+      - name
   securitySchemes:
     tokenAuth:
       type: apiKey
