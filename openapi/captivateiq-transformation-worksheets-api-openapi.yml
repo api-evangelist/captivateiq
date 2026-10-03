@@ -181,34 +181,6 @@ components:
       - format
       - name
       - variant
-    JobMetadata:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID for the User who created this job.
-        user_email:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Email for the User who created this job.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        aggregation_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID by which multiple jobs may be grouped together.
     Job:
       type: object
       properties:
@@ -250,6 +222,34 @@ components:
           $ref: '#/components/schemas/JobMetadata'
       required:
       - metadata
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
     TransformationWorksheet:
       type: object
       properties:

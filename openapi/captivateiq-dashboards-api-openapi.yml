@@ -125,30 +125,15 @@ paths:
           description: ''
 components:
   schemas:
-    EmbeddedUsersUUID:
+    SharedResourcesDelete:
       type: object
       properties:
         ids:
           type: array
           items:
             type: string
-            format: uuid
-          description: List of user UUIDs to modify dashboard access for.
       required:
       - ids
-    PaginatedEmbeddedUsersSharedResourceList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmbeddedUsersSharedResource'
     EmbeddedUsersSharedResource:
       type: object
       properties:
@@ -170,15 +155,6 @@ components:
       required:
       - email
       - id
-    SharedResourcesDelete:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-      required:
-      - ids
     Dashboard:
       type: object
       properties:
@@ -232,6 +208,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dashboard'
+    PaginatedEmbeddedUsersSharedResourceList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmbeddedUsersSharedResource'
+    EmbeddedUsersUUID:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of user UUIDs to modify dashboard access for.
+      required:
+      - ids
   securitySchemes:
     tokenAuth:
       type: apiKey

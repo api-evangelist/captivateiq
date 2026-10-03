@@ -150,6 +150,34 @@ paths:
           description: ''
 components:
   schemas:
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
     JobAggregation:
       type: object
       properties:
@@ -203,59 +231,6 @@ components:
       - started_jobs_count
       - status
       - successful_jobs_count
-    PaginatedJobList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
-    JobMetadata:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID for the User who created this job.
-        user_email:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Email for the User who created this job.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        aggregation_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID by which multiple jobs may be grouped together.
     Job:
       type: object
       properties:
@@ -297,6 +272,31 @@ components:
           $ref: '#/components/schemas/JobMetadata'
       required:
       - metadata
+    PaginatedJobList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
   securitySchemes:
     tokenAuth:
       type: apiKey

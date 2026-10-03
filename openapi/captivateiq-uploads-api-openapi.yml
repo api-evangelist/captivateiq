@@ -108,113 +108,6 @@ paths:
           description: ''
 components:
   schemas:
-    DateFormatEnum:
-      enum:
-      - MM_DD_YYYY
-      - DD_MM_YYYY
-      - YYYY_MM_DD
-      type: string
-    JobMetadata:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID for the User who created this job.
-        user_email:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Email for the User who created this job.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        aggregation_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID by which multiple jobs may be grouped together.
-    Job:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: job
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        url:
-          type: string
-          readOnly: true
-          description: URL to retrieve job details and status.
-        type:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Job type.
-        status:
-          type: string
-          readOnly: true
-          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
-        description:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Detailed job description.
-        details:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-          description: Specific details about this job, such as error messages or download links.
-        metadata:
-          $ref: '#/components/schemas/JobMetadata'
-      required:
-      - metadata
-    ObjectTypeEnum:
-      enum:
-      - records
-      - test_records
-      - object_model_records
-      - hierarchies
-      - hierarchies_api
-      - employee_assumptions
-      - employee_visibility
-      - sfdc_report_metadata
-      - quota_worksheets
-      - unified_employee_assumptions
-      - people
-      - unified_worksheet_records
-      - records_api
-      - dispute_attachment
-      - docusign_file
-      - organization_logo
-      - attributes
-      - picklist_options
-      - plan_document
-      - plan_document_template
-      - bulk_plan_document_index_template
-      - spm_worksheet
-      type: string
-    DelimiterEnum:
-      enum:
-      - ','
-      - \t
-      - '|'
-      - ;
-      type: string
     Upload:
       type: object
       properties:
@@ -277,26 +170,6 @@ components:
       - delimiter
       - encoding
       - file_name
-    UploadOverrides:
-      type: object
-      properties:
-        encoding:
-          type: string
-          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
-        date_format:
-          allOf:
-          - $ref: '#/components/schemas/DateFormatEnum'
-          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
-        delimiter:
-          allOf:
-          - $ref: '#/components/schemas/DelimiterEnum'
-          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
-        data_mappings:
-          type: object
-          additionalProperties:
-            type: string
-          default: {}
-          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
     PaginatedUploadList:
       type: object
       properties:
@@ -327,6 +200,133 @@ components:
       properties:
         overrides:
           $ref: '#/components/schemas/UploadOverrides'
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
+    ObjectTypeEnum:
+      enum:
+      - records
+      - test_records
+      - object_model_records
+      - hierarchies
+      - hierarchies_api
+      - employee_assumptions
+      - employee_visibility
+      - sfdc_report_metadata
+      - quota_worksheets
+      - unified_employee_assumptions
+      - people
+      - unified_worksheet_records
+      - records_api
+      - dispute_attachment
+      - docusign_file
+      - organization_logo
+      - attributes
+      - picklist_options
+      - plan_document
+      - plan_document_template
+      - bulk_plan_document_index_template
+      - spm_worksheet
+      type: string
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    UploadOverrides:
+      type: object
+      properties:
+        encoding:
+          type: string
+          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
+        data_mappings:
+          type: object
+          additionalProperties:
+            type: string
+          default: {}
+          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
   securitySchemes:
     tokenAuth:
       type: apiKey

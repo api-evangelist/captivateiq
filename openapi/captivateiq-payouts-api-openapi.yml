@@ -332,6 +332,31 @@ paths:
           description: ''
 components:
   schemas:
+    PaginatedWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Worksheet'
     PaginatedPeriodGroupPayoutList:
       type: object
       properties:
@@ -357,37 +382,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PeriodGroupPayout'
-    PayoutSnapshotExportRequest:
+    PayoutDate:
       type: object
       properties:
-        payout_dates:
-          type: array
-          items:
-            type: string
-            format: date
-          description: Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.
-          maxItems: 5
-        plan_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-          description: Optional. Filter the export by 1 or more commission plan UUIDs
-        period_group_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          default: []
-          description: Optional. Filter the export by 1 or more period group UUIDs
-        locked_only:
-          type:
-          - boolean
-          - 'null'
-          description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
-      required:
-      - payout_dates
+        payout_date:
+          type: string
+          format: date
+          readOnly: true
+          description: Payout date in YYYY-MM-DD format.
     WorksheetSnapshotExportRequest:
       type: object
       properties:
@@ -423,6 +425,43 @@ components:
       required:
       - payout_dates
       - worksheet_name
+    Worksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: worksheet
+          description: Optional. Object type name.
+        name:
+          type: string
+          readOnly: true
+          description: Worksheet name.
+    PaginatedPayoutDateList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayoutDate'
     PeriodGroupPayout:
       type: object
       properties:
@@ -460,75 +499,6 @@ components:
           readOnly: true
           default: false
           description: '`false` if the period group still exists, `true` if it has been deleted since the payout was processed.'
-    JobMetadata:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID for the User who created this job.
-        user_email:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Email for the User who created this job.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        aggregation_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID by which multiple jobs may be grouped together.
-    Job:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: job
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        url:
-          type: string
-          readOnly: true
-          description: URL to retrieve job details and status.
-        type:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Job type.
-        status:
-          type: string
-          readOnly: true
-          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
-        description:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Detailed job description.
-        details:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-          description: Specific details about this job, such as error messages or download links.
-        metadata:
-          $ref: '#/components/schemas/JobMetadata'
-      required:
-      - metadata
     PaginatedPlanPayoutList:
       type: object
       properties:
@@ -554,31 +524,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PlanPayout'
-    PaginatedWorksheetList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Worksheet'
     PlanPayout:
       type: object
       properties:
@@ -623,51 +568,106 @@ components:
           readOnly: true
           default: false
           description: '`false` if the commission plan still exists, `true` if it has been deleted since the payout was processed.'
-    Worksheet:
+    Job:
       type: object
       properties:
         object:
           type: string
           readOnly: true
-          default: worksheet
+          default: job
           description: Optional. Object type name.
-        name:
+        id:
           type: string
           readOnly: true
-          description: Worksheet name.
-    PaginatedPayoutDateList:
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    PayoutSnapshotExportRequest:
       type: object
       properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
+        payout_dates:
           type: array
           items:
-            $ref: '#/components/schemas/PayoutDate'
-    PayoutDate:
+            type: string
+            format: date
+          description: Required. Filter the export by 1-5 payout dates in YYYY-MM-DD format.
+          maxItems: 5
+        plan_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more commission plan UUIDs
+        period_group_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          default: []
+          description: Optional. Filter the export by 1 or more period group UUIDs
+        locked_only:
+          type:
+          - boolean
+          - 'null'
+          description: Optional, defaults to `false`. `true` to only export locked data. Empty or `false` to export all data.
+      required:
+      - payout_dates
+    JobMetadata:
       type: object
       properties:
-        payout_date:
+        user_id:
           type: string
-          format: date
+          format: uuid
           readOnly: true
-          description: Payout date in YYYY-MM-DD format.
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
   securitySchemes:
     tokenAuth:
       type: apiKey

@@ -244,6 +244,101 @@ paths:
           description: ''
 components:
   schemas:
+    AttributeWorksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: attribute_worksheet
+          description: Object type.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          maxLength: 255
+        description:
+          type:
+          - string
+          - 'null'
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          readOnly: true
+        workbook:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Worksheet's associated workbook UUID.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+          readOnly: true
+          description: Worksheet columns.
+        is_hidden:
+          type: boolean
+          readOnly: true
+          description: Whether or not the worksheet is hidden.
+        pk_type:
+          type: string
+          readOnly: true
+          description: Primary key type.
+        pk_column_uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          readOnly: true
+          description: Primary key column UUIDs.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Created at.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Last updated at.
+        columns_width:
+          readOnly: true
+          description: Column widths for the worksheet.
+        records_per_page:
+          type: integer
+          readOnly: true
+          description: Number of records on a page.
+      required:
+      - name
+    BulkAttributeRecordsByColumnName:
+      type: object
+      properties:
+        upserts:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records to create or update by primary key columns and start dates.
+          maxItems: 1000
+        deletes:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records to delete by primary key columns and start dates.
+          maxItems: 1000
+      required:
+      - deletes
+      - upserts
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
     ImportParams:
       type: object
       properties:
@@ -259,82 +354,6 @@ components:
       required:
       - data_mappings
       - import_mode
-    PaginatedAttributeRecordList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttributeRecord'
-    TypeEnum:
-      enum:
-      - api
-      - derived
-      - payout_summary
-      - period_group
-      - hierarchy
-      - historical_detailed
-      - historical_payouts
-      - quota
-      - master
-      - attribute
-      - object
-      - test
-      - output
-      - workspace_model
-      type: string
-    DelimiterEnum:
-      enum:
-      - ','
-      - \t
-      - '|'
-      - ;
-      type: string
-    AttributeRecord:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: attribute_record
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        start_date:
-          type: string
-          format: date
-          description: The start date of the Employee Assumption
-        end_date:
-          type: string
-          format: date
-          description: The end date of the Employee Assumption
-        data:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-      required:
-      - end_date
-      - start_date
     Column:
       type: object
       properties:
@@ -417,18 +436,70 @@ components:
       - picklist
       - object
       type: string
+    TypeEnum:
+      enum:
+      - api
+      - derived
+      - payout_summary
+      - period_group
+      - hierarchy
+      - historical_detailed
+      - historical_payouts
+      - quota
+      - master
+      - attribute
+      - object
+      - test
+      - output
+      - workspace_model
+      type: string
+    PicklistOption:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: picklist_option
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+        value:
+          type: string
+      required:
+      - id
+      - value
+    PaginatedAttributeWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttributeWorksheet'
     ImportModeEnum:
       enum:
       - upsert
       - insert_only
       - delete
       - overwrite
-      type: string
-    DateFormatEnum:
-      enum:
-      - MM_DD_YYYY
-      - DD_MM_YYYY
-      - YYYY_MM_DD
       type: string
     ObjectTypeEnum:
       enum:
@@ -455,42 +526,33 @@ components:
       - bulk_plan_document_index_template
       - spm_worksheet
       type: string
-    BulkAttributeRecordsByColumnName:
-      type: object
-      properties:
-        upserts:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-          description: Records to create or update by primary key columns and start dates.
-          maxItems: 1000
-        deletes:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-          description: Records to delete by primary key columns and start dates.
-          maxItems: 1000
-      required:
-      - deletes
-      - upserts
-    PicklistOption:
+    AttributeRecord:
       type: object
       properties:
         object:
           type: string
           readOnly: true
-          default: picklist_option
+          default: attribute_record
           description: Optional. Object type name.
         id:
           type: string
-          format: uuid
-        value:
+          readOnly: true
+          description: Primary key, a UUID.
+        start_date:
           type: string
+          format: date
+          description: The start date of the Employee Assumption
+        end_date:
+          type: string
+          format: date
+          description: The end date of the Employee Assumption
+        data:
+          type: object
+          additionalProperties: {}
+          readOnly: true
       required:
-      - id
-      - value
+      - end_date
+      - start_date
     PaginatedPickListOptionsResponseList:
       type: object
       properties:
@@ -516,56 +578,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PickListOptionsResponse'
-    BatchUpdateRecordsByColumnNameResponse:
+    PickListOptionsResponse:
       type: object
       properties:
-        created:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-          description: Records created by primary key columns and start dates.
-        updated:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-          description: Records updated by primary key columns and start dates.
-        deleted:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-          description: Records deleted by primary key columns and start dates.
-      required:
-      - created
-      - deleted
-      - updated
-    ImportCSVRequest:
-      type: object
-      properties:
-        file_name:
+        object:
           type: string
-          description: File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.
-          pattern: \.csv$
-        encoding:
+          readOnly: true
+          default: picklist_option
+          description: Optional. Object type name.
+        value:
           type: string
-          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
-        date_format:
-          allOf:
-          - $ref: '#/components/schemas/DateFormatEnum'
-          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
-        delimiter:
-          allOf:
-          - $ref: '#/components/schemas/DelimiterEnum'
-          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
-        params:
-          allOf:
-          - $ref: '#/components/schemas/ImportParams'
-          description: Parameters for the upload.
+          format: uuid
+        label:
+          type: string
+          readOnly: true
+        order:
+          type: integer
       required:
-      - file_name
-      - params
+      - order
+      - value
     Upload:
       type: object
       properties:
@@ -628,7 +659,32 @@ components:
       - delimiter
       - encoding
       - file_name
-    PaginatedAttributeWorksheetList:
+    BatchUpdateRecordsByColumnNameResponse:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records created by primary key columns and start dates.
+        updated:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records updated by primary key columns and start dates.
+        deleted:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records deleted by primary key columns and start dates.
+      required:
+      - created
+      - deleted
+      - updated
+    PaginatedAttributeRecordList:
       type: object
       properties:
         object:
@@ -652,94 +708,38 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/AttributeWorksheet'
-    PickListOptionsResponse:
+            $ref: '#/components/schemas/AttributeRecord'
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    ImportCSVRequest:
       type: object
       properties:
-        object:
+        file_name:
           type: string
-          readOnly: true
-          default: picklist_option
-          description: Optional. Object type name.
-        value:
+          description: File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.
+          pattern: \.csv$
+        encoding:
           type: string
-          format: uuid
-        label:
-          type: string
-          readOnly: true
-        order:
-          type: integer
-      required:
-      - order
-      - value
-    AttributeWorksheet:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: attribute_worksheet
-          description: Object type.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        name:
-          type: string
-          maxLength: 255
-        description:
-          type:
-          - string
-          - 'null'
-        type:
+          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
+        date_format:
           allOf:
-          - $ref: '#/components/schemas/TypeEnum'
-          readOnly: true
-        workbook:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Worksheet's associated workbook UUID.
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Column'
-          readOnly: true
-          description: Worksheet columns.
-        is_hidden:
-          type: boolean
-          readOnly: true
-          description: Whether or not the worksheet is hidden.
-        pk_type:
-          type: string
-          readOnly: true
-          description: Primary key type.
-        pk_column_uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          readOnly: true
-          description: Primary key column UUIDs.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Created at.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Last updated at.
-        columns_width:
-          readOnly: true
-          description: Column widths for the worksheet.
-        records_per_page:
-          type: integer
-          readOnly: true
-          description: Number of records on a page.
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
+        params:
+          allOf:
+          - $ref: '#/components/schemas/ImportParams'
+          description: Parameters for the upload.
       required:
-      - name
+      - file_name
+      - params
   securitySchemes:
     tokenAuth:
       type: apiKey
