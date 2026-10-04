@@ -330,31 +330,6 @@ paths:
           description: ''
 components:
   schemas:
-    PaginatedEmployeeVisibilityList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmployeeVisibility'
     EmployeeCreate:
       type: object
       properties:
@@ -416,6 +391,57 @@ components:
           description: Optional. This field is only used if an organization uses freeform login_id type as the user's unique identifier (all organizations use email as a unique identifier by default) and if linked_user does not have a value. If this is the case then login_id value will be used in creating the linked_user. If login_id is blank, the linked user will be created as a placeholder user.
       required:
       - employee_id
+    BlankEnum:
+      enum:
+      - ''
+    EmployeeVisibilityCreateUpdate:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: employee visibility
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        user:
+          type: string
+          format: uuid
+          description: Required. The uuid of the user.
+        visible_employee:
+          type: string
+          format: uuid
+          description: Required. The uuid of the visible employee.
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Required. The visibility start date.
+        end_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Required. The visibility end date.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - user
+      - visible_employee
+    NullEnum:
+      enum:
+      - null
     OpenAPIDelete:
       type: object
       properties:
@@ -432,31 +458,6 @@ components:
           type: boolean
           readOnly: true
           description: Has the object been deleted.
-    PaginatedEmployeeList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Employee'
     LocaleEnum:
       enum:
       - cs_CZ
@@ -481,118 +482,6 @@ components:
       - zh_CN
       - zh_SG
       type: string
-    Employee:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: employee
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        employee_id:
-          type: string
-          description: Required, must be unique. Your unique identifier for the employee within your organization.
-        email:
-          type:
-          - string
-          - 'null'
-          format: email
-          description: Required if `linked_user` not provided, otherwise optional. The employee's email address.
-        first_name:
-          type:
-          - string
-          - 'null'
-          description: Required if `linked_user` not provided, otherwise optional. The employee's first name.
-        last_name:
-          type:
-          - string
-          - 'null'
-          description: Required if `linked_user` not provided, otherwise optional. The employee's last name.
-        final_process_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          description: Optional. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.
-        is_active:
-          type: boolean
-          description: Active employees count towards your seat count.
-        linked_user:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Employee's linked User, which they may use to access the system.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - employee_id
-      - is_active
-    BlankEnum:
-      enum:
-      - ''
-    EmployeeOptionalUserSettings:
-      type: object
-      properties:
-        enable_inquiry_notifications:
-          type: boolean
-          default: false
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
-        enable_statement_notifications:
-          type: boolean
-          default: true
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
-        eligible_to_receive_inquiries:
-          type: boolean
-          default: true
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
-        eligible_to_submit_inquiries:
-          type: boolean
-          default: true
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`. Enable user to submit inquiries.
-        enable_payout_processing_notifications:
-          type: boolean
-          default: false
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
-        enable_connector_sync_email_notifications:
-          type: boolean
-          default: true
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
-        enable_scim_email_notifications:
-          type: boolean
-          default: false
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
-        enable_audit_log_export_notifications:
-          type: boolean
-          default: false
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
-        is_organization_admin:
-          type: boolean
-          default: false
-          description: Optional, defaults to `false`.
-        send_initial_email:
-          type: boolean
-          default: false
-          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`. Send the user a welcome email.
-        login_access:
-          type: boolean
-          default: false
-          description: Optional, defaults to `false`.
-        role:
-          type: string
-          description: Name of the role to apply to the user.
-          maxLength: 255
     EmployeeUpdate:
       type: object
       properties:
@@ -651,9 +540,31 @@ components:
       - first_name
       - is_active
       - last_name
-    NullEnum:
-      enum:
-      - null
+    PaginatedEmployeeList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Employee'
     EmployeeVisibility:
       type: object
       properties:
@@ -703,38 +614,127 @@ components:
       required:
       - user
       - visible_employee
-    EmployeeVisibilityCreateUpdate:
+    EmployeeOptionalUserSettings:
+      type: object
+      properties:
+        enable_inquiry_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_statement_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_receive_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        eligible_to_submit_inquiries:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`. Enable user to submit inquiries.
+        enable_payout_processing_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_connector_sync_email_notifications:
+          type: boolean
+          default: true
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `true`.
+        enable_scim_email_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        enable_audit_log_export_notifications:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`.
+        is_organization_admin:
+          type: boolean
+          default: false
+          description: Optional, defaults to `false`.
+        send_initial_email:
+          type: boolean
+          default: false
+          description: Optional, default to your "Organization User Settings" value. If an "Organization User Settings" value is not set will fallback to `false`. Send the user a welcome email.
+        login_access:
+          type: boolean
+          default: false
+          description: Optional, defaults to `false`.
+        role:
+          type: string
+          description: Name of the role to apply to the user.
+          maxLength: 255
+    PaginatedEmployeeVisibilityList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeVisibility'
+    Employee:
       type: object
       properties:
         object:
           type: string
           readOnly: true
-          default: employee visibility
+          default: employee
           description: Optional. Object type name.
         id:
           type: string
           readOnly: true
           description: Primary key, a UUID.
-        user:
+        employee_id:
           type: string
-          format: uuid
-          description: Required. The uuid of the user.
-        visible_employee:
-          type: string
-          format: uuid
-          description: Required. The uuid of the visible employee.
-        start_date:
+          description: Required, must be unique. Your unique identifier for the employee within your organization.
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: Required if `linked_user` not provided, otherwise optional. The employee's email address.
+        first_name:
+          type:
+          - string
+          - 'null'
+          description: Required if `linked_user` not provided, otherwise optional. The employee's first name.
+        last_name:
+          type:
+          - string
+          - 'null'
+          description: Required if `linked_user` not provided, otherwise optional. The employee's last name.
+        final_process_date:
           type:
           - string
           - 'null'
           format: date
-          description: Required. The visibility start date.
-        end_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          description: Required. The visibility end date.
+          description: Optional. YYYY-MM-DD format. Payouts will no longer be processed for this employee after this date.
+        is_active:
+          type: boolean
+          description: Active employees count towards your seat count.
+        linked_user:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Employee's linked User, which they may use to access the system.
         created_at:
           type: string
           format: date-time
@@ -746,8 +746,8 @@ components:
           readOnly: true
           description: Date and time of last update.
       required:
-      - user
-      - visible_employee
+      - employee_id
+      - is_active
   securitySchemes:
     tokenAuth:
       type: apiKey

@@ -194,40 +194,31 @@ paths:
           description: No response body
 components:
   schemas:
-    PeriodGroup:
+    PaginatedPeriodGroupList:
       type: object
       properties:
         object:
           type: string
-          readOnly: true
-          default: period_group
-        id:
-          type: string
-          readOnly: true
-        plan:
-          type: string
-          readOnly: true
-        plan_name:
-          type: string
-          readOnly: true
-        workbook:
-          type: string
-          readOnly: true
-        name:
-          type: string
-        is_active:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
-      - is_active
-      - name
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeriodGroup'
     Plan:
       type: object
       properties:
@@ -275,6 +266,40 @@ components:
       - confetti_enabled
       - is_active
       - name
+    PeriodGroup:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: period_group
+        id:
+          type: string
+          readOnly: true
+        plan:
+          type: string
+          readOnly: true
+        plan_name:
+          type: string
+          readOnly: true
+        workbook:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - is_active
+      - name
     PaginatedPlanList:
       type: object
       properties:
@@ -300,31 +325,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Plan'
-    PaginatedPeriodGroupList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PeriodGroup'
   securitySchemes:
     tokenAuth:
       type: apiKey

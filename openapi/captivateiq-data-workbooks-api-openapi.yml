@@ -84,42 +84,6 @@ paths:
           description: ''
 components:
   schemas:
-    DataWorkbook:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: data_workbook
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        name:
-          type: string
-          description: Workbook name.
-        is_active:
-          type: boolean
-          description: Workbook's active status.
-        worksheets:
-          allOf:
-          - $ref: '#/components/schemas/DataWorksheetListItem'
-          readOnly: true
-          description: Worksheet list.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - is_active
-      - name
     PaginatedDataWorkbookList:
       type: object
       properties:
@@ -179,6 +143,42 @@ components:
           description: Date and time of last update.
       required:
       - description
+      - name
+    DataWorkbook:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: data_workbook
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          description: Workbook name.
+        is_active:
+          type: boolean
+          description: Workbook's active status.
+        worksheets:
+          allOf:
+          - $ref: '#/components/schemas/DataWorksheetListItem'
+          readOnly: true
+          description: Worksheet list.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - is_active
       - name
   securitySchemes:
     tokenAuth:

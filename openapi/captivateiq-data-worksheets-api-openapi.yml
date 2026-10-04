@@ -444,6 +444,194 @@ paths:
           description: ''
 components:
   schemas:
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    DataWorksheet:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: data_worksheet
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        type:
+          type: string
+          readOnly: true
+          description: Worksheet type.
+        name:
+          type: string
+          description: Worksheet name.
+        description:
+          type: string
+          description: Worksheet description.
+        workbook:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Worksheet's associated data workbook UUID.
+        workbook_name:
+          type: string
+          readOnly: true
+          description: Worksheet's associated data workbook name.
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnListItem'
+          readOnly: true
+          description: Worksheet columns.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - description
+      - name
+    BatchUpdateRecords:
+      type: object
+      properties:
+        upserts:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+          description: Records to create or update. Maximum batch size is 1000.
+          maxItems: 1000
+        deletes:
+          type: array
+          items:
+            type: string
+          description: Unique IDs for the records to delete. Maximum batch size is 1000.
+          maxItems: 1000
+      required:
+      - deletes
+      - upserts
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
+    ImportModeEnum:
+      enum:
+      - upsert
+      - insert_only
+      - delete
+      - overwrite
+      type: string
+    ColumnListItem:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: column
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          description: Column name.
+        description:
+          type: string
+          description: Column description.
+        variant:
+          type: string
+          description: Column variant, e.g. raw or derived.
+        data_type:
+          type: string
+          description: Column data type, e.g. number or date.
+        format:
+          description: Column display format.
+        formula:
+          type: string
+          readOnly: true
+          description: Column formula.
+        read_only:
+          type: boolean
+          readOnly: true
+          description: Whether or not the column is read only.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - data_type
+      - description
+      - format
+      - name
+      - variant
+    Record:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: record
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        data:
+          type: object
+          additionalProperties: {}
+          description: Column data for the record.
+      required:
+      - data
     DataWorksheetImportCSVRequest:
       type: object
       properties:
@@ -469,6 +657,145 @@ components:
       required:
       - file_name
       - params
+    DataWorksheetImportParams:
+      type: object
+      properties:
+        import_mode:
+          allOf:
+          - $ref: '#/components/schemas/ImportModeEnum'
+          description: 'Mode for our import. Valid choices are: `upsert`, `insert_only`, `overwrite` and `delete`.'
+        data_mappings:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
+        load_all_columns:
+          type: boolean
+          default: true
+          description: Whether to load columns that are not specified in the data mappings. If false, only columns specified in data mappings will be loaded, and the rest will be ignored. If true, we will attempt to load all columns, using data mappings for columns that are mapped and column names for columns that are not mapped.
+      required:
+      - data_mappings
+      - import_mode
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
+    BatchResult:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the created records.
+        updated:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the updated records.
+        deleted:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the deleted records.
+      required:
+      - created
+      - deleted
+      - updated
+    Job:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: job
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        url:
+          type: string
+          readOnly: true
+          description: URL to retrieve job details and status.
+        type:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Job type.
+        status:
+          type: string
+          readOnly: true
+          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
+        description:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Detailed job description.
+        details:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+          description: Specific details about this job, such as error messages or download links.
+        metadata:
+          $ref: '#/components/schemas/JobMetadata'
+      required:
+      - metadata
+    PaginatedDataWorksheetList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataWorksheet'
+    PaginatedRecordList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        total_count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
     Upload:
       type: object
       properties:
@@ -531,192 +858,6 @@ components:
       - delimiter
       - encoding
       - file_name
-    PaginatedRecordList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Record'
-    DataWorksheet:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: data_worksheet
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        type:
-          type: string
-          readOnly: true
-          description: Worksheet type.
-        name:
-          type: string
-          description: Worksheet name.
-        description:
-          type: string
-          description: Worksheet description.
-        workbook:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Worksheet's associated data workbook UUID.
-        workbook_name:
-          type: string
-          readOnly: true
-          description: Worksheet's associated data workbook name.
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnListItem'
-          readOnly: true
-          description: Worksheet columns.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - description
-      - name
-    ImportModeEnum:
-      enum:
-      - upsert
-      - insert_only
-      - delete
-      - overwrite
-      type: string
-    DelimiterEnum:
-      enum:
-      - ','
-      - \t
-      - '|'
-      - ;
-      type: string
-    ColumnListItem:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: column
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        name:
-          type: string
-          description: Column name.
-        description:
-          type: string
-          description: Column description.
-        variant:
-          type: string
-          description: Column variant, e.g. raw or derived.
-        data_type:
-          type: string
-          description: Column data type, e.g. number or date.
-        format:
-          description: Column display format.
-        formula:
-          type: string
-          readOnly: true
-          description: Column formula.
-        read_only:
-          type: boolean
-          readOnly: true
-          description: Whether or not the column is read only.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - data_type
-      - description
-      - format
-      - name
-      - variant
-    BatchResult:
-      type: object
-      properties:
-        created:
-          type: array
-          items:
-            type: string
-          description: Unique IDs of the created records.
-        updated:
-          type: array
-          items:
-            type: string
-          description: Unique IDs of the updated records.
-        deleted:
-          type: array
-          items:
-            type: string
-          description: Unique IDs of the deleted records.
-      required:
-      - created
-      - deleted
-      - updated
-    DateFormatEnum:
-      enum:
-      - MM_DD_YYYY
-      - DD_MM_YYYY
-      - YYYY_MM_DD
-      type: string
-    BatchUpdateRecords:
-      type: object
-      properties:
-        upserts:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-          description: Records to create or update. Maximum batch size is 1000.
-          maxItems: 1000
-        deletes:
-          type: array
-          items:
-            type: string
-          description: Unique IDs for the records to delete. Maximum batch size is 1000.
-          maxItems: 1000
-      required:
-      - deletes
-      - upserts
     ObjectTypeEnum:
       enum:
       - records
@@ -742,147 +883,6 @@ components:
       - bulk_plan_document_index_template
       - spm_worksheet
       type: string
-    Job:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: job
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        url:
-          type: string
-          readOnly: true
-          description: URL to retrieve job details and status.
-        type:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Job type.
-        status:
-          type: string
-          readOnly: true
-          description: 'Job status, one of: PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, REVOKED, REJECTED, RETRY or IGNORED'
-        description:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          description: Detailed job description.
-        details:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-          description: Specific details about this job, such as error messages or download links.
-        metadata:
-          $ref: '#/components/schemas/JobMetadata'
-      required:
-      - metadata
-    Record:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: record
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        data:
-          type: object
-          additionalProperties: {}
-          description: Column data for the record.
-      required:
-      - data
-    JobMetadata:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID for the User who created this job.
-        user_email:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Email for the User who created this job.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        aggregation_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID by which multiple jobs may be grouped together.
-    DataWorksheetImportParams:
-      type: object
-      properties:
-        import_mode:
-          allOf:
-          - $ref: '#/components/schemas/ImportModeEnum'
-          description: 'Mode for our import. Valid choices are: `upsert`, `insert_only`, `overwrite` and `delete`.'
-        data_mappings:
-          type: object
-          additionalProperties:
-            type: string
-          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
-        load_all_columns:
-          type: boolean
-          default: true
-          description: Whether to load columns that are not specified in the data mappings. If false, only columns specified in data mappings will be loaded, and the rest will be ignored. If true, we will attempt to load all columns, using data mappings for columns that are mapped and column names for columns that are not mapped.
-      required:
-      - data_mappings
-      - import_mode
-    PaginatedDataWorksheetList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        total_count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataWorksheet'
   securitySchemes:
     tokenAuth:
       type: apiKey

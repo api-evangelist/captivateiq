@@ -344,38 +344,6 @@ paths:
           description: ''
 components:
   schemas:
-    HierarchyGroup:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: hierarchy group
-          description: Optional. Object type name.
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the Hierarchy Group, and is required. Limited to 255 characters.
-          maxLength: 255
-        default:
-          type: boolean
-          default: false
-          description: Determines whether this Hierarchy Group is the default Hierarchy Group for the organization. It is not required and defaults to `False` if not provided.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - id
-      - name
     HierarchyUpdate:
       type: object
       properties:
@@ -429,6 +397,108 @@ components:
       - managing_employee
       - reporting_employee
       - start_date
+    DateFormatEnum:
+      enum:
+      - MM_DD_YYYY
+      - DD_MM_YYYY
+      - YYYY_MM_DD
+      type: string
+    HierarchyCreate:
+      type: object
+      properties:
+        managing_employee:
+          type: string
+          format: uuid
+          description: Managing Employee UUID.
+        reporting_employee:
+          type: string
+          format: uuid
+          description: Reporting Employee UUID.
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Optional, defaults to null. Start date formatted YYYY-MM-DD.
+        end_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Optional, defaults to null. End date formatted YYYY-MM-DD.
+      required:
+      - managing_employee
+      - reporting_employee
+    OpenAPIDelete:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          description: Type of the object.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the object deleted.
+        deleted:
+          type: boolean
+          readOnly: true
+          description: Has the object been deleted.
+    ImportCSVRequest:
+      type: object
+      properties:
+        file_name:
+          type: string
+          description: File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.
+          pattern: \.csv$
+        encoding:
+          type: string
+          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
+        date_format:
+          allOf:
+          - $ref: '#/components/schemas/DateFormatEnum'
+          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
+        delimiter:
+          allOf:
+          - $ref: '#/components/schemas/DelimiterEnum'
+          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
+        params:
+          allOf:
+          - $ref: '#/components/schemas/ImportParams'
+          description: Parameters for the upload.
+      required:
+      - file_name
+      - params
+    OpenAPIBatchResult:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the created records.
+        updated:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the updated records.
+        deleted:
+          type: array
+          items:
+            type: string
+          description: Unique IDs of the deleted records.
+      required:
+      - created
+      - deleted
+      - updated
+    ImportModeEnum:
+      enum:
+      - upsert
+      - insert_only
+      - delete
+      - overwrite
+      type: string
     PaginatedHierarchyGroupList:
       type: object
       properties:
@@ -454,43 +524,51 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/HierarchyGroup'
-    Hierarchy:
+    BatchUpdateHierarchies:
+      type: object
+      properties:
+        upserts:
+          type: array
+          items:
+            $ref: '#/components/schemas/HierarchyUpsert'
+          description: Hierarchies to create or update
+          maxItems: 1000
+        deletes:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs for the hierarchies to delete
+          maxItems: 1000
+      required:
+      - deletes
+      - upserts
+    DelimiterEnum:
+      enum:
+      - ','
+      - \t
+      - '|'
+      - ;
+      type: string
+    HierarchyGroup:
       type: object
       properties:
         object:
           type: string
           readOnly: true
-          default: hierarchy
+          default: hierarchy group
           description: Optional. Object type name.
         id:
           type: string
           format: uuid
-          readOnly: true
-          description: Primary key, a UUID.
-        hierarchy_group:
+        name:
           type: string
-          format: uuid
-          description: Hierarchy Group UUID.
-        managing_employee:
-          type: string
-          format: uuid
-          description: Managing Employee UUID.
-        reporting_employee:
-          type: string
-          format: uuid
-          description: Reporting Employee UUID.
-        start_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          description: Optional, defaults to null. Start date formatted YYYY-MM-DD.
-        end_date:
-          type:
-          - string
-          - 'null'
-          format: date
-          description: Optional, defaults to null. End date formatted YYYY-MM-DD.
+          description: The name of the Hierarchy Group, and is required. Limited to 255 characters.
+          maxLength: 255
+        default:
+          type: boolean
+          default: false
+          description: Determines whether this Hierarchy Group is the default Hierarchy Group for the organization. It is not required and defaults to `False` if not provided.
         created_at:
           type: string
           format: date-time
@@ -502,9 +580,8 @@ components:
           readOnly: true
           description: Date and time of last update.
       required:
-      - hierarchy_group
-      - managing_employee
-      - reporting_employee
+      - id
+      - name
     PaginatedHierarchyList:
       type: object
       properties:
@@ -530,22 +607,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Hierarchy'
-    OpenAPIDelete:
+    ImportParams:
       type: object
       properties:
-        object:
-          type: string
-          readOnly: true
-          description: Type of the object.
-        id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: UUID of the object deleted.
-        deleted:
-          type: boolean
-          readOnly: true
-          description: Has the object been deleted.
+        import_mode:
+          allOf:
+          - $ref: '#/components/schemas/ImportModeEnum'
+          description: 'Mode for our import. Valid choices are: `upsert`, `insert_only`, `overwrite` and `delete`.'
+        data_mappings:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
+      required:
+      - data_mappings
+      - import_mode
     Upload:
       type: object
       properties:
@@ -608,39 +684,6 @@ components:
       - delimiter
       - encoding
       - file_name
-    BatchUpdateHierarchies:
-      type: object
-      properties:
-        upserts:
-          type: array
-          items:
-            $ref: '#/components/schemas/HierarchyUpsert'
-          description: Hierarchies to create or update
-          maxItems: 1000
-        deletes:
-          type: array
-          items:
-            type: string
-            format: uuid
-          description: IDs for the hierarchies to delete
-          maxItems: 1000
-      required:
-      - deletes
-      - upserts
-    ImportModeEnum:
-      enum:
-      - upsert
-      - insert_only
-      - delete
-      - overwrite
-      type: string
-    DelimiterEnum:
-      enum:
-      - ','
-      - \t
-      - '|'
-      - ;
-      type: string
     ObjectTypeEnum:
       enum:
       - records
@@ -666,27 +709,6 @@ components:
       - bulk_plan_document_index_template
       - spm_worksheet
       type: string
-    DateFormatEnum:
-      enum:
-      - MM_DD_YYYY
-      - DD_MM_YYYY
-      - YYYY_MM_DD
-      type: string
-    ImportParams:
-      type: object
-      properties:
-        import_mode:
-          allOf:
-          - $ref: '#/components/schemas/ImportModeEnum'
-          description: 'Mode for our import. Valid choices are: `upsert`, `insert_only`, `overwrite` and `delete`.'
-        data_mappings:
-          type: object
-          additionalProperties:
-            type: string
-          description: 'Dictionary that optionally maps `{ "CaptivateIQ Column Name": "CSV Header" }`. By default we try  to do an exact match with column name, but will use the provided mappings if names differ.'
-      required:
-      - data_mappings
-      - import_mode
     HierarchyUpsert:
       type: object
       properties:
@@ -719,31 +741,23 @@ components:
       - managing_employee
       - reporting_employee
       - start_date
-    OpenAPIBatchResult:
+    Hierarchy:
       type: object
       properties:
-        created:
-          type: array
-          items:
-            type: string
-          description: Unique IDs of the created records.
-        updated:
-          type: array
-          items:
-            type: string
-          description: Unique IDs of the updated records.
-        deleted:
-          type: array
-          items:
-            type: string
-          description: Unique IDs of the deleted records.
-      required:
-      - created
-      - deleted
-      - updated
-    HierarchyCreate:
-      type: object
-      properties:
+        object:
+          type: string
+          readOnly: true
+          default: hierarchy
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Primary key, a UUID.
+        hierarchy_group:
+          type: string
+          format: uuid
+          description: Hierarchy Group UUID.
         managing_employee:
           type: string
           format: uuid
@@ -764,34 +778,20 @@ components:
           - 'null'
           format: date
           description: Optional, defaults to null. End date formatted YYYY-MM-DD.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
       required:
+      - hierarchy_group
       - managing_employee
       - reporting_employee
-    ImportCSVRequest:
-      type: object
-      properties:
-        file_name:
-          type: string
-          description: File name for the uploaded file, e.g. `my-file.csv`. We currently only support CSV files.
-          pattern: \.csv$
-        encoding:
-          type: string
-          description: Optional. The file's encoding, by default we assume `utf-8`, `utf-16` or `iso-8859-1`. See [here](https://docs.python.org/3.8/library/codecs.html#standard-encodings) for the full list of supported encodings.
-        date_format:
-          allOf:
-          - $ref: '#/components/schemas/DateFormatEnum'
-          description: 'Optional. The file''s format for all date fields, by default we assume the organization''s `Default Input Date Format` setting.  Valid choices are: `MM_DD_YYYY`, `DD_MM_YYYY`, and `YYYY_MM_DD`.'
-        delimiter:
-          allOf:
-          - $ref: '#/components/schemas/DelimiterEnum'
-          description: 'Optional. The file''s delimiter, by default we assume `,`. Valid choices are: `,`, `\t`, `|` and `;`.'
-        params:
-          allOf:
-          - $ref: '#/components/schemas/ImportParams'
-          description: Parameters for the upload.
-      required:
-      - file_name
-      - params
   securitySchemes:
     tokenAuth:
       type: apiKey

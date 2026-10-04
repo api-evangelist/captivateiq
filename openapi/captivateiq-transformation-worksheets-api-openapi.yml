@@ -106,6 +106,34 @@ paths:
           description: ''
 components:
   schemas:
+    JobMetadata:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID for the User who created this job.
+        user_email:
+          type: string
+          format: uuid
+          readOnly: true
+          description: Email for the User who created this job.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+        aggregation_id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: ID by which multiple jobs may be grouped together.
     PaginatedTransformationWorksheetList:
       type: object
       properties:
@@ -131,56 +159,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TransformationWorksheet'
-    ColumnListItem:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: column
-          description: Optional. Object type name.
-        id:
-          type: string
-          readOnly: true
-          description: Primary key, a UUID.
-        name:
-          type: string
-          description: Column name.
-        description:
-          type: string
-          description: Column description.
-        variant:
-          type: string
-          description: Column variant, e.g. raw or derived.
-        data_type:
-          type: string
-          description: Column data type, e.g. number or date.
-        format:
-          description: Column display format.
-        formula:
-          type: string
-          readOnly: true
-          description: Column formula.
-        read_only:
-          type: boolean
-          readOnly: true
-          description: Whether or not the column is read only.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-      required:
-      - data_type
-      - description
-      - format
-      - name
-      - variant
     Job:
       type: object
       properties:
@@ -222,34 +200,6 @@ components:
           $ref: '#/components/schemas/JobMetadata'
       required:
       - metadata
-    JobMetadata:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID for the User who created this job.
-        user_email:
-          type: string
-          format: uuid
-          readOnly: true
-          description: Email for the User who created this job.
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of creation.
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-          description: Date and time of last update.
-        aggregation_id:
-          type: string
-          format: uuid
-          readOnly: true
-          description: ID by which multiple jobs may be grouped together.
     TransformationWorksheet:
       type: object
       properties:
@@ -300,6 +250,56 @@ components:
       required:
       - description
       - name
+    ColumnListItem:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: column
+          description: Optional. Object type name.
+        id:
+          type: string
+          readOnly: true
+          description: Primary key, a UUID.
+        name:
+          type: string
+          description: Column name.
+        description:
+          type: string
+          description: Column description.
+        variant:
+          type: string
+          description: Column variant, e.g. raw or derived.
+        data_type:
+          type: string
+          description: Column data type, e.g. number or date.
+        format:
+          description: Column display format.
+        formula:
+          type: string
+          readOnly: true
+          description: Column formula.
+        read_only:
+          type: boolean
+          readOnly: true
+          description: Whether or not the column is read only.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of creation.
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Date and time of last update.
+      required:
+      - data_type
+      - description
+      - format
+      - name
+      - variant
   securitySchemes:
     tokenAuth:
       type: apiKey
