@@ -51,6 +51,30 @@ paths:
           description: ''
 components:
   schemas:
+    Organization:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: organization
+          description: Optional. Object type name.
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+      - created_at
+      - id
+      - name
+      - updated_at
     PaginatedOrganizationList:
       type: object
       properties:
@@ -76,30 +100,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization'
-    Organization:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: organization
-          description: Optional. Object type name.
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      required:
-      - created_at
-      - id
-      - name
-      - updated_at
   securitySchemes:
     tokenAuth:
       type: apiKey

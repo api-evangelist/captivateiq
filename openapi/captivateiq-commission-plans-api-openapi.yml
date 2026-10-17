@@ -194,6 +194,40 @@ paths:
           description: No response body
 components:
   schemas:
+    PeriodGroup:
+      type: object
+      properties:
+        object:
+          type: string
+          readOnly: true
+          default: period_group
+        id:
+          type: string
+          readOnly: true
+        plan:
+          type: string
+          readOnly: true
+        plan_name:
+          type: string
+          readOnly: true
+        workbook:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - is_active
+      - name
     PaginatedPeriodGroupList:
       type: object
       properties:
@@ -264,40 +298,6 @@ components:
           readOnly: true
       required:
       - confetti_enabled
-      - is_active
-      - name
-    PeriodGroup:
-      type: object
-      properties:
-        object:
-          type: string
-          readOnly: true
-          default: period_group
-        id:
-          type: string
-          readOnly: true
-        plan:
-          type: string
-          readOnly: true
-        plan_name:
-          type: string
-          readOnly: true
-        workbook:
-          type: string
-          readOnly: true
-        name:
-          type: string
-        is_active:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          readOnly: true
-      required:
       - is_active
       - name
     PaginatedPlanList:
