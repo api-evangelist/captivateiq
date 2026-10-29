@@ -64,6 +64,166 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-CaptivateIQ is a company surfaced as a portfolio company of accel, bessemer-venture-partners, iconiq-capital, sapphire-ventures and added to the API Evangelist network as a stub for enrichment. Sector: cloud-saas. This profile is a lead awaiting the enrichment pipeline.
+CaptivateIQ is a sales performance and commission management platform that automates the calculation, administration, and reporting of sales commissions and incentive compensation. Its ICM (Incentive Compensation Management) and SPM (Sales Performance Management) products let revenue, finance, and sales-ops teams design complex commission plans, model quotas and territories, and pay reps accurately and on time. CaptivateIQ exposes a public REST API (ciq/v1) for managing employees, users, hierarchies, data workbooks and worksheets, employee assumptions, commission plans, period groups, payouts, report models, transformation worksheets, uploads, dashboards, and audit logs. The API uses token-based authentication (Authorization header with a "Token" prefix), limit/offset pagination, and per-tier rate limiting, and is documented on a public developer portal with guides, recipes, a changelog, and an llms.txt index. CaptivateIQ also serves a live remote MCP endpoint on its developer-docs host and an RFC 8414 OAuth authorization-server metadata document on its app host, and publicly announced a customer-facing CaptivateIQ MCP Server (limited beta, May 2026) for connecting live compensation and planning data to AI tools.
 
-Backed by: accel, bessemer-venture-partners, iconiq-capital, sapphire-ventures — http://www.captivateiq.com/
+**Areas:** Company · Cloud Saas · Sales Commissions · Incentive Compensation Management · Sales Performance Management · Revenue Operations · Finance · Payouts · Commission Plans · Sales Compensation
+
+## CaptivateIQ on APIs.io
+
+Everything profiled for CaptivateIQ is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/captivateiq/](https://apis.io/providers/captivateiq/)** — or go straight to one of the APIs or properties below.
+
+### APIs (16)
+
+- [CaptivateIQ Attribute Worksheets API](https://apis.io/apis/captivateiq/captivateiq-attribute-worksheets-api/) — The Attribute Worksheets API from CaptivateIQ — 5 operation(s) for attribute worksheets.
+- [CaptivateIQ Audit Logs API](https://apis.io/apis/captivateiq/captivateiq-audit-logs-api/) — The Audit Logs API from CaptivateIQ — 1 operation(s) for audit logs.
+- [CaptivateIQ Commission Plans API](https://apis.io/apis/captivateiq/captivateiq-commission-plans-api/) — The Commission Plans API from CaptivateIQ — 5 operation(s) for commission plans.
+- [CaptivateIQ Dashboards API](https://apis.io/apis/captivateiq/captivateiq-dashboards-api/) — The Dashboards API from CaptivateIQ — 2 operation(s) for dashboards.
+- [CaptivateIQ Data Workbooks API](https://apis.io/apis/captivateiq/captivateiq-data-workbooks-api/) — The Data Workbooks API from CaptivateIQ — 2 operation(s) for data workbooks.
+- [CaptivateIQ Data Worksheets API](https://apis.io/apis/captivateiq/captivateiq-data-worksheets-api/) — The Data Worksheets API from CaptivateIQ — 8 operation(s) for data worksheets.
+- [CaptivateIQ Employee Assumptions API](https://apis.io/apis/captivateiq/captivateiq-employee-assumptions-api/) — The Employee Assumptions API from CaptivateIQ — 3 operation(s) for employee assumptions.
+- [CaptivateIQ Employees API](https://apis.io/apis/captivateiq/captivateiq-employees-api/) — The Employees API from CaptivateIQ — 4 operation(s) for employees.
+- [CaptivateIQ Hierarchies API](https://apis.io/apis/captivateiq/captivateiq-hierarchies-api/) — The Hierarchies API from CaptivateIQ — 6 operation(s) for hierarchies.
+- [CaptivateIQ Jobs API](https://apis.io/apis/captivateiq/captivateiq-jobs-api/) — The Jobs API from CaptivateIQ — 4 operation(s) for jobs.
+- [CaptivateIQ Metadata API](https://apis.io/apis/captivateiq/captivateiq-metadata-api/) — The Metadata API from CaptivateIQ — 1 operation(s) for metadata.
+- [CaptivateIQ Payouts API](https://apis.io/apis/captivateiq/captivateiq-payouts-api/) — The Payouts API from CaptivateIQ — 8 operation(s) for payouts.
+- [CaptivateIQ Report Models API](https://apis.io/apis/captivateiq/captivateiq-report-models-api/) — The Report Models API from CaptivateIQ — 5 operation(s) for report models.
+- [CaptivateIQ Transformation Worksheets API](https://apis.io/apis/captivateiq/captivateiq-transformation-worksheets-api/) — The Transformation Worksheets API from CaptivateIQ — 3 operation(s) for transformation worksheets.
+- [CaptivateIQ Uploads API](https://apis.io/apis/captivateiq/captivateiq-uploads-api/) — The Uploads API from CaptivateIQ — 3 operation(s) for uploads.
+- [CaptivateIQ Users API](https://apis.io/apis/captivateiq/captivateiq-users-api/) — The Users API from CaptivateIQ — 2 operation(s) for users.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [captivateiq](https://apis.io/servers/captivateiq/captivateiq/)
+
+#### Collections (16)
+
+Postman and Open Collection request collections.
+
+- [CaptivateIQ Attribute Worksheets API](https://apis.io/collections/captivateiq/open-captivateiq-attribute-worksheets-api/)
+- [CaptivateIQ Attribute Worksheets Audit Logs API](https://apis.io/collections/captivateiq/open-captivateiq-audit-logs-api/)
+- [CaptivateIQ Attribute Worksheets Commission Plans API](https://apis.io/collections/captivateiq/open-captivateiq-commission-plans-api/)
+- [CaptivateIQ Attribute Worksheets Dashboards API](https://apis.io/collections/captivateiq/open-captivateiq-dashboards-api/)
+- [CaptivateIQ Attribute Worksheets Data Workbooks API](https://apis.io/collections/captivateiq/open-captivateiq-data-workbooks-api/)
+- [CaptivateIQ Attribute Worksheets Data Worksheets API](https://apis.io/collections/captivateiq/open-captivateiq-data-worksheets-api/)
+- [CaptivateIQ Attribute Worksheets Employee Assumptions API](https://apis.io/collections/captivateiq/open-captivateiq-employee-assumptions-api/)
+- [CaptivateIQ Attribute Worksheets Employees API](https://apis.io/collections/captivateiq/open-captivateiq-employees-api/)
+- [CaptivateIQ Attribute Worksheets Hierarchies API](https://apis.io/collections/captivateiq/open-captivateiq-hierarchies-api/)
+- [CaptivateIQ Attribute Worksheets Jobs API](https://apis.io/collections/captivateiq/open-captivateiq-jobs-api/)
+- [CaptivateIQ Attribute Worksheets Metadata API](https://apis.io/collections/captivateiq/open-captivateiq-metadata-api/)
+- [CaptivateIQ Attribute Worksheets Payouts API](https://apis.io/collections/captivateiq/open-captivateiq-payouts-api/)
+- [CaptivateIQ Attribute Worksheets Report Models API](https://apis.io/collections/captivateiq/open-captivateiq-report-models-api/)
+- [CaptivateIQ Attribute Worksheets Transformation Worksheets API](https://apis.io/collections/captivateiq/open-captivateiq-transformation-worksheets-api/)
+- [CaptivateIQ Attribute Worksheets Uploads API](https://apis.io/collections/captivateiq/open-captivateiq-uploads-api/)
+- [CaptivateIQ Attribute Worksheets Users API](https://apis.io/collections/captivateiq/open-captivateiq-users-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Captivateiq Openapi Overlay](https://apis.io/overlays/captivateiq/captivateiq-openapi-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Captivateiq Authentication](https://apis.io/security/captivateiq/captivateiq-authentication/)
+- [Captivateiq Domain Security](https://apis.io/security/captivateiq/captivateiq-domain-security/)
+- [Captivateiq Trust Center](https://apis.io/security/captivateiq/captivateiq-trust-center/)
+- [Captivateiq Vulnerability Disclosure](https://apis.io/security/captivateiq/captivateiq-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Captivateiq Scopes](https://apis.io/scopes/captivateiq/captivateiq-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Captivateiq Plans Pricing](https://apis.io/plans/captivateiq/captivateiq-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Captivateiq Rate Limits](https://apis.io/rate-limits/captivateiq/captivateiq-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.captivateiq.com/)
+- [Documentation](https://developers.captivateiq.com/docs/getting-started-with-captivateiq)
+- [Getting started](https://developers.captivateiq.com/docs/getting-started-with-captivateiq)
+- [API reference](https://developers.captivateiq.com/reference)
+- [Pricing](https://www.captivateiq.com/pricing)
+- [Changelog](https://developers.captivateiq.com/changelog)
+- [Blog](https://www.captivateiq.com/blog)
+- [Security](https://www.captivateiq.com/security-policy)
+- [Compliance](https://www.captivateiq.com/security-policy)
+- [Terms of service](https://developers.captivateiq.com/page/terms-and-conditions)
+- [Privacy policy](https://www.captivateiq.com/privacy-policy)
+- [GitHub](https://github.com/captivateiq)
+- [Status](https://status.captivateiq.com/)
+
+## API Evangelist rating
+
+**Kin Score 49.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 46.8 |
+| Contract governance | 18.2 |
+| Operational transparency | 57.9 |
+| Developer ergonomics | 39.9 |
+| Access clarity | 48.7 |
+
+**Agent readiness 34.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 43.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/captivateiq/](https://apis.io/providers/captivateiq/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for CaptivateIQ: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/captivateiq/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
